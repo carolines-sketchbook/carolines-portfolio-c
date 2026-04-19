@@ -618,7 +618,7 @@ h1 {
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
-    padding: 0px 40px;
+    padding: 0px 40px 4rem;
 }
 .resume-left {
     text-align: center;
