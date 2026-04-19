@@ -89,4 +89,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.07, rootMargin: '0px 0px 80px 0px' });
 
     els.forEach(el => io.observe(el));
+
+    const dividerIo = new IntersectionObserver((entries) => {
+        entries.forEach(({ isIntersecting, target }) => {
+            if (isIntersecting) {
+                target.classList.add('divider--visible');
+                dividerIo.unobserve(target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.footer-divider, .project-nav').forEach(el => dividerIo.observe(el));
 });
