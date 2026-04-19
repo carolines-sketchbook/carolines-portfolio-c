@@ -788,8 +788,8 @@ a.contact-btn {
     background: transparent;
     border: 2px solid #E90017;
     color: #fff !important;
-    padding: 8px 28px;
-    font-size: 1rem;
+    padding: 10px 36px;
+    font-size: 1.15rem;
 }
 .resume-download-btn:hover {
     background: #E90017;
