@@ -113,6 +113,21 @@ body {
     position: relative;
 }
 
+.nav__item__dropdown::after {
+    content: '';
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+    width: 100%;
+    height: 18px;
+}
+
+.nav__item__dropdown .nav__link:hover,
+.nav__item__dropdown .nav__link:focus {
+    color: #ffffff;
+    -webkit-text-stroke: initial;
+}
+
 .nav__link.nav__link--active {
     color: #E90017;
     -webkit-text-stroke: 0.3px #E90017;
@@ -1199,6 +1214,10 @@ h1 {
 
 /* MOBILE NAV — hamburger kicks in at 768px */
 @media (max-width: 768px) {
+    .header {
+        background: none;
+    }
+
     .nav__hamburger {
         display: flex;
     }
