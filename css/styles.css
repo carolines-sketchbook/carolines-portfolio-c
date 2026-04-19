@@ -1289,7 +1289,7 @@ h1 {
         left: 0;
         right: 0;
         background: rgb(14, 16, 20);
-        padding: 0.9rem 40px 0.9rem;
+        padding: 0.9rem 16px 0.9rem;
         z-index: 999;
         opacity: 0;
         visibility: hidden;
@@ -1538,12 +1538,6 @@ h1 {
             max-height: 300px;
             padding-bottom: 0.9rem;
         }
-        .homebottompadding {
-            padding-bottom: 0;
-        }
-        .headingfooterwork {
-            padding-top: 0;
-        }
     }
 
     @media (max-width: 580px) {
@@ -1555,9 +1549,6 @@ h1 {
         .footer__nav-group {
             flex-direction: column;
             gap: 0;
-        }
-        .headingfooterwork {
-            padding-top: 0;
         }
         .footer__codedby {
             margin-top: 1rem;
