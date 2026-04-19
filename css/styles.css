@@ -538,6 +538,14 @@ a.box:hover .box-hover-label {
     left: 0;
     position: absolute;
 }
+video.parallax-img:fullscreen,
+video.parallax-img:-webkit-full-screen {
+    position: static;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: none;
+}
 
 
 .box-about-1{
