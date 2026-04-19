@@ -1276,7 +1276,7 @@ h1 {
         box-shadow: none;
         background: transparent;
         border-radius: 0;
-        padding: 0 0 0.9rem 1rem;
+        padding: 0 0 0.9rem 0;
         min-width: 0;
         display: flex;
     }
