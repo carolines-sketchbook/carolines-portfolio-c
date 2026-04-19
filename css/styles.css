@@ -372,7 +372,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 4rem 2rem;
+    padding: 2.5rem 2rem;
     background: radial-gradient(circle at 120% 40%, #0f0f0f 0%, #000000 70%);
     border-radius: 30px;
     overflow: hidden;
@@ -468,7 +468,7 @@ a.box::before {
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 2;
-    border-radius: 25px;
+    border-radius: inherit;
 }
 .box-hover-label {
     position: absolute;
@@ -1035,6 +1035,7 @@ h1 {
     grid-auto-rows: minmax(250px, auto); /* base row height */
     gap: 1.22rem;
     margin-bottom: 40px;
+    padding: 0 16px;
     }
     .contact-panel {
     position: relative;
@@ -1193,15 +1194,15 @@ h1 {
         grid-row: 6 / span 1;
         }
         .box-project-7{
-        min-height: 100px;
-        grid-column: 1 / span 6; 
+        min-height: 0;
+        grid-column: 1 / span 6;
         grid-row: 7 / span 1;
         padding-top: 1rem;
         padding-right: 1rem;
         }
         .box-project-8{
-        min-height: 200px;
-        grid-column: 1 / span 6; 
+        min-height: 0;
+        grid-column: 1 / span 6;
         grid-row: 8 / span 1;
         padding-top: 1rem;
         padding-right: 1rem;
