@@ -359,7 +359,7 @@ body {
     font-family: 'DM Sans', sans-serif;
     font-weight: 400;
     color: #ebebeb;
-    font-size: clamp(0.975rem, 0.7vw + 0.8rem, 1.1rem);
+    font-size: clamp(0.875rem, 0.6vw + 0.75rem, 1rem);
     line-height: 1.15;
     margin-bottom: 0.7rem;
 }
@@ -1185,11 +1185,6 @@ h1 {
         }
         .intro__project__meta {
             padding-top: 1.25rem;
-        }
-        .intro__project__meta__line {
-            font-size: clamp(0.875rem, 0.6vw + 0.75rem, 1rem);
-            line-height: 1.15;
-            margin-bottom: 0.6rem;
         }
         .challenge__description, .solution__description{
         color:#ebebeb;
