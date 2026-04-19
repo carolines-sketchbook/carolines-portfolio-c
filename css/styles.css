@@ -1156,7 +1156,7 @@ h1 {
         line-height: 1.46;
         font-size: clamp(1rem, 1.2vw + .6rem, 1rem);
         }
-        .box.box-project-1{
+        .box-project-1{
         grid-column: 1 / span 6;
         grid-row: 1 / span 1;
         }
