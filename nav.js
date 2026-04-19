@@ -40,7 +40,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Footer accordion (mobile only)
+    // Footer brand accordion (mobile only)
+    var footerBrand = document.querySelector('.footer__brand');
+    if (footerBrand) {
+        var brandHeading = footerBrand.querySelector('.footer__name');
+        if (brandHeading) {
+            brandHeading.addEventListener('click', function() {
+                if (window.innerWidth <= 680) {
+                    footerBrand.classList.toggle('footer__brand--open');
+                }
+            });
+        }
+    }
+
+    // Footer nav accordion (mobile only)
     document.querySelectorAll('.footer__nav').forEach(function(footerNav) {
         var heading = footerNav.querySelector('.footer__heading');
         if (!heading) return;
