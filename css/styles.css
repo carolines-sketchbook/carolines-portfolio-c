@@ -1586,16 +1586,16 @@ a.contact-btn {
     height: 4px;
     border-right: 1px solid #888;
     border-bottom: 1px solid #888;
-    vertical-align: middle;
-    margin-bottom: 1px;
+    vertical-align: 2px;
+    margin-bottom: 0;
 }
 .project-nav__prev .project-nav__label::before {
     transform: rotate(135deg);
-    margin-right: 3px;
+    margin-right: 6px;
 }
 .project-nav__next .project-nav__label::after {
     transform: rotate(-45deg);
-    margin-left: 3px;
+    margin-left: 6px;
 }
 .project-nav__label {
     font-family: 'DM Sans', sans-serif;
