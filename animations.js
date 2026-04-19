@@ -10,12 +10,27 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.box video').forEach(video => {
             video.style.cursor = 'pointer';
             video.addEventListener('click', () => {
-                if (video.requestFullscreen) {
-                    video.requestFullscreen();
-                } else if (video.webkitEnterFullscreen) {
-                    video.webkitEnterFullscreen(); // iOS Safari
-                } else if (video.webkitRequestFullscreen) {
-                    video.webkitRequestFullscreen();
+                if (document.fullscreenElement || document.webkitFullscreenElement) return;
+
+                const enter = () => {
+                    if (video.webkitEnterFullscreen) {
+                        // iOS Safari: playsinline blocks fullscreen, must remove it first
+                        video.removeAttribute('playsinline');
+                        video.webkitEnterFullscreen();
+                        video.addEventListener('webkitendfulllscreen', () => {
+                            video.setAttribute('playsinline', '');
+                        }, { once: true });
+                    } else if (video.requestFullscreen) {
+                        video.requestFullscreen();
+                    } else if (video.webkitRequestFullscreen) {
+                        video.webkitRequestFullscreen();
+                    }
+                };
+
+                if (video.paused) {
+                    video.play().then(enter).catch(enter);
+                } else {
+                    enter();
                 }
             });
         });
