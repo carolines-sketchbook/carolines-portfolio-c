@@ -1591,11 +1591,11 @@ a.contact-btn {
 }
 .project-nav__prev .project-nav__label::before {
     transform: rotate(135deg);
-    margin-right: 6px;
+    margin-right: 4px;
 }
 .project-nav__next .project-nav__label::after {
     transform: rotate(-45deg);
-    margin-left: 6px;
+    margin-left: 4px;
 }
 .project-nav__label {
     font-family: 'DM Sans', sans-serif;
