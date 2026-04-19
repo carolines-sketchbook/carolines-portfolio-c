@@ -1583,6 +1583,9 @@ h1 {
     .project-nav {
         padding: 1.25rem 16px;
     }
+    .project-nav::before {
+        background: rgba(255,255,255,0.12);
+    }
     .project-nav__title {
         font-size: 0.95rem;
     }
