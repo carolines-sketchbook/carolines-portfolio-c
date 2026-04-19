@@ -1,5 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    // --- Active page link highlighting ---
+    var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.dropdown li a, .footer__nav a').forEach(function (link) {
+        var href = link.getAttribute('href');
+        if (href && href === currentPage) {
+            link.classList.add('nav__link--current');
+        }
+    });
+
+
     // --- Hamburger ---
     const hamburger = document.querySelector(".nav__hamburger");
     const nav = document.querySelector(".nav");

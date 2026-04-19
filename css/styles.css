@@ -167,6 +167,10 @@ body {
     display: block;
     transition: color 0.2s ease, background 0.2s ease;
 }
+.dropdown li a.nav__link--current,
+.footer__nav a.nav__link--current {
+    color: #E90017;
+}
 .nav__item__dropdown.dropdown-open .dropdown {
     opacity: 1;
     visibility: visible;
