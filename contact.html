@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swain | Contact</title>
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <a href="index.html" class="logo logo-blend-wrap">
+        <img class="logo__image" src="assets/images/CarolineSwain.svg" alt="logo">
+    </a>
+
+    <header class="header">
+        <div class="header__content">
+            <button class="nav__hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="index.html" class="nav__link">HOME</a>
+                    </li>
+                    <li class="nav__item nav__item__dropdown">
+                        <a href="index.html" class="nav__link">WORK</a>
+                        <ul class="dropdown">
+                            <li><a href="project1.html">IT'S THAT SIMPLE</a></li>
+                            <li><a href="project2.html">LOVET: VET CARE</a></li>
+                            <li><a href="project3.html">GELETKA+</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav__item">
+                        <a href="about.html" class="nav__link">ABOUT</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="resume.html" class="nav__link">RESUME</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="contact.html" class="nav__link nav__link--active">CONTACT</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <script src="nav.js"></script>
+
+<div class = "contact-grid-container">
+        <div class="contact-left">
+      <h1 class="contact-title">Contact Me</h1>
+      <p class="contact-subtitle">
+        Fill out your info and I’ll get back to you. Thanks!
+      </p>
+    </div>
+
+    <div class="contact-right">
+      <form class="contact-panel" name="contact" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="contact">
+
+        <div class="contact-row">
+          <div class="field">
+            <label>Name:</label>
+            <input type="text" name="name" placeholder="Enter name here" required>
+          </div>
+
+          <div class="field">
+            <label>Email:</label>
+            <input type="email" name="email" placeholder="Enter email here" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Message:</label>
+          <textarea name="message" required></textarea>
+        </div>
+
+        <button class="contact-btn" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+    <div class="footer-divider"></div>
+        <footer class="footer">
+        <div class="footer__grid">
+
+        <div class="footer__brand">
+        <h2 class="footer__name">Caroline Swain</h2>
+        <p class="footer__role">Graphic Designer</p>
+        <a href="mailto:cjswain.design@gmail.com" class="footer__email">
+            cjswain.design@gmail.com
+        </a>
+        <div class="codedby">
+        <p class="footer__codedby">Coded & Designed by Caroline Swain</p>
+        </div>
+        <div class="footer__socials">
+        </div>
+        </div>
+
+        <div class="footer__nav-group">
+        <nav class="footer__nav">
+        <h3 class="footer__heading">HOME</h3>
+        <ul class="homebottompadding">
+            <li><a href="pages/about.html">About Me</a></li>
+            <li><a href="pages/resume.html">Resume</a></li>
+            <li><a href="pages/contact.html">Contact</a></li>
+        </ul>
+        </nav>
+
+        <nav class="footer__nav">
+        <h3 class="footer__heading headingfooterwork">WORK</h3>
+        <ul>
+            <li><a href="#">Graphic Design</a></li>
+            <li><a href="#">Motion Graphics</a></li>
+            <li><a href="#">Illustration</a></li>
+            <li><a href="#">Photography</a></li>
+            <li><a href="#">App Design</a></li>
+        </ul>
+        </nav>
+        </div>
+
+    </footer>
+<script src="animations.js"></script>
+</body>
+</html>
