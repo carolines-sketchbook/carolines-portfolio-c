@@ -1241,6 +1241,8 @@ h1 {
 
     .nav__hamburger {
         display: flex;
+        position: relative;
+        z-index: 1001;
     }
 
     .header__content {
