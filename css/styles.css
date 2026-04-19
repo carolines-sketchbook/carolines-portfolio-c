@@ -1155,11 +1155,11 @@ h1 {
         .intro__project__paragraphs{
             color:#ebebeb;
             font-size: clamp(1rem, 1.2vw + .6rem, 1rem);
-            line-height: 1.46;
+            line-height: 1.35;
         }
         .challenge__description, .solution__description{
         color:#ebebeb;
-        line-height: 1.46;
+        line-height: 1.35;
         font-size: clamp(1rem, 1.2vw + .6rem, 1rem);
         }
         .box.box-project-1{
