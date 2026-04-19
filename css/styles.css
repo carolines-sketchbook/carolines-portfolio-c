@@ -1415,7 +1415,7 @@ h1 {
 
     }
     
-    @media (min-width: 580px) {
+    @media (min-width: 681px) {
         .footer__grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -1486,6 +1486,7 @@ h1 {
             padding-bottom: 0.9rem;
         }
         .footer__nav-group {
+            display: flex;
             flex-direction: column;
             gap: 0;
             width: 100%;
