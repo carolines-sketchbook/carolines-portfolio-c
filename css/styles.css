@@ -785,7 +785,7 @@ a.contact-btn {
     margin: 24px 0 0;
     background: transparent;
     border: 2px solid #E90017;
-    color: #E90017;
+    color: #fff;
 }
 .resume-download-btn:hover {
     background: #E90017;
