@@ -1540,10 +1540,7 @@ h1 {
 .project-nav__next {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: 0.25rem;
-    flex: 1;
-    align-self: stretch;
 }
 .project-nav__next {
     align-items: flex-end;
