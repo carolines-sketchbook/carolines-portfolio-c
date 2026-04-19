@@ -29,8 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!dropdownTrigger) return;
 
     dropdownTrigger.addEventListener("click", function (e) {
-        if (window.innerWidth <= 768) {
-            e.preventDefault();
+        if (window.innerWidth > 768) {
             dropdownParent.classList.toggle("dropdown-open");
         }
     });

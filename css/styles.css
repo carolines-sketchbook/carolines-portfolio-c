@@ -1385,6 +1385,15 @@ h1 {
         }
     }
 
+    @media (max-width: 680px) {
+        .footer-divider {
+            margin: 2rem 16px 2rem 16px;
+        }
+        .footer {
+            padding: 2rem 1rem;
+        }
+    }
+
     @media (max-width: 580px) {
         .footer__grid {
             display: flex;
