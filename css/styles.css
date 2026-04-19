@@ -359,7 +359,7 @@ body {
     font-family: 'DM Sans', sans-serif;
     font-weight: 400;
     color: #ebebeb;
-    font-size: clamp(0.9rem, 0.6vw + 0.75rem, 1.05rem);
+    font-size: clamp(1.05rem, 0.8vw + 0.85rem, 1.2rem);
     line-height: 1.6;
     margin-bottom: 0.7rem;
 }
@@ -1187,7 +1187,7 @@ h1 {
             padding-top: 1.25rem;
         }
         .intro__project__meta__line {
-            font-size: clamp(0.8rem, 0.5vw + 0.7rem, 0.95rem);
+            font-size: clamp(0.95rem, 0.7vw + 0.8rem, 1.1rem);
             line-height: 1.55;
             margin-bottom: 0.6rem;
         }
