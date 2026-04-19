@@ -1291,7 +1291,7 @@ h1 {
     .footer-divider {
         height: 1px;
         background-color: rgba(255,255,255,0.22);
-        margin: 4rem 40px 4rem 40px;
+        margin: 4rem 0;
     }
     .footer__grid {
         display: flex;
