@@ -217,119 +217,122 @@
 
   <script>
     (function() {
-      var lb         = document.getElementById('resume-lightbox');
-      var wrap       = document.getElementById('lb-img-wrap');
-      var img        = document.getElementById('lb-img');
-      var trigger    = document.getElementById('resume-img');
+      var lb      = document.getElementById('resume-lightbox');
+      var wrap    = document.getElementById('lb-img-wrap');
+      var img     = document.getElementById('lb-img');
+      var trigger = document.getElementById('resume-img');
       var closeBtn   = document.getElementById('lb-close');
       var zoomInBtn  = document.getElementById('lb-zoom-in');
       var zoomOutBtn = document.getElementById('lb-zoom-out');
       var printBtn   = document.getElementById('lb-print');
 
-      var mode = 'zoomin'; // 'zoomin' | 'zoomout'
-      var fittedW; // image width at fit-to-screen state
+      // State
+      var mode = 'fit'; // 'fit' | 'zoomed'
+      var fittedW, zoomedW;
+      var panX = 0, panY = 0;
+      var velX = 0, velY = 0, inertiaRaf;
+      var isDragging = false, dragMoved = false;
+      var startMX, startMY, startPX, startPY;
+      var lastMX, lastMY, lastMT;
 
-      function updateCursor() {
-        img.style.cursor = mode === 'zoomout' ? 'zoom-out' : 'zoom-in';
+      function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+      function stopInertia() { cancelAnimationFrame(inertiaRaf); }
+
+      // Max translate before image edge reaches wrap edge (padding: 72px 40px 40px)
+      function panBounds() {
+        var imgW   = parseFloat(img.style.width) || 0;
+        var imgH   = img.naturalHeight > 0 ? imgW * (img.naturalHeight / img.naturalWidth) : 0;
+        var availW = wrap.clientWidth  - 80;   // 40px L + 40px R padding
+        var availH = wrap.clientHeight - 112;  // 72px top + 40px bottom padding
+        return {
+          x: Math.max(0, (imgW - availW) / 2),
+          y: Math.max(0, (imgH - availH) / 2)
+        };
       }
 
-      function applyFitState(animate) {
-        wrap.style.overflow       = 'hidden';
-        wrap.style.alignItems     = 'center';
-        wrap.style.justifyContent = 'center';
-        wrap.scrollLeft = 0;
-        wrap.scrollTop  = 0;
-        img.style.transition = animate ? 'width 0.22s ease' : 'none';
+      // ── Fit state: image centered, fits within wrap ─────────────────────
+      function enterFit(animated) {
+        stopInertia();
+        mode = 'fit';
+        panX = 0; panY = 0; velX = 0; velY = 0;
+        img.style.transition = animated ? 'width 0.22s ease' : 'none';
         img.style.transform  = 'none';
         img.style.width      = 'auto';
         img.style.maxWidth   = '100%';
         img.style.maxHeight  = '100%';
+        img.style.cursor     = 'zoom-in';
+        // Ensure wrap centering is intact (never changes, but guard anyway)
+        wrap.style.overflow       = 'hidden';
+        wrap.style.alignItems     = 'center';
+        wrap.style.justifyContent = 'center';
       }
 
-      function applyZoomState() {
+      // ── Zoomed state: image 2.5× size, pan via transform ───────────────
+      function enterZoom() {
+        stopInertia();
         fittedW = img.getBoundingClientRect().width;
-        var zoomedW = fittedW * 2.5;
+        if (fittedW < 10) return; // not ready
+        zoomedW = fittedW * 2.5;
+        mode = 'zoomed';
+        panX = 0; panY = 0; velX = 0; velY = 0;
         img.style.maxWidth   = 'none';
         img.style.maxHeight  = 'none';
         img.style.transition = 'width 0.22s ease';
         img.style.width      = zoomedW + 'px';
-        wrap.style.overflow       = 'auto';
-        wrap.style.alignItems     = 'flex-start';
-        wrap.style.justifyContent = 'flex-start';
-        setTimeout(function() {
-          wrap.scrollLeft = (wrap.scrollWidth  - wrap.clientWidth)  / 2;
-          wrap.scrollTop  = (wrap.scrollHeight - wrap.clientHeight) / 2;
-        }, 240);
+        img.style.transform  = 'translate(0px,0px)';
+        img.style.cursor     = 'grab';
+        // wrap stays overflow:hidden + flex-centered — image overflows and is clipped
+        // panning is done purely via transform, no flex changes needed
       }
 
-      function doZoomIn() {
-        if (mode !== 'zoomin') return;
-        mode = 'zoomout';
-        applyZoomState();
-        updateCursor();
-      }
-
-      function doZoomOut() {
-        if (mode !== 'zoomout') return;
-        mode = 'zoomin';
-        applyFitState(true);
-        updateCursor();
-      }
-
-      function resetZoom() {
-        stopInertia();
-        mode = 'zoomin';
-        applyFitState(false);
-        updateCursor();
-      }
-
-      // Drag to pan (scroll the wrapper)
-      var isDragging = false, dragMoved = false;
-      var startMouseX, startMouseY, startScrollL, startScrollT;
-      var lastMoveX, lastMoveY, lastMoveTime;
-      var velX = 0, velY = 0, inertiaRaf;
-
-      function stopInertia() { cancelAnimationFrame(inertiaRaf); }
-
+      // ── Inertia after pan release ────────────────────────────────────────
       function startInertia() {
         stopInertia();
         var FRICTION = 0.88;
         (function step() {
           velX *= FRICTION; velY *= FRICTION;
-          if (Math.abs(velX) < 0.05 && Math.abs(velY) < 0.05) { updateCursor(); return; }
-          wrap.scrollLeft -= velX * 16;
-          wrap.scrollTop  -= velY * 16;
+          if (Math.abs(velX) < 0.05 && Math.abs(velY) < 0.05) {
+            img.style.cursor = 'grab'; return;
+          }
+          var b = panBounds();
+          panX = clamp(panX + velX * 16, -b.x, b.x);
+          panY = clamp(panY + velY * 16, -b.y, b.y);
+          img.style.transform = 'translate(' + panX + 'px,' + panY + 'px)';
           inertiaRaf = requestAnimationFrame(step);
         })();
       }
 
+      // ── Drag ─────────────────────────────────────────────────────────────
       img.addEventListener('mousedown', function(e) {
         if (e.button !== 0) return;
         e.preventDefault();
         stopInertia();
         isDragging = true; dragMoved = false;
         velX = 0; velY = 0;
-        startMouseX  = e.clientX; startMouseY  = e.clientY;
-        startScrollL = wrap.scrollLeft; startScrollT = wrap.scrollTop;
-        lastMoveX = e.clientX; lastMoveY = e.clientY;
-        lastMoveTime = Date.now();
+        startMX = e.clientX; startMY = e.clientY;
+        startPX = panX;      startPY = panY;
+        lastMX  = e.clientX; lastMY  = e.clientY; lastMT = Date.now();
+        img.style.transition = 'none';
         img.style.cursor = 'grabbing';
       });
 
       document.addEventListener('mousemove', function(e) {
         if (!isDragging) return;
-        var dx = e.clientX - startMouseX, dy = e.clientY - startMouseY;
+        var dx = e.clientX - startMX, dy = e.clientY - startMY;
         if (Math.abs(dx) > 3 || Math.abs(dy) > 3) dragMoved = true;
-        var now = Date.now(), dt = now - lastMoveTime;
-        if (dt > 0) { velX = (e.clientX - lastMoveX) / dt; velY = (e.clientY - lastMoveY) / dt; }
-        lastMoveX = e.clientX; lastMoveY = e.clientY; lastMoveTime = now;
-        if (mode === 'zoomout') {
-          wrap.scrollLeft = startScrollL - dx;
-          wrap.scrollTop  = startScrollT - dy;
+        var now = Date.now(), dt = now - lastMT;
+        if (dt > 0) { velX = (e.clientX - lastMX) / dt; velY = (e.clientY - lastMY) / dt; }
+        lastMX = e.clientX; lastMY = e.clientY; lastMT = now;
+
+        if (mode === 'zoomed') {
+          var b = panBounds();
+          panX = clamp(startPX + dx, -b.x, b.x);
+          panY = clamp(startPY + dy, -b.y, b.y);
+          img.style.transform = 'translate(' + panX + 'px,' + panY + 'px)';
         } else {
-          // subtle nudge at fit state via temporary translate
-          img.style.transform = 'translate(' + Math.max(-24, Math.min(24, dx * 0.12)) + 'px,' +
-                                               Math.max(-24, Math.min(24, dy * 0.12)) + 'px)';
+          // Subtle nudge at fit state
+          img.style.transform = 'translate(' + clamp(dx * 0.12, -24, 24) + 'px,' +
+                                               clamp(dy * 0.12, -24, 24) + 'px)';
         }
       });
 
@@ -337,23 +340,28 @@
         if (!isDragging) return;
         isDragging = false;
         if (!dragMoved) {
-          if (mode === 'zoomin') doZoomIn(); else doZoomOut();
-        } else if (mode === 'zoomin') {
+          if (mode === 'fit') enterZoom(); else enterFit(true);
+          return;
+        }
+        if (mode === 'zoomed') {
+          startInertia();
+        } else {
+          // Spring the nudge back to center
           img.style.transition = 'transform 0.45s cubic-bezier(0.34,1.56,0.64,1)';
           img.style.transform  = 'translate(0px,0px)';
-          setTimeout(function() { img.style.transition = 'none'; updateCursor(); }, 460);
-        } else {
-          startInertia();
+          setTimeout(function() { img.style.transition = 'none'; img.style.cursor = 'zoom-in'; }, 460);
         }
       });
 
+      // ── Buttons / keyboard ───────────────────────────────────────────────
       lb.addEventListener('wheel', function(e) {
         e.preventDefault();
-        if (e.deltaY < 0) doZoomIn(); else doZoomOut();
+        if (e.deltaY < 0) { if (mode === 'fit')    enterZoom(); }
+        else               { if (mode === 'zoomed') enterFit(true); }
       }, { passive: false });
 
-      zoomInBtn.addEventListener('click', doZoomIn);
-      zoomOutBtn.addEventListener('click', doZoomOut);
+      zoomInBtn.addEventListener('click',  function() { if (mode === 'fit')    enterZoom(); });
+      zoomOutBtn.addEventListener('click', function() { if (mode === 'zoomed') enterFit(true); });
       printBtn.addEventListener('click', function() { window.print(); });
       closeBtn.addEventListener('click', closeLightbox);
 
@@ -364,21 +372,22 @@
       document.addEventListener('keydown', function(e) {
         if (lb.style.display === 'none') return;
         if (e.key === 'Escape') closeLightbox();
-        if (e.key === '+' || e.key === '=') doZoomIn();
-        if (e.key === '-') doZoomOut();
+        if (e.key === '+' || e.key === '=') { if (mode === 'fit')    enterZoom(); }
+        if (e.key === '-')                   { if (mode === 'zoomed') enterFit(true); }
       });
 
+      // ── Open / Close ─────────────────────────────────────────────────────
       function isDesktopOrTablet() { return window.innerWidth >= 681; }
 
       function openLightbox() {
         if (!isDesktopOrTablet()) return;
         lb.style.display = 'flex';
         document.body.style.overflow = 'hidden';
-        resetZoom();
+        requestAnimationFrame(function() { enterFit(false); });
       }
 
       function closeLightbox() {
-        resetZoom();
+        enterFit(false);
         lb.style.display = 'none';
         document.body.style.overflow = '';
       }
