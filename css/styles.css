@@ -783,6 +783,18 @@ a.contact-btn {
 }
 .resume-download-btn {
     margin: 24px 0 0;
+    background: transparent;
+    border: 2px solid #E90017;
+    color: #E90017;
+}
+.resume-download-btn:hover {
+    background: #E90017;
+    color: #fff;
+}
+.resume-download-btn:active {
+    background: #c40013;
+    border-color: #c40013;
+    color: #fff;
 }
 
 @media (max-width: 1100px) {
