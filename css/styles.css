@@ -375,7 +375,7 @@ body {
     padding: 0 40px;
     grid-auto-rows: minmax(200px, auto);
 }
-.box-project-1 {
+.box.box-project-1 {
     grid-column: 1 / span 12;
     grid-row: 1 / span 1;
 
@@ -390,7 +390,7 @@ body {
     overflow: hidden;
     z-index: 0;
 }
-.box-project-1::before{
+.box.box-project-1::before{
     content: "";
     position: absolute;
     inset: 0;
@@ -865,7 +865,7 @@ h1 {
         grid-row: 9 / span 3;
         }
 
-        .box-project-1{
+        .box.box-project-1{
         grid-column: 1 / span 6;
         grid-row: 1 / span 1;
         }
@@ -1186,7 +1186,7 @@ h1 {
         line-height: 1.46;
         font-size: clamp(1rem, 1.2vw + .6rem, 1rem);
         }
-        .box-project-1{
+        .box.box-project-1{
         grid-column: 1 / span 6;
         grid-row: 1 / span 1;
         border-radius: 12px;
@@ -1195,7 +1195,7 @@ h1 {
         align-items: center;
         text-align: center;
         }
-        .box-project-1::before{
+        .box.box-project-1::before{
         border-radius: 12px;
         }
         .box-project-2{
