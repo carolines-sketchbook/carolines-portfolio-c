@@ -1567,7 +1567,7 @@ h1 {
 .project-nav__prev:hover .project-nav__title,
 .project-nav__next:hover .project-nav__title {
     color: #E90017;
-    transform: translateY(-3px);
+    transform: scale(1.06);
 }
 @media (max-width: 680px) {
     .project-nav {
