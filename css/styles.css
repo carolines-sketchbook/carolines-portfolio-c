@@ -1203,6 +1203,10 @@ a.contact-btn {
         padding-left: 16px;
         padding-right: 16px;
     }
+    .resume-download-btn {
+        padding: 8px 28px;
+        font-size: 1rem;
+    }
     .resume-embed {
         border-radius: 12px;
     }
