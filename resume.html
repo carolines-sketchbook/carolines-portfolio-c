@@ -267,19 +267,48 @@
         updateCursor();
       }
 
-      // --- Drag ---
+      // --- Drag + inertia ---
       var isDragging = false, dragMoved = false;
       var startMouseX, startMouseY, startPanX, startPanY;
+      var lastMoveX, lastMoveY, lastMoveTime;
+      var velX = 0, velY = 0;
+      var inertiaRaf;
+
+      function stopInertia() { cancelAnimationFrame(inertiaRaf); }
+
+      function startInertia() {
+        stopInertia();
+        var FRICTION = 0.88;
+        var MIN_VEL  = 0.05;
+        (function step() {
+          velX *= FRICTION;
+          velY *= FRICTION;
+          if (Math.abs(velX) < MIN_VEL && Math.abs(velY) < MIN_VEL) {
+            updateCursor();
+            return;
+          }
+          var s = currentScale();
+          panX += velX * 16 / s;
+          panY += velY * 16 / s;
+          img.style.transform = 'scale(' + s + ') translate(' + panX + 'px, ' + panY + 'px)';
+          inertiaRaf = requestAnimationFrame(step);
+        })();
+      }
 
       img.addEventListener('mousedown', function(e) {
         if (e.button !== 0) return;
         e.preventDefault();
+        stopInertia();
         isDragging  = true;
         dragMoved   = false;
+        velX = 0; velY = 0;
         startMouseX = e.clientX;
         startMouseY = e.clientY;
         startPanX   = panX;
         startPanY   = panY;
+        lastMoveX   = e.clientX;
+        lastMoveY   = e.clientY;
+        lastMoveTime = Date.now();
         img.style.cursor     = 'grabbing';
         img.style.transition = 'none';
       });
@@ -289,17 +318,27 @@
         var dx = e.clientX - startMouseX;
         var dy = e.clientY - startMouseY;
         if (Math.abs(dx) > 3 || Math.abs(dy) > 3) dragMoved = true;
+
+        // track velocity
+        var now = Date.now();
+        var dt  = now - lastMoveTime;
+        if (dt > 0) {
+          velX = (e.clientX - lastMoveX) / dt;
+          velY = (e.clientY - lastMoveY) / dt;
+        }
+        lastMoveX    = e.clientX;
+        lastMoveY    = e.clientY;
+        lastMoveTime = now;
+
         var s = currentScale();
         if (s > 1) {
-          // normal pan
           panX = startPanX + dx / s;
           panY = startPanY + dy / s;
         } else {
-          // at original scale: subtle nudge (12% movement, max 24px)
-          var nudge = 0.12;
-          var cap   = 24;
-          panX = Math.max(-cap, Math.min(cap, dx * nudge));
-          panY = Math.max(-cap, Math.min(cap, dy * nudge));
+          // subtle nudge at original scale
+          var cap = 24;
+          panX = Math.max(-cap, Math.min(cap, dx * 0.12));
+          panY = Math.max(-cap, Math.min(cap, dy * 0.12));
         }
         img.style.transform = 'scale(' + s + ') translate(' + panX + 'px, ' + panY + 'px)';
       });
@@ -308,19 +347,17 @@
         if (!isDragging) return;
         isDragging = false;
         if (!dragMoved) {
-          // click: zoom in or out per current mode
           if (mode === 'zoomin') doZoomIn(); else doZoomOut();
+        } else if (currentScale() <= 1) {
+          // spring back to center
+          panX = 0; panY = 0; velX = 0; velY = 0;
+          img.style.transition = 'transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1)';
+          img.style.transform  = 'scale(1) translate(0px, 0px)';
+          setTimeout(updateCursor, 10);
         } else {
-          if (currentScale() <= 1) {
-            // spring back to center
-            panX = 0; panY = 0;
-            img.style.transition = 'transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1)';
-            img.style.transform  = 'scale(1) translate(0px, 0px)';
-            setTimeout(function() { updateCursor(); }, 10);
-          } else {
-            img.style.transition = 'transform 0.2s ease';
-            updateCursor();
-          }
+          // release with inertia
+          img.style.transition = 'none';
+          startInertia();
         }
       });
 
