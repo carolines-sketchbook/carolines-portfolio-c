@@ -1607,8 +1607,16 @@ h1 {
 }
 .project-nav__prev:hover .project-nav__title,
 .project-nav__next:hover .project-nav__title {
-    color: #E90017;
+    color: #ffffff;
     transform: scale(1.06);
+}
+.project-nav__prev:hover .project-nav__label,
+.project-nav__next:hover .project-nav__label {
+    color: #ffffff;
+}
+.project-nav__prev:hover .project-nav__label::before,
+.project-nav__next:hover .project-nav__label::after {
+    border-color: #ffffff;
 }
 @media (max-width: 680px) {
     .project-nav {
