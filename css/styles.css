@@ -1201,7 +1201,7 @@ h1 {
         grid-column: 1 / span 6;
         grid-row: 8 / span 1;
         padding: 1.5rem 0;
-        margin-top: -0.5rem;
+        margin-top: -1rem;
         }
 
     .resume-layout-grid {
@@ -1219,6 +1219,7 @@ h1 {
     }
     .field textarea {
         height: 288px;
+        border-radius: 8px;
     }
 
   }
