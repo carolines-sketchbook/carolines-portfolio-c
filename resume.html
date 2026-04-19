@@ -224,8 +224,8 @@
       var zoomOutBtn = document.getElementById('lb-zoom-out');
       var printBtn   = document.getElementById('lb-print');
 
-      // 2 discrete zoom-in levels (index 0 = original, 2 = max)
-      var SCALES = [1, 2.5, 4];
+      // 1 zoom-in level (index 0 = original, 1 = zoomed)
+      var SCALES = [1, 2.5];
       var idx  = 0;
       var mode = 'zoomin'; // 'zoomin' | 'zoomout' — switches at max, stays until back at 0
       var panX = 0, panY = 0;
