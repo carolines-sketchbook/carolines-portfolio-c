@@ -22,6 +22,7 @@ body {
     font-family: 'Syne', sans-serif;
     /* min-height: 5000px; */
     padding-top: 60px;
+    overflow-x: hidden;
 }
 
 .contact-panel textarea::-webkit-scrollbar {
@@ -291,6 +292,7 @@ body {
 /* PROJECT PAGE */
 .intro__group{
     max-width: 1090px;
+    width: 100%;
 }
 .intro__project__title{
     color: #00A3FF;
