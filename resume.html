@@ -211,42 +211,120 @@
 
   <script>
     (function() {
-      var lb     = document.getElementById('resume-lightbox');
-      var wrap   = document.getElementById('lb-img-wrap');
-      var img    = document.getElementById('lb-img');
-      var trigger   = document.getElementById('resume-img');
-      var closeBtn  = document.getElementById('lb-close');
+      var lb         = document.getElementById('resume-lightbox');
+      var wrap       = document.getElementById('lb-img-wrap');
+      var img        = document.getElementById('lb-img');
+      var trigger    = document.getElementById('resume-img');
+      var closeBtn   = document.getElementById('lb-close');
       var zoomInBtn  = document.getElementById('lb-zoom-in');
       var zoomOutBtn = document.getElementById('lb-zoom-out');
       var printBtn   = document.getElementById('lb-print');
 
-      var scale = 1;
-      var MIN_SCALE = 0.5;
+      var scale    = 1;
+      var panX     = 0;
+      var panY     = 0;
       var MAX_SCALE = 4;
-      var STEP = 0.25;
+      var MIN_SCALE = 1;
+      var STEP      = 0.5;
 
-      function applyScale() {
-        img.style.transform = 'scale(' + scale + ')';
+      function applyTransform(skipTransition) {
+        img.style.transition = skipTransition ? 'none' : 'transform 0.18s ease';
+        img.style.transform  = 'scale(' + scale + ') translate(' + panX + 'px, ' + panY + 'px)';
+      }
+
+      function updateCursor() {
+        img.style.cursor = scale >= MAX_SCALE ? 'zoom-out' : 'zoom-in';
       }
 
       function zoomIn() {
-        scale = Math.min(MAX_SCALE, scale + STEP);
-        applyScale();
+        scale = Math.min(MAX_SCALE, parseFloat((scale + STEP).toFixed(2)));
+        if (scale <= MIN_SCALE) { panX = 0; panY = 0; }
+        applyTransform();
+        updateCursor();
       }
 
       function zoomOut() {
-        scale = Math.max(MIN_SCALE, scale - STEP);
-        applyScale();
+        scale = Math.max(MIN_SCALE, parseFloat((scale - STEP).toFixed(2)));
+        if (scale <= MIN_SCALE) { panX = 0; panY = 0; }
+        applyTransform();
+        updateCursor();
       }
 
       function resetZoom() {
-        scale = 1;
-        applyScale();
+        scale = 1; panX = 0; panY = 0;
+        applyTransform();
+        updateCursor();
       }
 
-      function isDesktopOrTablet() {
-        return window.innerWidth >= 681;
-      }
+      // --- Drag to pan ---
+      var isDragging  = false;
+      var dragMoved   = false;
+      var startMouseX, startMouseY, startPanX, startPanY;
+
+      img.addEventListener('mousedown', function(e) {
+        if (e.button !== 0) return;
+        e.preventDefault();
+        isDragging  = true;
+        dragMoved   = false;
+        startMouseX = e.clientX;
+        startMouseY = e.clientY;
+        startPanX   = panX;
+        startPanY   = panY;
+        img.style.cursor     = 'grabbing';
+        img.style.transition = 'none';
+      });
+
+      document.addEventListener('mousemove', function(e) {
+        if (!isDragging) return;
+        var dx = e.clientX - startMouseX;
+        var dy = e.clientY - startMouseY;
+        if (Math.abs(dx) > 3 || Math.abs(dy) > 3) dragMoved = true;
+        if (scale > 1) {
+          panX = startPanX + dx / scale;
+          panY = startPanY + dy / scale;
+          img.style.transform = 'scale(' + scale + ') translate(' + panX + 'px, ' + panY + 'px)';
+        }
+      });
+
+      document.addEventListener('mouseup', function() {
+        if (!isDragging) return;
+        isDragging = false;
+        img.style.transition = 'transform 0.18s ease';
+        if (!dragMoved) {
+          // treat as click: zoom in or out
+          if (scale >= MAX_SCALE) { zoomOut(); } else { zoomIn(); }
+        } else {
+          updateCursor();
+        }
+      });
+
+      // --- Scroll wheel ---
+      lb.addEventListener('wheel', function(e) {
+        e.preventDefault();
+        if (e.deltaY < 0) zoomIn(); else zoomOut();
+      }, { passive: false });
+
+      // --- Keyboard ---
+      document.addEventListener('keydown', function(e) {
+        if (lb.style.display === 'none') return;
+        if (e.key === 'Escape')              closeLightbox();
+        if (e.key === '+' || e.key === '=') zoomIn();
+        if (e.key === '-')                   zoomOut();
+      });
+
+      // --- Buttons ---
+      zoomInBtn.addEventListener('click', zoomIn);
+      zoomOutBtn.addEventListener('click', zoomOut);
+      printBtn.addEventListener('click', function() { window.print(); });
+      closeBtn.addEventListener('click', closeLightbox);
+
+      // Close on backdrop click (not on image or controls)
+      lb.addEventListener('click', function(e) {
+        if (e.target === lb || e.target === wrap) closeLightbox();
+      });
+
+      // --- Open / close ---
+      function isDesktopOrTablet() { return window.innerWidth >= 681; }
 
       function openLightbox() {
         if (!isDesktopOrTablet()) return;
@@ -262,28 +340,6 @@
       }
 
       trigger.addEventListener('click', openLightbox);
-      closeBtn.addEventListener('click', closeLightbox);
-      zoomInBtn.addEventListener('click', zoomIn);
-      zoomOutBtn.addEventListener('click', zoomOut);
-      printBtn.addEventListener('click', function() { window.print(); });
-
-      // Scroll wheel to zoom
-      lb.addEventListener('wheel', function(e) {
-        e.preventDefault();
-        if (e.deltaY < 0) zoomIn(); else zoomOut();
-      }, { passive: false });
-
-      // Keyboard shortcuts
-      document.addEventListener('keydown', function(e) {
-        if (lb.style.display === 'none') return;
-        if (e.key === 'Escape') closeLightbox();
-        if (e.key === '+' || e.key === '=') zoomIn();
-        if (e.key === '-') zoomOut();
-      });
-
-      lb.addEventListener('click', function(e) {
-        if (e.target === lb || e.target === wrap) closeLightbox();
-      });
     })();
   </script>
 

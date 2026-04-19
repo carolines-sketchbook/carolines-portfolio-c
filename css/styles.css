@@ -782,7 +782,7 @@ a.contact-btn {
     transition: background 0.2s, transform 0.2s;
 }
 .resume-download-btn {
-    margin: 10px 0 0;
+    margin: 4px 0 0;
     background: transparent;
     border: 2px solid #E90017;
     color: #fff !important;
