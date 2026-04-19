@@ -84,49 +84,17 @@
       justify-content: center;
       gap: 12px;
       padding: 20px 24px;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0) 100%);
+      background: linear-gradient(to bottom, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.2) 80%, rgba(0,0,0,0) 100%);
       z-index: 10001;
     ">
-      <!-- Zoom out -->
-      <button id="lb-zoom-out" title="Zoom out" style="
-        background: none;
-        border: 1px solid rgba(255,255,255,0.3);
-        color: rgba(255,255,255,0.75);
-        font-size: 1.15rem;
-        line-height: 1;
-        cursor: pointer;
-        padding: 5px 11px;
-        border-radius: 4px;
-        transition: color 0.2s, border-color 0.2s;
-        font-family: 'DM Sans', sans-serif;
-      "
-        onmouseover="this.style.color='#fff'; this.style.borderColor='rgba(255,255,255,0.7)'"
-        onmouseout="this.style.color='rgba(255,255,255,0.75)'; this.style.borderColor='rgba(255,255,255,0.3)'"
-      >−</button>
-      <!-- Zoom in -->
-      <button id="lb-zoom-in" title="Zoom in" style="
-        background: none;
-        border: 1px solid rgba(255,255,255,0.3);
-        color: rgba(255,255,255,0.75);
-        font-size: 1.15rem;
-        line-height: 1;
-        cursor: pointer;
-        padding: 5px 11px;
-        border-radius: 4px;
-        transition: color 0.2s, border-color 0.2s;
-        font-family: 'DM Sans', sans-serif;
-      "
-        onmouseover="this.style.color='#fff'; this.style.borderColor='rgba(255,255,255,0.7)'"
-        onmouseout="this.style.color='rgba(255,255,255,0.75)'; this.style.borderColor='rgba(255,255,255,0.3)'"
-      >+</button>
       <!-- Print -->
       <button id="lb-print" style="
         background: none;
-        border: 1px solid rgba(255,255,255,0.3);
-        color: rgba(255,255,255,0.75);
+        border: 2px solid rgba(255,255,255,0.4);
+        color: rgba(255,255,255,0.85);
         font-family: 'DM Sans', sans-serif;
         font-size: 0.72rem;
-        font-weight: 500;
+        font-weight: 700;
         letter-spacing: 0.1em;
         text-transform: uppercase;
         cursor: pointer;
@@ -143,12 +111,12 @@
         style="
           font-family: 'DM Sans', sans-serif;
           font-size: 0.72rem;
-          font-weight: 500;
+          font-weight: 700;
           letter-spacing: 0.1em;
           text-transform: uppercase;
-          color: rgba(255,255,255,0.75);
+          color: rgba(255,255,255,0.85);
           text-decoration: none;
-          border: 1px solid rgba(255,255,255,0.3);
+          border: 2px solid rgba(255,255,255,0.4);
           padding: 7px 14px;
           border-radius: 4px;
           transition: color 0.2s, border-color 0.2s;
@@ -162,12 +130,12 @@
         style="
           font-family: 'DM Sans', sans-serif;
           font-size: 0.72rem;
-          font-weight: 500;
+          font-weight: 700;
           letter-spacing: 0.1em;
           text-transform: uppercase;
-          color: rgba(255,255,255,0.75);
+          color: rgba(255,255,255,0.85);
           text-decoration: none;
-          border: 1px solid rgba(255,255,255,0.3);
+          border: 2px solid rgba(255,255,255,0.4);
           padding: 7px 14px;
           border-radius: 4px;
           transition: color 0.2s, border-color 0.2s;
@@ -190,207 +158,33 @@
         onmouseout="this.style.color='rgba(255,255,255,0.75)'"
       >✕</button>
     </div>
-    <!-- Scrollable image container -->
+    <!-- PDF embed -->
     <div id="lb-img-wrap" style="
       width: 100%;
       height: 100%;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 80px 40px 40px;
+      padding: 72px 0 0;
       box-sizing: border-box;
     ">
-      <img id="lb-img" src="assets/images/Caroline-Swain-Design-Resume-2026.png" alt="Resume" style="
-        display: block;
-        border-radius: 6px;
-        box-shadow: 0 24px 80px rgba(0,0,0,0.6);
-        transform-origin: center center;
-        transition: transform 0.2s ease;
-        max-width: 100%;
-        max-height: 100%;
-      ">
+      <iframe id="lb-pdf"
+        src="assets/images/Caroline-Swain-Design-Resume-2026.pdf"
+        style="width:100%; height:100%; border:none; display:block;"
+        title="Resume PDF"
+      ></iframe>
     </div>
   </div>
 
   <script>
     (function() {
-      var lb         = document.getElementById('resume-lightbox');
-      var wrap       = document.getElementById('lb-img-wrap');
-      var img        = document.getElementById('lb-img');
-      var trigger    = document.getElementById('resume-img');
-      var closeBtn   = document.getElementById('lb-close');
-      var zoomInBtn  = document.getElementById('lb-zoom-in');
-      var zoomOutBtn = document.getElementById('lb-zoom-out');
-      var printBtn   = document.getElementById('lb-print');
+      var lb       = document.getElementById('resume-lightbox');
+      var wrap     = document.getElementById('lb-img-wrap');
+      var trigger  = document.getElementById('resume-img');
+      var closeBtn = document.getElementById('lb-close');
+      var printBtn = document.getElementById('lb-print');
 
-      // 1 zoom-in level (index 0 = original, 1 = zoomed)
-      var SCALES = [1, 2.5];
-      var idx  = 0;
-      var mode = 'zoomin'; // 'zoomin' | 'zoomout' — switches at max, stays until back at 0
-      var panX = 0, panY = 0;
-
-      function currentScale() { return SCALES[idx]; }
-
-      function applyTransform(skipTransition) {
-        img.style.transition = skipTransition ? 'none' : 'transform 0.2s ease';
-        img.style.transform  = 'scale(' + currentScale() + ') translate(' + panX + 'px, ' + panY + 'px)';
-      }
-
-      function updateCursor() {
-        img.style.cursor = mode === 'zoomout' ? 'zoom-out' : 'zoom-in';
-      }
-
-      function doZoomIn() {
-        if (mode !== 'zoomin' || idx >= SCALES.length - 1) return;
-        idx++;
-        if (idx === SCALES.length - 1) mode = 'zoomout'; // hit max → switch mode
-        applyTransform();
-        updateCursor();
-      }
-
-      function doZoomOut() {
-        if (mode !== 'zoomout') return;
-        if (idx > 1) {
-          idx = 1; // jump to halfway (SCALES[1] = 2×)
-        } else {
-          idx  = 0; panX = 0; panY = 0;
-          mode = 'zoomin'; // back at original → switch mode
-        }
-        applyTransform();
-        updateCursor();
-      }
-
-      function resetZoom() {
-        idx = 0; panX = 0; panY = 0; mode = 'zoomin';
-        applyTransform(true);
-        updateCursor();
-      }
-
-      // --- Drag + inertia ---
-      var isDragging = false, dragMoved = false;
-      var startMouseX, startMouseY, startPanX, startPanY;
-      var lastMoveX, lastMoveY, lastMoveTime;
-      var velX = 0, velY = 0;
-      var inertiaRaf;
-
-      function stopInertia() { cancelAnimationFrame(inertiaRaf); }
-
-      function startInertia() {
-        stopInertia();
-        var FRICTION = 0.88;
-        var MIN_VEL  = 0.05;
-        (function step() {
-          velX *= FRICTION;
-          velY *= FRICTION;
-          if (Math.abs(velX) < MIN_VEL && Math.abs(velY) < MIN_VEL) {
-            updateCursor();
-            return;
-          }
-          var s = currentScale();
-          panX += velX * 16 / s;
-          panY += velY * 16 / s;
-          img.style.transform = 'scale(' + s + ') translate(' + panX + 'px, ' + panY + 'px)';
-          inertiaRaf = requestAnimationFrame(step);
-        })();
-      }
-
-      img.addEventListener('mousedown', function(e) {
-        if (e.button !== 0) return;
-        e.preventDefault();
-        stopInertia();
-        isDragging  = true;
-        dragMoved   = false;
-        velX = 0; velY = 0;
-        startMouseX = e.clientX;
-        startMouseY = e.clientY;
-        startPanX   = panX;
-        startPanY   = panY;
-        lastMoveX   = e.clientX;
-        lastMoveY   = e.clientY;
-        lastMoveTime = Date.now();
-        img.style.cursor     = 'grabbing';
-        img.style.transition = 'none';
-      });
-
-      document.addEventListener('mousemove', function(e) {
-        if (!isDragging) return;
-        var dx = e.clientX - startMouseX;
-        var dy = e.clientY - startMouseY;
-        if (Math.abs(dx) > 3 || Math.abs(dy) > 3) dragMoved = true;
-
-        // track velocity
-        var now = Date.now();
-        var dt  = now - lastMoveTime;
-        if (dt > 0) {
-          velX = (e.clientX - lastMoveX) / dt;
-          velY = (e.clientY - lastMoveY) / dt;
-        }
-        lastMoveX    = e.clientX;
-        lastMoveY    = e.clientY;
-        lastMoveTime = now;
-
-        var s = currentScale();
-        if (s > 1) {
-          panX = startPanX + dx / s;
-          panY = startPanY + dy / s;
-        } else {
-          // subtle nudge at original scale
-          var cap = 24;
-          panX = Math.max(-cap, Math.min(cap, dx * 0.12));
-          panY = Math.max(-cap, Math.min(cap, dy * 0.12));
-        }
-        img.style.transform = 'scale(' + s + ') translate(' + panX + 'px, ' + panY + 'px)';
-      });
-
-      document.addEventListener('mouseup', function() {
-        if (!isDragging) return;
-        isDragging = false;
-        if (!dragMoved) {
-          if (mode === 'zoomin') doZoomIn(); else doZoomOut();
-        } else if (currentScale() <= 1) {
-          // spring back to center
-          panX = 0; panY = 0; velX = 0; velY = 0;
-          img.style.transition = 'transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1)';
-          img.style.transform  = 'scale(1) translate(0px, 0px)';
-          setTimeout(updateCursor, 10);
-        } else {
-          // release with inertia
-          img.style.transition = 'none';
-          startInertia();
-        }
-      });
-
-      // --- Scroll wheel ---
-      lb.addEventListener('wheel', function(e) {
-        e.preventDefault();
-        if (e.deltaY < 0) doZoomIn(); else doZoomOut();
-      }, { passive: false });
-
-      // --- Keyboard ---
-      document.addEventListener('keydown', function(e) {
-        if (lb.style.display === 'none') return;
-        if (e.key === 'Escape')              closeLightbox();
-        if (e.key === '+' || e.key === '=') doZoomIn();
-        if (e.key === '-')                   doZoomOut();
-      });
-
-      // --- Buttons ---
-      zoomInBtn.addEventListener('click', doZoomIn);
-      zoomOutBtn.addEventListener('click', doZoomOut);
-      printBtn.addEventListener('click', function() { window.print(); });
-      closeBtn.addEventListener('click', closeLightbox);
-
-      lb.addEventListener('click', function(e) {
-        if (e.target === lb || e.target === wrap) closeLightbox();
-      });
-
-      // --- Open / close ---
       function isDesktopOrTablet() { return window.innerWidth >= 681; }
 
       function openLightbox() {
         if (!isDesktopOrTablet()) return;
-        resetZoom();
         lb.style.display = 'flex';
         document.body.style.overflow = 'hidden';
       }
@@ -398,10 +192,20 @@
       function closeLightbox() {
         lb.style.display = 'none';
         document.body.style.overflow = '';
-        resetZoom();
       }
 
       trigger.addEventListener('click', openLightbox);
+      closeBtn.addEventListener('click', closeLightbox);
+      printBtn.addEventListener('click', function() { window.print(); });
+
+      lb.addEventListener('click', function(e) {
+        if (e.target === lb || e.target === wrap) closeLightbox();
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (lb.style.display === 'none') return;
+        if (e.key === 'Escape') closeLightbox();
+      });
     })();
   </script>
 
