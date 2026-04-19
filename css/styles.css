@@ -1016,6 +1016,7 @@ h1 {
     grid-template-columns: repeat(6, 1fr);
     gap: 1.22rem;
     margin-bottom: 40px;
+    padding: 0 16px;
     }
     .grid-container-project{
     grid-template-columns: repeat(6, 1fr);
@@ -1196,6 +1197,15 @@ h1 {
         padding-top: 1rem;
         padding-right: 1rem;
         }
+
+    .resume-layout-grid {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    .contact-grid-container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
 
   }
 
