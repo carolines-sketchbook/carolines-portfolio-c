@@ -1023,6 +1023,7 @@ h1 {
     grid-template-columns: repeat(6, 1fr);
     gap: 1.22rem;
     margin-bottom: 40px;
+    padding: 0 16px;
     }
     .grid-container-about{
     grid-template-columns: repeat(6, 1fr);

@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 io.unobserve(target);
             }
         });
-    }, { threshold: 0.07 });
+    }, { threshold: 0.07, rootMargin: '0px 0px 80px 0px' });
 
     els.forEach(el => io.observe(el));
 });
