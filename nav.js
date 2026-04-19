@@ -40,6 +40,17 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // Footer accordion (mobile only)
+    document.querySelectorAll('.footer__nav').forEach(function(footerNav) {
+        var heading = footerNav.querySelector('.footer__heading');
+        if (!heading) return;
+        heading.addEventListener('click', function() {
+            if (window.innerWidth <= 680) {
+                footerNav.classList.toggle('footer__nav--open');
+            }
+        });
+    });
+
     // Prevent nav transition flash when resizing across the breakpoint
     let resizeTimer;
     window.addEventListener("resize", function () {
