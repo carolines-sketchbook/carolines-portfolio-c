@@ -372,15 +372,15 @@
 
       function openLightbox() {
         if (!isDesktopOrTablet()) return;
-        resetZoom();
         lb.style.display = 'flex';
         document.body.style.overflow = 'hidden';
+        resetZoom();
       }
 
       function closeLightbox() {
+        resetZoom();
         lb.style.display = 'none';
         document.body.style.overflow = '';
-        resetZoom();
       }
 
       trigger.addEventListener('click', openLightbox);
