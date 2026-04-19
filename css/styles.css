@@ -439,7 +439,7 @@ body {
     background-color: #000 !important;
     padding-top: 0.5rem;
     padding-right: 5.5rem;
-    min-height: 0;
+    min-height: 0 !important;
 }
 .box-project-8 {
     grid-column: 7 / span 6;
@@ -448,7 +448,7 @@ body {
     background-color: #000 !important;
     padding-top: 0.5rem;
     padding-right: 2rem;
-    min-height: 0;
+    min-height: 0 !important;
 }
 /* END OF PROJECT PAGE */
 
