@@ -71,8 +71,9 @@
     z-index: 9999;
     align-items: center;
     justify-content: center;
-    padding: 40px;
+    overflow: hidden;
   ">
+    <!-- Top-right controls -->
     <div style="
       position: absolute;
       top: 20px;
@@ -80,7 +81,58 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      z-index: 10001;
     ">
+      <!-- Zoom out -->
+      <button id="lb-zoom-out" title="Zoom out" style="
+        background: none;
+        border: 1px solid rgba(255,255,255,0.3);
+        color: rgba(255,255,255,0.75);
+        font-size: 1.15rem;
+        line-height: 1;
+        cursor: pointer;
+        padding: 5px 11px;
+        border-radius: 4px;
+        transition: color 0.2s, border-color 0.2s;
+        font-family: 'DM Sans', sans-serif;
+      "
+        onmouseover="this.style.color='#fff'; this.style.borderColor='rgba(255,255,255,0.7)'"
+        onmouseout="this.style.color='rgba(255,255,255,0.75)'; this.style.borderColor='rgba(255,255,255,0.3)'"
+      >−</button>
+      <!-- Zoom in -->
+      <button id="lb-zoom-in" title="Zoom in" style="
+        background: none;
+        border: 1px solid rgba(255,255,255,0.3);
+        color: rgba(255,255,255,0.75);
+        font-size: 1.15rem;
+        line-height: 1;
+        cursor: pointer;
+        padding: 5px 11px;
+        border-radius: 4px;
+        transition: color 0.2s, border-color 0.2s;
+        font-family: 'DM Sans', sans-serif;
+      "
+        onmouseover="this.style.color='#fff'; this.style.borderColor='rgba(255,255,255,0.7)'"
+        onmouseout="this.style.color='rgba(255,255,255,0.75)'; this.style.borderColor='rgba(255,255,255,0.3)'"
+      >+</button>
+      <!-- Print -->
+      <button id="lb-print" style="
+        background: none;
+        border: 1px solid rgba(255,255,255,0.3);
+        color: rgba(255,255,255,0.75);
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        cursor: pointer;
+        padding: 7px 14px;
+        border-radius: 4px;
+        transition: color 0.2s, border-color 0.2s;
+      "
+        onmouseover="this.style.color='#fff'; this.style.borderColor='rgba(255,255,255,0.7)'"
+        onmouseout="this.style.color='rgba(255,255,255,0.75)'; this.style.borderColor='rgba(255,255,255,0.3)'"
+      >Print</button>
       <a id="lb-download-pdf"
         href="assets/images/Caroline-Swain-Design-Resume-2026.pdf"
         download="Caroline-Swain-Design-Resume-2026.pdf"
@@ -134,20 +186,77 @@
         onmouseout="this.style.color='rgba(255,255,255,0.75)'"
       >✕</button>
     </div>
-    <img src="assets/images/Caroline-Swain-Design-Resume-2026.png" alt="Resume" style="
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      border-radius: 6px;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+    <!-- Scrollable image container -->
+    <div id="lb-img-wrap" style="
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 40px 40px;
+      box-sizing: border-box;
     ">
+      <img id="lb-img" src="assets/images/Caroline-Swain-Design-Resume-2026.png" alt="Resume" style="
+        display: block;
+        border-radius: 6px;
+        box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+        transform-origin: center center;
+        transition: transform 0.2s ease;
+        max-width: 100%;
+        max-height: 100%;
+      ">
+    </div>
   </div>
 
   <script>
     (function() {
-      var lb = document.getElementById('resume-lightbox');
-      var trigger = document.getElementById('resume-img');
-      var closeBtn = document.getElementById('lb-close');
+      var lb     = document.getElementById('resume-lightbox');
+      var wrap   = document.getElementById('lb-img-wrap');
+      var img    = document.getElementById('lb-img');
+      var trigger   = document.getElementById('resume-img');
+      var closeBtn  = document.getElementById('lb-close');
+      var zoomInBtn  = document.getElementById('lb-zoom-in');
+      var zoomOutBtn = document.getElementById('lb-zoom-out');
+      var printBtn   = document.getElementById('lb-print');
+
+      var scale = 1;
+      var MIN_SCALE = 0.5;
+      var MAX_SCALE = 4;
+      var STEP = 0.25;
+
+      function applyScale() {
+        img.style.transform = 'scale(' + scale + ')';
+        // When zoomed in, allow natural scrolling; when at base, center
+        if (scale <= 1) {
+          wrap.style.overflow = 'hidden';
+          wrap.style.alignItems = 'center';
+          wrap.style.justifyContent = 'center';
+          img.style.maxWidth = '100%';
+          img.style.maxHeight = '100%';
+        } else {
+          wrap.style.overflow = 'auto';
+          wrap.style.alignItems = 'flex-start';
+          wrap.style.justifyContent = 'flex-start';
+          img.style.maxWidth = 'none';
+          img.style.maxHeight = 'none';
+        }
+      }
+
+      function zoomIn() {
+        scale = Math.min(MAX_SCALE, scale + STEP);
+        applyScale();
+      }
+
+      function zoomOut() {
+        scale = Math.max(MIN_SCALE, scale - STEP);
+        applyScale();
+      }
+
+      function resetZoom() {
+        scale = 1;
+        applyScale();
+      }
 
       function isDesktopOrTablet() {
         return window.innerWidth >= 681;
@@ -155,6 +264,7 @@
 
       function openLightbox() {
         if (!isDesktopOrTablet()) return;
+        resetZoom();
         lb.style.display = 'flex';
         document.body.style.overflow = 'hidden';
       }
@@ -162,17 +272,31 @@
       function closeLightbox() {
         lb.style.display = 'none';
         document.body.style.overflow = '';
+        resetZoom();
       }
 
       trigger.addEventListener('click', openLightbox);
       closeBtn.addEventListener('click', closeLightbox);
+      zoomInBtn.addEventListener('click', zoomIn);
+      zoomOutBtn.addEventListener('click', zoomOut);
+      printBtn.addEventListener('click', function() { window.print(); });
 
-      lb.addEventListener('click', function(e) {
-        if (e.target === lb) closeLightbox();
+      // Scroll wheel to zoom
+      lb.addEventListener('wheel', function(e) {
+        e.preventDefault();
+        if (e.deltaY < 0) zoomIn(); else zoomOut();
+      }, { passive: false });
+
+      // Keyboard shortcuts
+      document.addEventListener('keydown', function(e) {
+        if (lb.style.display === 'none') return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === '+' || e.key === '=') zoomIn();
+        if (e.key === '-') zoomOut();
       });
 
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') closeLightbox();
+      lb.addEventListener('click', function(e) {
+        if (e.target === lb || e.target === wrap) closeLightbox();
       });
     })();
   </script>
