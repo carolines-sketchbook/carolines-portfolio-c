@@ -355,7 +355,7 @@ body {
     padding: 0 40px;
     grid-auto-rows: minmax(200px, auto);
 }
-.box.box-project-1 {
+.box-project-1 {
     grid-column: 1 / span 12;
     grid-row: 1 / span 2;
 
@@ -370,7 +370,7 @@ body {
     overflow: hidden;
     z-index: 0;
 }
-.box.box-project-1::before{
+.box-project-1::before{
     content: "";
     position: absolute;
     inset: 0;
@@ -845,7 +845,7 @@ h1 {
         grid-row: 9 / span 3;
         }
 
-        .box.box-project-1{
+        .box-project-1{
         grid-column: 1 / span 6;
         grid-row: 1 / span 2;
         }
