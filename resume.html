@@ -211,7 +211,6 @@
         width: auto;
         height: auto;
         cursor: zoom-in;
-        flex-shrink: 0;
       ">
     </div>
   </div>
@@ -234,50 +233,53 @@
         img.style.cursor = mode === 'zoomout' ? 'zoom-out' : 'zoom-in';
       }
 
-      function setFitState(skip) {
-        wrap.style.overflow    = 'hidden';
-        wrap.style.alignItems  = 'center';
+      function applyFitState(animate) {
+        wrap.style.overflow       = 'hidden';
+        wrap.style.alignItems     = 'center';
         wrap.style.justifyContent = 'center';
-        img.style.transition   = skip ? 'none' : 'width 0.22s ease';
-        img.style.width        = 'auto';
-        img.style.maxWidth     = '100%';
-        img.style.maxHeight    = '100%';
+        wrap.scrollLeft = 0;
+        wrap.scrollTop  = 0;
+        img.style.transition = animate ? 'width 0.22s ease' : 'none';
+        img.style.transform  = 'none';
+        img.style.width      = 'auto';
+        img.style.maxWidth   = '100%';
+        img.style.maxHeight  = '100%';
       }
 
-      function setZoomState() {
+      function applyZoomState() {
         fittedW = img.getBoundingClientRect().width;
         var zoomedW = fittedW * 2.5;
-        wrap.style.overflow    = 'auto';
-        wrap.style.alignItems  = 'flex-start';
+        img.style.maxWidth   = 'none';
+        img.style.maxHeight  = 'none';
+        img.style.transition = 'width 0.22s ease';
+        img.style.width      = zoomedW + 'px';
+        wrap.style.overflow       = 'auto';
+        wrap.style.alignItems     = 'flex-start';
         wrap.style.justifyContent = 'flex-start';
-        img.style.maxWidth     = 'none';
-        img.style.maxHeight    = 'none';
-        img.style.transition   = 'width 0.22s ease';
-        img.style.width        = zoomedW + 'px';
-        // centre scroll after transition
         setTimeout(function() {
           wrap.scrollLeft = (wrap.scrollWidth  - wrap.clientWidth)  / 2;
           wrap.scrollTop  = (wrap.scrollHeight - wrap.clientHeight) / 2;
-        }, 230);
+        }, 240);
       }
 
       function doZoomIn() {
         if (mode !== 'zoomin') return;
         mode = 'zoomout';
-        setZoomState();
+        applyZoomState();
         updateCursor();
       }
 
       function doZoomOut() {
         if (mode !== 'zoomout') return;
         mode = 'zoomin';
-        setFitState(false);
+        applyFitState(true);
         updateCursor();
       }
 
       function resetZoom() {
+        stopInertia();
         mode = 'zoomin';
-        setFitState(true);
+        applyFitState(false);
         updateCursor();
       }
 
@@ -338,7 +340,7 @@
           if (mode === 'zoomin') doZoomIn(); else doZoomOut();
         } else if (mode === 'zoomin') {
           img.style.transition = 'transform 0.45s cubic-bezier(0.34,1.56,0.64,1)';
-          img.style.transform  = 'translate(0,0)';
+          img.style.transform  = 'translate(0px,0px)';
           setTimeout(function() { img.style.transition = 'none'; updateCursor(); }, 460);
         } else {
           startInertia();
