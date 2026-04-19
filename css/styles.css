@@ -365,7 +365,8 @@ body {
     margin-bottom: 0;
 }
 .intro__project__meta__line strong {
-    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
     color: #ffffff;
 }
 /* Project grid */
