@@ -200,17 +200,18 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 80px 40px 40px;
+      padding: 72px 40px 40px;
       box-sizing: border-box;
     ">
-      <img id="lb-img" src="assets/images/Caroline-Swain-Design-Resume-2026.svg" alt="Resume" style="
+      <img id="lb-img" src="assets/images/Caroline_Swain_Design_Resume_2026.png" alt="Resume" style="
         display: block;
         box-shadow: 0 24px 80px rgba(0,0,0,0.6);
-        transform-origin: center center;
-        transition: transform 0.2s ease;
         max-width: 100%;
         max-height: 100%;
+        width: auto;
+        height: auto;
         cursor: zoom-in;
+        flex-shrink: 0;
       ">
     </div>
   </div>
@@ -226,42 +227,63 @@
       var zoomOutBtn = document.getElementById('lb-zoom-out');
       var printBtn   = document.getElementById('lb-print');
 
-      var SCALES = [1, 2.5];
-      var idx = 0, mode = 'zoomin';
-      var panX = 0, panY = 0;
-
-      function currentScale() { return SCALES[idx]; }
-
-      function applyTransform(skip) {
-        img.style.transition = skip ? 'none' : 'transform 0.2s ease';
-        img.style.transform  = 'scale(' + currentScale() + ') translate(' + panX + 'px, ' + panY + 'px)';
-      }
+      var mode = 'zoomin'; // 'zoomin' | 'zoomout'
+      var fittedW; // image width at fit-to-screen state
 
       function updateCursor() {
         img.style.cursor = mode === 'zoomout' ? 'zoom-out' : 'zoom-in';
       }
 
+      function setFitState(skip) {
+        wrap.style.overflow    = 'hidden';
+        wrap.style.alignItems  = 'center';
+        wrap.style.justifyContent = 'center';
+        img.style.transition   = skip ? 'none' : 'width 0.22s ease';
+        img.style.width        = 'auto';
+        img.style.maxWidth     = '100%';
+        img.style.maxHeight    = '100%';
+      }
+
+      function setZoomState() {
+        fittedW = img.getBoundingClientRect().width;
+        var zoomedW = fittedW * 2.5;
+        wrap.style.overflow    = 'auto';
+        wrap.style.alignItems  = 'flex-start';
+        wrap.style.justifyContent = 'flex-start';
+        img.style.maxWidth     = 'none';
+        img.style.maxHeight    = 'none';
+        img.style.transition   = 'width 0.22s ease';
+        img.style.width        = zoomedW + 'px';
+        // centre scroll after transition
+        setTimeout(function() {
+          wrap.scrollLeft = (wrap.scrollWidth  - wrap.clientWidth)  / 2;
+          wrap.scrollTop  = (wrap.scrollHeight - wrap.clientHeight) / 2;
+        }, 230);
+      }
+
       function doZoomIn() {
-        if (mode !== 'zoomin' || idx >= SCALES.length - 1) return;
-        idx++;
-        if (idx === SCALES.length - 1) mode = 'zoomout';
-        applyTransform(); updateCursor();
+        if (mode !== 'zoomin') return;
+        mode = 'zoomout';
+        setZoomState();
+        updateCursor();
       }
 
       function doZoomOut() {
         if (mode !== 'zoomout') return;
-        idx = 0; panX = 0; panY = 0; mode = 'zoomin';
-        applyTransform(); updateCursor();
+        mode = 'zoomin';
+        setFitState(false);
+        updateCursor();
       }
 
       function resetZoom() {
-        idx = 0; panX = 0; panY = 0; mode = 'zoomin';
-        applyTransform(true); updateCursor();
+        mode = 'zoomin';
+        setFitState(true);
+        updateCursor();
       }
 
-      // Drag + inertia
+      // Drag to pan (scroll the wrapper)
       var isDragging = false, dragMoved = false;
-      var startMouseX, startMouseY, startPanX, startPanY;
+      var startMouseX, startMouseY, startScrollL, startScrollT;
       var lastMoveX, lastMoveY, lastMoveTime;
       var velX = 0, velY = 0, inertiaRaf;
 
@@ -273,10 +295,8 @@
         (function step() {
           velX *= FRICTION; velY *= FRICTION;
           if (Math.abs(velX) < 0.05 && Math.abs(velY) < 0.05) { updateCursor(); return; }
-          var s = currentScale();
-          panX += velX * 16 / s;
-          panY += velY * 16 / s;
-          img.style.transform = 'scale(' + s + ') translate(' + panX + 'px, ' + panY + 'px)';
+          wrap.scrollLeft -= velX * 16;
+          wrap.scrollTop  -= velY * 16;
           inertiaRaf = requestAnimationFrame(step);
         })();
       }
@@ -287,12 +307,11 @@
         stopInertia();
         isDragging = true; dragMoved = false;
         velX = 0; velY = 0;
-        startMouseX = e.clientX; startMouseY = e.clientY;
-        startPanX = panX; startPanY = panY;
+        startMouseX  = e.clientX; startMouseY  = e.clientY;
+        startScrollL = wrap.scrollLeft; startScrollT = wrap.scrollTop;
         lastMoveX = e.clientX; lastMoveY = e.clientY;
         lastMoveTime = Date.now();
         img.style.cursor = 'grabbing';
-        img.style.transition = 'none';
       });
 
       document.addEventListener('mousemove', function(e) {
@@ -302,14 +321,14 @@
         var now = Date.now(), dt = now - lastMoveTime;
         if (dt > 0) { velX = (e.clientX - lastMoveX) / dt; velY = (e.clientY - lastMoveY) / dt; }
         lastMoveX = e.clientX; lastMoveY = e.clientY; lastMoveTime = now;
-        var s = currentScale();
-        if (s > 1) {
-          panX = startPanX + dx / s; panY = startPanY + dy / s;
+        if (mode === 'zoomout') {
+          wrap.scrollLeft = startScrollL - dx;
+          wrap.scrollTop  = startScrollT - dy;
         } else {
-          panX = Math.max(-24, Math.min(24, dx * 0.12));
-          panY = Math.max(-24, Math.min(24, dy * 0.12));
+          // subtle nudge at fit state via temporary translate
+          img.style.transform = 'translate(' + Math.max(-24, Math.min(24, dx * 0.12)) + 'px,' +
+                                               Math.max(-24, Math.min(24, dy * 0.12)) + 'px)';
         }
-        img.style.transform = 'scale(' + s + ') translate(' + panX + 'px, ' + panY + 'px)';
       });
 
       document.addEventListener('mouseup', function() {
@@ -317,13 +336,11 @@
         isDragging = false;
         if (!dragMoved) {
           if (mode === 'zoomin') doZoomIn(); else doZoomOut();
-        } else if (currentScale() <= 1) {
-          panX = 0; panY = 0; velX = 0; velY = 0;
+        } else if (mode === 'zoomin') {
           img.style.transition = 'transform 0.45s cubic-bezier(0.34,1.56,0.64,1)';
-          img.style.transform  = 'scale(1) translate(0px,0px)';
-          setTimeout(updateCursor, 10);
+          img.style.transform  = 'translate(0,0)';
+          setTimeout(function() { img.style.transition = 'none'; updateCursor(); }, 460);
         } else {
-          img.style.transition = 'none';
           startInertia();
         }
       });
