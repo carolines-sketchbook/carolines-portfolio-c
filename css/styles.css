@@ -1401,7 +1401,6 @@ h1 {
         .footer__brand {
             order: 2;
             border-top: 1px solid rgba(255,255,255,0.12);
-            border-bottom: 1px solid rgba(255,255,255,0.12);
         }
         .footer__name {
             display: flex;
@@ -1502,7 +1501,7 @@ h1 {
             gap: 0;
         }
         .footer__codedby {
-            margin-top: 1rem;
+            margin-top: 0;
             margin-bottom: 0;
         }
         .footer__email {
