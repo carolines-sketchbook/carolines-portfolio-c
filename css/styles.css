@@ -619,6 +619,7 @@ h1 {
     align-items: center;
     gap: 1.5rem;
     padding: 0px 40px 4rem;
+    margin-top: -30px;
 }
 .resume-left {
     text-align: center;
@@ -661,6 +662,7 @@ h1 {
     max-width: 800px;
     margin: 0 auto;
     padding: 0px 40px 90px;
+    margin-top: -30px;
     gap: 2rem;
 }
 .contact-title {
