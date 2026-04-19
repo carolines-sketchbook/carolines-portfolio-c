@@ -1395,7 +1395,11 @@ h1 {
         .footer__grid {
             gap: 0;
         }
+        .footer__nav-group {
+            order: 1;
+        }
         .footer__brand {
+            order: 2;
             border-top: 1px solid rgba(255,255,255,0.12);
             border-bottom: 1px solid rgba(255,255,255,0.12);
         }
