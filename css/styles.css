@@ -1245,6 +1245,8 @@ h1 {
         flex-direction: column;
         column-gap: 0;
         row-gap: 0;
+        align-items: flex-start;
+        width: 100%;
     }
 
     .nav__item {
