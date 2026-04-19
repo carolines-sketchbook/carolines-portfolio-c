@@ -1080,14 +1080,12 @@ h1 {
     }
     .intro__content{
         padding-top: 1rem;
-        padding-left: 40px;
-        padding-right: 40px;
-        overflow: hidden;
+        padding-left: 16px;
+        padding-right: 16px;
     }
         .intro__title__index{
-            font-size: calc((100vw - 80px) / 21);
-            line-height: 1.5;
-            white-space: nowrap;
+            font-size: clamp(1.15rem, 4.8vw, 1.5rem);
+            line-height: 1.4;
         }
         .resume-right {
             background: white;
