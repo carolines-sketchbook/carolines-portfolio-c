@@ -498,7 +498,7 @@ a.box::before {
     gap: 10px;
     color: #fff;
     font-family: 'Syne', sans-serif;
-    font-size: 0.85rem;
+    font-size: 1rem;
     font-weight: 700;
     letter-spacing: 0.18em;
     opacity: 0;
