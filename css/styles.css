@@ -1584,6 +1584,12 @@ h1 {
     .project-nav__title {
         font-size: 0.95rem;
     }
+    .project-nav__prev .project-nav__title::before {
+        content: '← ';
+    }
+    .project-nav__next .project-nav__title::after {
+        content: ' →';
+    }
 }
 
 /* SCROLL REVEAL */
