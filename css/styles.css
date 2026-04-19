@@ -1298,15 +1298,13 @@ h1 {
         top: 0;
         left: 0;
         right: 0;
-        bottom: 0;
         background: rgb(14, 16, 20);
-        padding: calc(56px + 1.25rem) 16px 2rem;
+        padding: calc(56px + 1rem) 16px 2rem;
         z-index: 999;
         opacity: 0;
         visibility: hidden;
         transform: translateY(-6px);
         transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
-        overflow-y: auto;
     }
 
     .nav.nav--open {
