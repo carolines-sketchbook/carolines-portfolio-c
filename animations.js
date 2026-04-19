@@ -5,6 +5,22 @@ const ARROW_SVG = `<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org
 </svg>`;
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Tap video to go fullscreen — project pages only
+    if (document.querySelector('.grid-container-project')) {
+        document.querySelectorAll('.box video').forEach(video => {
+            video.style.cursor = 'pointer';
+            video.addEventListener('click', () => {
+                if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                } else if (video.webkitEnterFullscreen) {
+                    video.webkitEnterFullscreen(); // iOS Safari
+                } else if (video.webkitRequestFullscreen) {
+                    video.webkitRequestFullscreen();
+                }
+            });
+        });
+    }
+
 
 
     document.querySelectorAll('a.box').forEach(box => {
