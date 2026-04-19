@@ -358,22 +358,17 @@ body {
 .intro__project__meta__line {
     font-family: 'DM Sans', sans-serif;
     font-weight: 400;
-    color: #ebebeb;
+    color: rgba(255,255,255,0.52);
     font-size: clamp(0.875rem, 0.6vw + 0.75rem, 1rem);
     line-height: 1.15;
     margin-bottom: 0.7rem;
-    display: flex;
-    gap: 0.4em;
-    align-items: baseline;
 }
 .intro__project__meta__line:last-child {
     margin-bottom: 0;
 }
 .meta-label {
     font-weight: 400;
-    color: rgba(255,255,255,0.42);
-    white-space: nowrap;
-    flex-shrink: 0;
+    color: rgba(255,255,255,0.52);
 }
 /* Project grid */
 .grid-container-project {
