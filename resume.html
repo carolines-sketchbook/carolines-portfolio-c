@@ -224,45 +224,51 @@
       var zoomOutBtn = document.getElementById('lb-zoom-out');
       var printBtn   = document.getElementById('lb-print');
 
-      var scale    = 1;
-      var panX     = 0;
-      var panY     = 0;
-      var MAX_SCALE = 4;
-      var MIN_SCALE = 1;
-      var STEP      = 0.5;
+      // 3 discrete zoom-in levels (index 0 = original, 3 = max)
+      var SCALES = [1, 2, 3, 4];
+      var idx  = 0;
+      var mode = 'zoomin'; // 'zoomin' | 'zoomout' — switches at max, stays until back at 0
+      var panX = 0, panY = 0;
+
+      function currentScale() { return SCALES[idx]; }
 
       function applyTransform(skipTransition) {
-        img.style.transition = skipTransition ? 'none' : 'transform 0.18s ease';
-        img.style.transform  = 'scale(' + scale + ') translate(' + panX + 'px, ' + panY + 'px)';
+        img.style.transition = skipTransition ? 'none' : 'transform 0.2s ease';
+        img.style.transform  = 'scale(' + currentScale() + ') translate(' + panX + 'px, ' + panY + 'px)';
       }
 
       function updateCursor() {
-        img.style.cursor = scale >= MAX_SCALE ? 'zoom-out' : 'zoom-in';
+        img.style.cursor = mode === 'zoomout' ? 'zoom-out' : 'zoom-in';
       }
 
-      function zoomIn() {
-        scale = Math.min(MAX_SCALE, parseFloat((scale + STEP).toFixed(2)));
-        if (scale <= MIN_SCALE) { panX = 0; panY = 0; }
+      function doZoomIn() {
+        if (mode !== 'zoomin' || idx >= SCALES.length - 1) return;
+        idx++;
+        if (idx === SCALES.length - 1) mode = 'zoomout'; // hit max → switch mode
         applyTransform();
         updateCursor();
       }
 
-      function zoomOut() {
-        scale = Math.max(MIN_SCALE, parseFloat((scale - STEP).toFixed(2)));
-        if (scale <= MIN_SCALE) { panX = 0; panY = 0; }
+      function doZoomOut() {
+        if (mode !== 'zoomout') return;
+        if (idx > 1) {
+          idx = 1; // jump to halfway (SCALES[1] = 2×)
+        } else {
+          idx  = 0; panX = 0; panY = 0;
+          mode = 'zoomin'; // back at original → switch mode
+        }
         applyTransform();
         updateCursor();
       }
 
       function resetZoom() {
-        scale = 1; panX = 0; panY = 0;
-        applyTransform();
+        idx = 0; panX = 0; panY = 0; mode = 'zoomin';
+        applyTransform(true);
         updateCursor();
       }
 
-      // --- Drag to pan ---
-      var isDragging  = false;
-      var dragMoved   = false;
+      // --- Drag ---
+      var isDragging = false, dragMoved = false;
       var startMouseX, startMouseY, startPanX, startPanY;
 
       img.addEventListener('mousedown', function(e) {
@@ -283,46 +289,61 @@
         var dx = e.clientX - startMouseX;
         var dy = e.clientY - startMouseY;
         if (Math.abs(dx) > 3 || Math.abs(dy) > 3) dragMoved = true;
-        if (scale > 1) {
-          panX = startPanX + dx / scale;
-          panY = startPanY + dy / scale;
-          img.style.transform = 'scale(' + scale + ') translate(' + panX + 'px, ' + panY + 'px)';
+        var s = currentScale();
+        if (s > 1) {
+          // normal pan
+          panX = startPanX + dx / s;
+          panY = startPanY + dy / s;
+        } else {
+          // at original scale: subtle nudge (12% movement, max 24px)
+          var nudge = 0.12;
+          var cap   = 24;
+          panX = Math.max(-cap, Math.min(cap, dx * nudge));
+          panY = Math.max(-cap, Math.min(cap, dy * nudge));
         }
+        img.style.transform = 'scale(' + s + ') translate(' + panX + 'px, ' + panY + 'px)';
       });
 
       document.addEventListener('mouseup', function() {
         if (!isDragging) return;
         isDragging = false;
-        img.style.transition = 'transform 0.18s ease';
         if (!dragMoved) {
-          // treat as click: zoom in or out
-          if (scale >= MAX_SCALE) { zoomOut(); } else { zoomIn(); }
+          // click: zoom in or out per current mode
+          if (mode === 'zoomin') doZoomIn(); else doZoomOut();
         } else {
-          updateCursor();
+          if (currentScale() <= 1) {
+            // spring back to center
+            panX = 0; panY = 0;
+            img.style.transition = 'transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            img.style.transform  = 'scale(1) translate(0px, 0px)';
+            setTimeout(function() { updateCursor(); }, 10);
+          } else {
+            img.style.transition = 'transform 0.2s ease';
+            updateCursor();
+          }
         }
       });
 
       // --- Scroll wheel ---
       lb.addEventListener('wheel', function(e) {
         e.preventDefault();
-        if (e.deltaY < 0) zoomIn(); else zoomOut();
+        if (e.deltaY < 0) doZoomIn(); else doZoomOut();
       }, { passive: false });
 
       // --- Keyboard ---
       document.addEventListener('keydown', function(e) {
         if (lb.style.display === 'none') return;
         if (e.key === 'Escape')              closeLightbox();
-        if (e.key === '+' || e.key === '=') zoomIn();
-        if (e.key === '-')                   zoomOut();
+        if (e.key === '+' || e.key === '=') doZoomIn();
+        if (e.key === '-')                   doZoomOut();
       });
 
       // --- Buttons ---
-      zoomInBtn.addEventListener('click', zoomIn);
-      zoomOutBtn.addEventListener('click', zoomOut);
+      zoomInBtn.addEventListener('click', doZoomIn);
+      zoomOutBtn.addEventListener('click', doZoomOut);
       printBtn.addEventListener('click', function() { window.print(); });
       closeBtn.addEventListener('click', closeLightbox);
 
-      // Close on backdrop click (not on image or controls)
       lb.addEventListener('click', function(e) {
         if (e.target === lb || e.target === wrap) closeLightbox();
       });
