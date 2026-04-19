@@ -1157,6 +1157,10 @@ h1 {
         .box-project-1{
         grid-column: 1 / span 6;
         grid-row: 1 / span 1;
+        border-radius: 12px;
+        }
+        .box-project-1::before{
+        border-radius: 12px;
         }
         .box-project-2{
         grid-column: 1 / span 6; 
