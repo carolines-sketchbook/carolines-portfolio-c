@@ -1285,11 +1285,11 @@ h1 {
     /* Nav panel slides in from top */
     .nav {
         position: fixed;
-        top: 56px;
+        top: 0;
         left: 0;
         right: 0;
         background: rgb(14, 16, 20);
-        padding: 0.9rem 16px 0.9rem;
+        padding: calc(56px + 0.9rem) 16px 0.9rem;
         z-index: 999;
         opacity: 0;
         visibility: hidden;
