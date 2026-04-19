@@ -1201,6 +1201,7 @@ h1 {
         grid-column: 1 / span 6;
         grid-row: 8 / span 1;
         padding: 1.5rem 1.25rem;
+        margin-top: -0.5rem;
         }
 
     .resume-layout-grid {
