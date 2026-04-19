@@ -57,12 +57,129 @@
     </div>
 
     <div class="resume-right">
-      <img 
-        src="assets/images/Caroline-Swain-Design-Resume-2026.png" 
+      <img
+        id="resume-img"
+        src="assets/images/Caroline-Swain-Design-Resume-2026.png"
         alt="Caroline Swain Resume"
+        style="cursor: zoom-in;"
       >
     </div>
   </div>
+
+  <!-- Lightbox -->
+  <div id="resume-lightbox" style="
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+  ">
+    <div style="
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    ">
+      <a id="lb-download-pdf"
+        href="assets/images/Caroline-Swain-Design-Resume-2026.pdf"
+        download="Caroline-Swain-Design-Resume-2026.pdf"
+        style="
+          font-family: 'DM Sans', sans-serif;
+          font-size: 0.72rem;
+          font-weight: 500;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: rgba(255,255,255,0.75);
+          text-decoration: none;
+          border: 1px solid rgba(255,255,255,0.3);
+          padding: 7px 14px;
+          border-radius: 4px;
+          transition: color 0.2s, border-color 0.2s;
+        "
+        onmouseover="this.style.color='#fff'; this.style.borderColor='rgba(255,255,255,0.7)'"
+        onmouseout="this.style.color='rgba(255,255,255,0.75)'; this.style.borderColor='rgba(255,255,255,0.3)'"
+      >Download PDF</a>
+      <a id="lb-download-png"
+        href="assets/images/Caroline-Swain-Design-Resume-2026.png"
+        download="Caroline-Swain-Design-Resume-2026.png"
+        style="
+          font-family: 'DM Sans', sans-serif;
+          font-size: 0.72rem;
+          font-weight: 500;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: rgba(255,255,255,0.75);
+          text-decoration: none;
+          border: 1px solid rgba(255,255,255,0.3);
+          padding: 7px 14px;
+          border-radius: 4px;
+          transition: color 0.2s, border-color 0.2s;
+        "
+        onmouseover="this.style.color='#fff'; this.style.borderColor='rgba(255,255,255,0.7)'"
+        onmouseout="this.style.color='rgba(255,255,255,0.75)'; this.style.borderColor='rgba(255,255,255,0.3)'"
+      >Download PNG</a>
+      <button id="lb-close" style="
+        background: none;
+        border: none;
+        color: rgba(255,255,255,0.75);
+        font-size: 1.6rem;
+        line-height: 1;
+        cursor: pointer;
+        padding: 4px 8px;
+        transition: color 0.2s;
+        font-family: 'DM Sans', sans-serif;
+      "
+        onmouseover="this.style.color='#fff'"
+        onmouseout="this.style.color='rgba(255,255,255,0.75)'"
+      >✕</button>
+    </div>
+    <img src="assets/images/Caroline-Swain-Design-Resume-2026.png" alt="Resume" style="
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 6px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+    ">
+  </div>
+
+  <script>
+    (function() {
+      var lb = document.getElementById('resume-lightbox');
+      var trigger = document.getElementById('resume-img');
+      var closeBtn = document.getElementById('lb-close');
+
+      function isDesktopOrTablet() {
+        return window.innerWidth >= 681;
+      }
+
+      function openLightbox() {
+        if (!isDesktopOrTablet()) return;
+        lb.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        lb.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+
+      trigger.addEventListener('click', openLightbox);
+      closeBtn.addEventListener('click', closeLightbox);
+
+      lb.addEventListener('click', function(e) {
+        if (e.target === lb) closeLightbox();
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeLightbox();
+      });
+    })();
+  </script>
 
     <div class="footer-divider"></div>
         <footer class="footer">
