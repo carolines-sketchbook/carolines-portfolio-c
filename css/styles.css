@@ -199,6 +199,7 @@ body {
     cursor: pointer;
     padding: 0;
     flex-shrink: 0;
+    filter: drop-shadow(0 1px 4px rgba(0,0,0,0.7));
 }
 .nav__hamburger span {
     display: block;
