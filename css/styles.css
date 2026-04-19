@@ -1464,14 +1464,17 @@ h1 {
             color: #9c9c9c;
             font-weight: 400;
             font-size: 0.875rem;
+            margin-bottom: 0.5rem;
         }
         .footer__codedby {
             font-weight: 400;
             font-size: 0.875rem;
+            margin-top: 0;
         }
         .footer__email {
             color: #ffffff;
             text-decoration: underline;
+            margin-bottom: 0.5rem;
         }
         .footer__nav--open .footer__heading::after {
             transform: rotate(-135deg);
