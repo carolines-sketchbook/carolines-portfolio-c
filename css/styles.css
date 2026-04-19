@@ -1583,24 +1583,24 @@ h1 {
     .project-nav__prev .project-nav__label::before {
         content: '';
         display: inline-block;
-        width: 6px;
-        height: 6px;
-        border-right: 1.5px solid rgba(255,255,255,0.7);
-        border-bottom: 1.5px solid rgba(255,255,255,0.7);
+        width: 4px;
+        height: 4px;
+        border-right: 1px solid #666;
+        border-bottom: 1px solid #666;
         transform: rotate(135deg);
-        margin-right: 7px;
+        margin-right: 6px;
         vertical-align: middle;
         margin-bottom: 1px;
     }
     .project-nav__next .project-nav__label::after {
         content: '';
         display: inline-block;
-        width: 6px;
-        height: 6px;
-        border-right: 1.5px solid rgba(255,255,255,0.7);
-        border-bottom: 1.5px solid rgba(255,255,255,0.7);
+        width: 4px;
+        height: 4px;
+        border-right: 1px solid #666;
+        border-bottom: 1px solid #666;
         transform: rotate(-45deg);
-        margin-left: 7px;
+        margin-left: 6px;
         vertical-align: middle;
         margin-bottom: 1px;
     }
