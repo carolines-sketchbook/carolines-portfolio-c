@@ -472,11 +472,11 @@ body {
 }
 
 .project2-pet-img--dog {
-    filter: hue-rotate(158deg) saturate(0.8) brightness(0.7);
+    filter: hue-rotate(158deg) saturate(0.15) brightness(0.65);
 }
 
 .project2-pet-img--cat {
-    filter: hue-rotate(158deg) saturate(0.55) brightness(0.9);
+    filter: hue-rotate(158deg) saturate(0.1) brightness(0.8);
     animation-duration: 8s;
     animation-delay: -5s;
 }
