@@ -398,7 +398,7 @@ body {
     color: rgba(255,255,255,0.48);
     font-size: clamp(0.875rem, 0.6vw + 0.75rem, 1rem);
     line-height: 1.35;
-    margin-bottom: 0.6rem;
+    margin-bottom: clamp(0.7rem, 0.5vw + 0.55rem, 1rem);
 }
 .intro__project__meta__line:last-child {
     margin-bottom: 0;
