@@ -868,23 +868,28 @@ a.contact-btn {
 
         .box-about-1{
         grid-column: 1 / span 6;
-        grid-row: 1 / span 2;
+        grid-row: 1 / span 1;
         color: #000;
         background-color: #000;
         padding-left: 0;
-        padding-right: 30%;
+        padding-right: 15%;
+        min-height: 0;
+        align-items: flex-start;
         }
         .box-about-2{
         grid-column: 1 / span 6;
-        grid-row: 3 / span 3;
+        grid-row: 2 / span 3;
         }
         .box-about-3{
         grid-column: 1 / span 6;
-        grid-row: 6 / span 3
+        grid-row: 5 / span 3
         }
         .box-about-4{
         grid-column: 1 / span 6;
-        grid-row: 9 / span 3;
+        grid-row: 8 / span 3;
+        }
+        .intro__content__about p {
+        font-size: clamp(1.1rem, 1vw + 0.85rem, 1.3rem);
         }
 
         .box.box-project-1{
@@ -992,15 +997,15 @@ a.contact-btn {
     }
     .box-about-2{
     grid-column: 1 / span 6;
-    grid-row: 3 / span 3;
+    grid-row: 2 / span 3;
     }
     .box-about-3{
     grid-column: 1 / span 6;
-    grid-row: 6 / span 3
+    grid-row: 5 / span 3
     }
     .box-about-4{
     grid-column: 1 / span 6;
-    grid-row: 9 / span 3;
+    grid-row: 8 / span 3;
     }
     .intro__project__paragraphs{
     color:#ebebeb;
@@ -1147,15 +1152,15 @@ a.contact-btn {
         }
         .box-about-2{
         grid-column: 1 / span 6;
-        grid-row: 3 / span 2;
+        grid-row: 2 / span 2;
         }
         .box-about-3{
         grid-column: 1 / span 6;
-        grid-row: 5 / span 2;
+        grid-row: 4 / span 2;
         }
         .box-about-4{
         grid-column: 1 / span 6;
-        grid-row: 7 / span 2;
+        grid-row: 6 / span 2;
         }
         .intro__project__paragraphs{
             color:#ebebeb;
