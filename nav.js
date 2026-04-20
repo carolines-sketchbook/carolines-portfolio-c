@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Close menu when a non-dropdown nav link is clicked on mobile
         nav.querySelectorAll(".nav__link").forEach(function (link) {
             link.addEventListener("click", function () {
-                if (window.innerWidth <= 768) {
+                if (window.innerWidth <= 680) {
                     hamburger.classList.remove("nav__hamburger--open");
                     nav.classList.remove("nav--open");
                 }
@@ -39,13 +39,13 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!dropdownTrigger) return;
 
     dropdownTrigger.addEventListener("click", function (e) {
-        if (window.innerWidth > 768) {
+        if (window.innerWidth > 680) {
             dropdownParent.classList.toggle("dropdown-open");
         }
     });
 
     document.addEventListener("click", function (e) {
-        if (window.innerWidth > 768 && !dropdownParent.contains(e.target)) {
+        if (window.innerWidth > 680 && !dropdownParent.contains(e.target)) {
             dropdownParent.classList.remove("dropdown-open");
         }
     });
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.body.classList.remove("resize-no-transition");
         }, 150);
 
-        if (window.innerWidth > 768) {
+        if (window.innerWidth > 680) {
             hamburger.classList.remove("nav__hamburger--open");
             nav.classList.remove("nav--open");
             dropdownParent.classList.remove("dropdown-open");
