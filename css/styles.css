@@ -295,7 +295,7 @@ body {
 }
 .intro__project__title{
     color: #E90017;
-    font-size: clamp(2.75rem, 4vw + 1rem, 6rem);
+    font-size: clamp(2.25rem, 2.5vw + 1rem, 4rem);
     font-weight: 700;
     padding-bottom: 1.25rem;
 }
