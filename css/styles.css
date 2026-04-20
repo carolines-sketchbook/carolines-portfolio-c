@@ -139,7 +139,7 @@ body {
 /* Dropdown container */
 .dropdown {
     position: absolute;
-    top: calc(100% - 4px);
+    top: calc(100% + 8px);
     left: -12px;
     background-color: rgb(21, 24, 29);
     border-radius: 6px;
