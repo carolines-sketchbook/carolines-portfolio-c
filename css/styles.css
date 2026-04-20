@@ -935,6 +935,12 @@ a.contact-btn {
     }
 }
 
+@media (max-width: 1300px) {
+    .project3-raven-wrap {
+        top: 12%;
+    }
+}
+
 @media (max-width: 1100px) {
         .grid-container{
         grid-template-columns: repeat(6, 1fr);
