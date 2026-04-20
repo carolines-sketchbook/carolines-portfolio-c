@@ -805,6 +805,12 @@ a.contact-btn {
     color: #fff;
 }
 
+@media (max-width: 1380px) {
+    .box-about-1 {
+        padding-left: 0;
+    }
+}
+
 @media (max-width: 1100px) {
         .grid-container{
         grid-template-columns: repeat(6, 1fr);
