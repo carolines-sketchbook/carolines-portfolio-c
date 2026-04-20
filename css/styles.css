@@ -145,7 +145,7 @@ body {
     left: 60%;
     background: radial-gradient(circle at 120% 40%, #0f0f0f 0%, #000000 70%);
     border-radius: 6px;
-    padding: 10px 0;
+    padding: 7px 0;
     min-width: 180px;
     display: flex;
     flex-direction: column;
@@ -186,7 +186,7 @@ body {
 
 /* Dropdown links */
 .dropdown li a {
-    padding: 11.5px 27px;
+    padding: 11.5px 18px;
     font-size: 14px;
     font-weight: 700;
     color: #ffffff;
