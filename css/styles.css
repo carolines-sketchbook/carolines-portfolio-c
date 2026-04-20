@@ -267,6 +267,7 @@ body {
 }
 .intro__paragraphs__about{
     margin-top: 0.5rem;
+    padding-bottom: 1.5rem;
 }
 .intro__paragraphs__about a{
     text-decoration: underline;
