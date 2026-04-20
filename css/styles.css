@@ -453,6 +453,17 @@ body {
     animation: hand-float-x 9s ease-in-out infinite;
 }
 
+.project1-hand-wrap--green {
+    top: -80px;
+    right: 8%;
+    animation-delay: -3s;
+}
+
+.project1-hand-bg--green {
+    animation-name: hand-float-x-green;
+    animation-delay: -4.5s;
+}
+
 @keyframes hand-float-y {
     0%   { transform: translateY(0px); }
     50%  { transform: translateY(-18px); }
@@ -463,6 +474,12 @@ body {
     0%   { transform: rotate(-20deg) translateX(0px); }
     50%  { transform: rotate(-18.5deg) translateX(8px); }
     100% { transform: rotate(-20deg) translateX(0px); }
+}
+
+@keyframes hand-float-x-green {
+    0%   { transform: rotate(-20deg) scaleX(-1) translateX(0px); }
+    50%  { transform: rotate(-18.5deg) scaleX(-1) translateX(-8px); }
+    100% { transform: rotate(-20deg) scaleX(-1) translateX(0px); }
 }
 
 .grid-container-project {
