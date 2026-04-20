@@ -295,7 +295,7 @@ body {
 }
 .intro__project__title{
     color: #E90017;
-    font-size: clamp(2.25rem, 2.5vw + 1rem, 4rem);
+    font-size: clamp(3rem, 3vw + 1.2rem, 4.5rem);
     font-weight: 700;
     padding-bottom: 1.25rem;
 }
@@ -304,6 +304,7 @@ body {
     color:#ebebeb;
     font-size: clamp(1.25rem, 1.1vw + 1rem, 1.45rem);
     line-height: 1.51;
+    border-top: 1px solid rgba(255,255,255,0.18);
     padding-top: 1.5rem;
     width: 100%;
 }
@@ -990,11 +991,6 @@ a.contact-btn {
     }
 }
 
-@media (max-width: 768px) {
-    .intro__project__paragraphs {
-        border-top: 1px solid rgba(255,255,255,0.18);
-    }
-}
 
 @media (max-width: 680px) {
     .grid-container {
