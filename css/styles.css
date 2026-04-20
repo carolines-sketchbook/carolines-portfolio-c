@@ -180,7 +180,7 @@ body {
 
 /* Dropdown links */
 .dropdown li a {
-    padding: 10px 15px;
+    padding: 10px 20px;
     font-size: 14px;
     font-weight: 700;
     color: #ffffff;
@@ -202,7 +202,7 @@ body {
 }
 
 .dropdown li:not(:last-child) {
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.13);
 }
 /* Show dropdown on hover */
 .nav__item__dropdown:hover .dropdown {
