@@ -528,6 +528,8 @@ a.box:hover .box-hover-arrow {
 a.box:hover::before,
 a.box:hover .box-hover-label {
     opacity: 1;
+}
+a.box:hover .box-hover-label {
     animation: label-pulse 1.2s ease-in-out infinite;
 }
 @keyframes label-pulse {
