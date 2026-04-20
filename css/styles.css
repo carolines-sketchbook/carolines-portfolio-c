@@ -854,7 +854,7 @@ h1 {
     max-width: 800px;
     margin: 0 auto;
     padding: 0px 40px 90px;
-    margin-top: 3rem;
+    margin-top: 0;
     gap: 2rem;
 }
 .contact-title {
