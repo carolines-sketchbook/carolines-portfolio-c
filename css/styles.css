@@ -408,7 +408,7 @@ body {
     color: rgba(255,255,255,0.48);
 }
 /* Project grid */
-.project3-raven-bg {
+.project3-raven-wrap {
     position: absolute;
     top: -10px;
     right: 40px;
@@ -416,8 +416,14 @@ body {
     pointer-events: none;
     user-select: none;
     z-index: 0;
+    animation: hand-float-y 6s ease-in-out infinite;
+}
+
+.project3-raven-bg {
+    width: 100%;
     filter: brightness(0) invert(1);
     opacity: 0.07;
+    animation: hand-float-x 9s ease-in-out infinite;
 }
 
 .project1-hand-wrap {
@@ -1035,7 +1041,7 @@ a.contact-btn {
 }
 
 @media (max-width: 870px) {
-    .project3-raven-bg,
+    .project3-raven-wrap,
     .project1-hand-wrap {
         display: none;
     }
