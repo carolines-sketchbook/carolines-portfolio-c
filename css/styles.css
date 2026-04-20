@@ -423,8 +423,8 @@ body {
 .project1-hand-bg {
     position: absolute;
     top: -30px;
-    right: 20px;
-    width: 44%;
+    right: -20px;
+    width: 54%;
     pointer-events: none;
     user-select: none;
     z-index: 0;
