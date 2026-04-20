@@ -457,7 +457,7 @@ body {
 }
 
 .project2-pet-wrap--cat {
-    top: clamp(100px, calc(530px - 30vw), 220px);
+    top: clamp(72px, calc(500px - 30vw), 195px);
     right: 2%;
     width: 52%;
     animation: hand-float-y 9s ease-in-out infinite;
