@@ -1357,7 +1357,7 @@ a.contact-btn {
     }
 
     .nav__item:last-child {
-        border-bottom: none;
+        border-bottom: 1px solid rgba(255,255,255,0.07);
     }
 
     .nav__link {
