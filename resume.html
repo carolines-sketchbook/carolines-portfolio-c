@@ -302,10 +302,13 @@
         })();
       }
 
-      // ── Drag ─────────────────────────────────────────────────────────────
-      img.addEventListener('mousedown', function(e) {
+      // ── Drag — attached to whole wrap so dark area is also draggable ────
+      var downTarget = null;
+
+      wrap.addEventListener('mousedown', function(e) {
         if (e.button !== 0) return;
         e.preventDefault();
+        downTarget = e.target;
         stopInertia();
         isDragging = true; dragMoved = false;
         velX = 0; velY = 0;
@@ -313,7 +316,8 @@
         startPX = panX;      startPY = panY;
         lastMX  = e.clientX; lastMY  = e.clientY; lastMT = Date.now();
         img.style.transition = 'none';
-        img.style.cursor = 'grabbing';
+        img.style.cursor  = 'grabbing';
+        wrap.style.cursor = 'grabbing';
       });
 
       document.addEventListener('mousemove', function(e) {
@@ -330,7 +334,7 @@
           panY = clamp(startPY + dy, -b.y, b.y);
           img.style.transform = 'translate(' + panX + 'px,' + panY + 'px)';
         } else {
-          // Subtle nudge at fit state
+          // Subtle nudge in both X and Y at fit state
           img.style.transform = 'translate(' + clamp(dx * 0.12, -24, 24) + 'px,' +
                                                clamp(dy * 0.12, -24, 24) + 'px)';
         }
@@ -339,10 +343,18 @@
       document.addEventListener('mouseup', function() {
         if (!isDragging) return;
         isDragging = false;
+        wrap.style.cursor = '';
+
         if (!dragMoved) {
-          if (mode === 'fit') enterZoom(); else enterFit(true);
+          // Clean click: image = zoom toggle, dark bg = close
+          if (downTarget === img) {
+            if (mode === 'fit') enterZoom(); else enterFit(true);
+          } else {
+            closeLightbox();
+          }
           return;
         }
+
         if (mode === 'zoomed') {
           startInertia();
         } else {
@@ -364,10 +376,6 @@
       zoomOutBtn.addEventListener('click', function() { if (mode === 'zoomed') enterFit(true); });
       printBtn.addEventListener('click', function() { window.print(); });
       closeBtn.addEventListener('click', closeLightbox);
-
-      lb.addEventListener('click', function(e) {
-        if (e.target === lb || e.target === wrap) closeLightbox();
-      });
 
       document.addEventListener('keydown', function(e) {
         if (lb.style.display === 'none') return;

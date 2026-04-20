@@ -362,7 +362,7 @@ body {
     color: rgba(255,255,255,0.72);
     font-size: clamp(0.875rem, 0.6vw + 0.75rem, 1rem);
     line-height: 1.35;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.6rem;
 }
 .intro__project__meta__line:last-child {
     margin-bottom: 0;
@@ -1154,8 +1154,8 @@ a.contact-btn {
         border-radius: 12px;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        text-align: center;
+        align-items: flex-start;
+        text-align: left;
         }
         .box.box-project-1::before{
         border-radius: 12px;
