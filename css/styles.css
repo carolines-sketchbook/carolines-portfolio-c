@@ -979,6 +979,11 @@ a.contact-btn {
 
 
 @media (max-width: 1100px) {
+    .project3-raven-wrap,
+    .project1-hands-container,
+    .project2-pets-container {
+        display: none;
+    }
         .grid-container{
         grid-template-columns: repeat(6, 1fr);
         gap: 0.75rem;
@@ -1116,11 +1121,6 @@ a.contact-btn {
 }
 
 @media (max-width: 870px) {
-    .project3-raven-wrap,
-    .project1-hands-container,
-    .project2-pets-container {
-        display: none;
-    }
     .grid-container {
     grid-template-columns: repeat(6, 1fr);
     gap: 0.75rem;
