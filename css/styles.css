@@ -499,7 +499,7 @@ body {
 
 .project1-hand-wrap {
     position: absolute;
-    top: clamp(-60px, calc(388px - 28vw), 80px);
+    top: clamp(-90px, calc(358px - 28vw), 50px);
     right: 5%;
     width: 68%;
     pointer-events: none;
@@ -517,7 +517,7 @@ body {
 }
 
 .project1-hand-wrap--green {
-    top: clamp(-60px, calc(340px - 26vw), 60px);
+    top: clamp(-30px, calc(370px - 26vw), 90px);
     right: -9%;
     animation-delay: -3s;
 }
