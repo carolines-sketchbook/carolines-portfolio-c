@@ -140,7 +140,7 @@ body {
 .dropdown {
     position: absolute;
     top: calc(100% + 8px);
-    left: 50%;
+    left: 60%;
     background: radial-gradient(circle at 120% 40%, #0f0f0f 0%, #000000 70%);
     border-radius: 6px;
     padding: 10px 0;
