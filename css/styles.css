@@ -519,11 +519,6 @@ a.box::before {
 a.box:hover .box-hover-arrow {
     opacity: 1;
     transform: translateX(0) rotate(-45deg);
-    animation: arrow-nudge 1.2s ease-in-out infinite;
-}
-@keyframes arrow-nudge {
-    0%, 100% { transform: translateX(0) rotate(-45deg); }
-    50%       { transform: translateX(4px) rotate(-45deg); }
 }
 a.box:hover::before,
 a.box:hover .box-hover-label {
