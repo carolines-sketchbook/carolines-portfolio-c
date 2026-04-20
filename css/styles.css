@@ -260,7 +260,7 @@ body {
 /* END HAMBURGER */
 
 .home__container{
-    margin-top: 1rem;
+    margin-top: -0.5rem;
 }   
 .intro__content{
     padding-top: 1rem;
@@ -813,7 +813,7 @@ h1 {
     align-items: center;
     gap: 1.5rem;
     padding: 0px 40px 4rem;
-    margin-top: 0px;
+    margin-top: -1.5rem;
 }
 .resume-left {
     text-align: center;
@@ -853,9 +853,8 @@ h1 {
     flex-direction: column;
     align-items: center;
     max-width: 800px;
-    margin: 0 auto;
+    margin: -1.5rem auto 0;
     padding: 0px 40px 90px;
-    margin-top: 0;
     gap: 2rem;
 }
 .contact-title {
