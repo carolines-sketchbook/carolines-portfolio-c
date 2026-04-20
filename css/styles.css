@@ -262,7 +262,7 @@ body {
 .intro__content__about p {
     margin-bottom: 1.5rem;
     font-weight: 400;
-    font-size: clamp(1.2rem, 1.1vw + 1rem, 1.45rem);
+    font-size: clamp(1rem, 0.8vw + 0.85rem, 1.2rem);
     max-width: 60ch;
     line-height: 1.51;
     color:#ebebeb;
@@ -291,19 +291,20 @@ body {
 /* PROJECT PAGE */
 .intro__group{
     width: 100%;
-    max-width: 1090px;
+    max-width: calc(41.667% - 0.583rem);
 }
 .intro__project__title{
     color: #E90017;
-    font-size: clamp(3rem, 3vw + 1.2rem, 4.5rem);
+    font-size: clamp(2.25rem, 2.5vw + 1rem, 3.5rem);
     font-weight: 700;
-    padding-bottom: 1.25rem;
+    line-height: 1.1;
+    padding-bottom: 1rem;
 }
 
 .intro__project__paragraphs{
     color:#ebebeb;
     font-size: clamp(1.25rem, 1.1vw + 1rem, 1.45rem);
-    line-height: 1.51;
+    line-height: 1.45;
     border-top: 1px solid rgba(255,255,255,0.18);
     padding-top: 1.5rem;
     width: 100%;
@@ -362,7 +363,7 @@ body {
 .intro__project__meta__line {
     font-family: 'DM Sans', sans-serif;
     font-weight: 400;
-    color: rgba(255,255,255,0.72);
+    color: rgba(255,255,255,0.48);
     font-size: clamp(0.875rem, 0.6vw + 0.75rem, 1rem);
     line-height: 1.35;
     margin-bottom: 0.6rem;
@@ -372,14 +373,14 @@ body {
 }
 .meta-label {
     font-weight: 400;
-    color: rgba(255,255,255,0.72);
+    color: rgba(255,255,255,0.48);
 }
 /* Project grid */
 .grid-container-project {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 1rem;
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 0;
     width: 100%;
     padding: 0 40px;
@@ -394,10 +395,11 @@ body {
     justify-content: flex-start;
     align-items: flex-start;
     text-align: left;
-    padding: 2rem 0 2.5rem 0;
+    padding: 1rem 0 2rem 0;
     background: transparent;
     border-radius: 0;
     overflow: visible;
+    min-height: 0;
     z-index: 0;
 }
 .box.box-project-1::before{
@@ -809,6 +811,9 @@ a.contact-btn {
         gap: 0.75rem;
         margin-bottom: 40px;
         }
+        .intro__group {
+        max-width: calc(41.667% - 0.4375rem);
+        }
         .nav__list{
         column-gap:3rem;
         }
@@ -1145,11 +1150,12 @@ a.contact-btn {
         grid-row: 1 / span 1;
         border-radius: 0;
         background: transparent;
+        min-height: 0;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         text-align: left;
-        padding: 1.5rem 0 1.5rem 0;
+        padding: 1rem 0 1.5rem 0;
         }
         .box.box-project-1::before{
         display: none;
@@ -1209,7 +1215,11 @@ a.contact-btn {
         height: 288px;
         border-radius: 8px;
     }
-
+    .intro__paragraphs__about {
+        border-top: 1px solid rgba(255,255,255,0.18);
+        padding-top: 1.25rem;
+        margin-top: 1rem;
+    }
   }
 
 .resize-no-transition .nav,
