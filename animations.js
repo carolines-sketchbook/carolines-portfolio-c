@@ -1,9 +1,7 @@
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 
-const ARROW_SVG = `<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="24" cy="24" r="22" stroke="white" stroke-width="1.5"/>
-  <path d="M18 30L30 18" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
-  <path d="M18 18H30V30" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+const ARROW_SVG = `<svg class="box-hover-arrow" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M2 7h10M8 3l4 4-4 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -57,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a.box').forEach(box => {
         const label = document.createElement('div');
         label.className = 'box-hover-label';
-        label.innerHTML = `${ARROW_SVG}<span>OPEN PROJECT</span>`;
+        label.innerHTML = `<span>OPEN PROJECT</span>${ARROW_SVG}`;
         box.appendChild(label);
     });
 

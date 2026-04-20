@@ -490,9 +490,9 @@ a.box::before {
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     color: #fff;
     font-family: 'Syne', sans-serif;
     font-size: 1.25rem;
@@ -504,17 +504,17 @@ a.box::before {
     pointer-events: none;
     white-space: nowrap;
 }
-.box-hover-label svg {
-    width: 36px;
-    height: 36px;
-    transform-origin: center;
+.box-hover-arrow {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    transform: translateX(-6px);
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease;
 }
-@keyframes arrow-pulse {
-    0%, 100% { transform: scale(1); }
-    50%       { transform: scale(1.15); }
-}
-a.box:hover .box-hover-label svg {
-    animation: arrow-pulse 1.4s ease-in-out infinite;
+a.box:hover .box-hover-arrow {
+    opacity: 1;
+    transform: translateX(0);
 }
 a.box:hover::before,
 a.box:hover .box-hover-label {
