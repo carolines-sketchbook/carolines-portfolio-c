@@ -516,6 +516,7 @@ body {
     pointer-events: none;
     user-select: none;
     animation: hand-float-y 6s ease-in-out infinite;
+    opacity: 0.7;
 }
 
 .project1-hand-bg {
