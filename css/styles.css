@@ -1369,6 +1369,14 @@ a.contact-btn {
         font-size: 18px;
     }
 
+    .nav__item__dropdown {
+        padding: 0;
+        margin: 0;
+    }
+    .nav__item__dropdown::after {
+        display: none;
+    }
+
     /* Dropdown always visible in mobile nav */
     .dropdown {
         position: static;
