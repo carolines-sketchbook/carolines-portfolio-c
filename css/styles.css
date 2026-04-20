@@ -205,6 +205,9 @@ body {
 .dropdown li a:hover {
     color: #E90017;
 }
+.dropdown li a:hover .nav__num {
+    color: #E90017;
+}
 
 .dropdown li:not(:last-child) {
     border-bottom: 1px solid rgba(255,255,255,0.13);
