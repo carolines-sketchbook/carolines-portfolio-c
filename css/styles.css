@@ -534,7 +534,7 @@ a.box:hover .box-hover-label {
 }
 @keyframes label-pulse {
     0%, 100% { transform: translate(-50%, -50%) scale(1); }
-    50%       { transform: translate(-50%, -50%) scale(1.06); }
+    50%       { transform: translate(-50%, -50%) scale(1.03); }
 }
 .box img {
     width: 100%;
