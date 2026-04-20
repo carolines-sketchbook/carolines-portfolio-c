@@ -814,7 +814,7 @@ a.contact-btn {
         margin-bottom: 40px;
         }
         .intro__group {
-        max-width: calc(41.667% - 0.4375rem);
+        max-width: calc(66.667% - 0.25rem);
         }
         .nav__list{
         column-gap:3rem;
