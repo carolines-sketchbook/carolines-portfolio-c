@@ -410,7 +410,7 @@ body {
 /* Project grid */
 .project3-raven-wrap {
     position: absolute;
-    top: clamp(-10px, calc(318px - 22.8vw), 120px);
+    top: clamp(-10px, calc(520px - 36.8vw), 200px);
     right: -20px;
     width: 52%;
     pointer-events: none;
