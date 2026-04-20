@@ -1244,7 +1244,7 @@ a.contact-btn {
     }
     .box.box-project-2, .box.box-project-3, .box.box-project-4,
     .box.box-project-5, .box.box-project-6 {
-        min-height: 250px;
+        min-height: 380px;
     }
     .contact-panel {
     position: relative;
