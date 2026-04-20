@@ -984,7 +984,9 @@ a.contact-btn {
     }
     .box-about-1{
     grid-column: 1 / span 6;
-    grid-row: 1 / span 2;
+    grid-row: 1 / span 1;
+    min-height: 0;
+    align-items: flex-start;
     padding-left: 0;
     padding-right: 0;
     }
@@ -1137,7 +1139,9 @@ a.contact-btn {
         }
         .box-about-1{
         grid-column: 1 / span 6;
-        grid-row: 1 / span 2;
+        grid-row: 1 / span 1;
+        min-height: 0;
+        align-items: flex-start;
         padding-left: 0;
         padding-right: 0;
         }
@@ -1243,6 +1247,7 @@ a.contact-btn {
         border-top: 1px solid rgba(255,255,255,0.18);
         padding-top: 1.25rem;
         margin-top: 1rem;
+        width: 100%;
     }
   }
 
