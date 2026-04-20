@@ -510,7 +510,7 @@ a.box::before {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -521,7 +521,7 @@ a.box::before {
     font-weight: 700;
     letter-spacing: 0.18em;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease;
     z-index: 3;
     pointer-events: none;
     white-space: nowrap;
@@ -547,11 +547,7 @@ a.box:hover .box-hover-label {
     opacity: 1;
 }
 a.box:hover .box-hover-label {
-    animation: label-pulse 1.2s ease-in-out infinite;
-}
-@keyframes label-pulse {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); }
-    50%       { transform: translate(-50%, -50%) scale(1.07); }
+    transform: translate(-50%, -50%) scale(1.07);
 }
 .box img {
     width: 100%;
