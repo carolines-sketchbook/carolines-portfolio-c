@@ -1159,6 +1159,9 @@ a.contact-btn {
         text-align: left;
         padding: 1rem 0 1.5rem 0;
         }
+        .intro__group {
+        max-width: 100%;
+        }
         .box.box-project-1::before{
         display: none;
         }
