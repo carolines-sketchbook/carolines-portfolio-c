@@ -354,11 +354,12 @@ body {
 }
 .intro__project__meta {
     padding-top: 1.75rem;
+    text-align: left;
 }
 .intro__project__meta__line {
     font-family: 'DM Sans', sans-serif;
     font-weight: 400;
-    color: rgba(255,255,255,0.52);
+    color: rgba(255,255,255,0.58);
     font-size: clamp(0.875rem, 0.6vw + 0.75rem, 1rem);
     line-height: 1.15;
     margin-bottom: 0.7rem;
@@ -368,7 +369,7 @@ body {
 }
 .meta-label {
     font-weight: 400;
-    color: rgba(255,255,255,0.52);
+    color: rgba(255,255,255,0.58);
 }
 /* Project grid */
 .grid-container-project {
