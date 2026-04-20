@@ -432,6 +432,48 @@ body {
     100% { transform: rotate(-10deg) translateX(0px); }
 }
 
+.project2-pets-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.project2-pet-wrap {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+}
+
+.project2-pet-wrap--dog {
+    top: -60px;
+    right: 3%;
+    width: 38%;
+    animation: hand-float-y 7s ease-in-out infinite;
+}
+
+.project2-pet-wrap--cat {
+    top: 20px;
+    right: -8%;
+    width: 52%;
+    animation: hand-float-y 9s ease-in-out infinite;
+    animation-delay: -3.5s;
+}
+
+.project2-pet-img {
+    width: 100%;
+    animation: raven-float-x 11s ease-in-out infinite;
+}
+
+.project2-pet-img--cat {
+    animation-duration: 8s;
+    animation-delay: -5s;
+}
+
 .project1-hands-container {
     position: absolute;
     top: 0;
@@ -1075,7 +1117,8 @@ a.contact-btn {
 
 @media (max-width: 870px) {
     .project3-raven-wrap,
-    .project1-hands-container {
+    .project1-hands-container,
+    .project2-pets-container {
         display: none;
     }
     .grid-container {
