@@ -248,11 +248,9 @@ body {
 }
 .intro__title__about{
     color: #E90017;
-    /* font-size: clamp(3rem, 4.2vw, 12.5rem); */
-      /* font-size: clamp(3rem, 1.5vw + 2.5rem, 12.5rem); */
-          font-size: clamp(3rem, 3vw + 1.2rem, 4.5rem);
-              /* font-size: 4.5rem; */
+    font-size: clamp(3rem, 3vw + 1.2rem, 4.5rem);
     font-weight: 700;
+    white-space: nowrap;
 }
 .intro__title__index{
     color: #fff;
@@ -557,7 +555,7 @@ video.parallax-img:-webkit-full-screen {
     color: #000;
     background-color: #000 !important;
     padding-left: 3rem;
-    padding-right: 2rem;
+    padding-right: 4rem;
     display: flex;
     align-items: center;
 }
@@ -808,7 +806,7 @@ a.contact-btn {
 @media (max-width: 1380px) {
     .box-about-1 {
         padding-left: 0;
-        padding-right: 20%;
+        padding-right: 25%;
     }
 }
 
