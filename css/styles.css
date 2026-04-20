@@ -470,7 +470,7 @@ body {
 }
 
 .project2-pet-img--dog {
-    filter: hue-rotate(61deg) saturate(0.5) brightness(1.05);
+    filter: hue-rotate(158deg) saturate(0.8) brightness(0.7);
 }
 
 .project2-pet-img--cat {
