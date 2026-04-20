@@ -179,11 +179,9 @@ body {
 }
 
 .nav__num {
-    color: rgba(255,255,255,0.35);
-    font-size: 0.7em;
+    color: #ffffff;
     font-weight: 700;
     margin-right: 8px;
-    letter-spacing: 0.05em;
 }
 
 /* Dropdown links */
@@ -1392,7 +1390,7 @@ a.contact-btn {
         box-shadow: none;
         background: transparent;
         border-radius: 0;
-        padding: 0 0 0.9rem 1rem;
+        padding: 0 0 0.9rem 0;
         min-width: 0;
         display: flex;
     }
@@ -1411,7 +1409,7 @@ a.contact-btn {
     }
 
     .dropdown li a {
-        padding: 0.55rem 16px 0.55rem 24px;
+        padding: 0.55rem 16px;
         font-size: 15px;
         color: #ffffff;
         margin-left: 0;
