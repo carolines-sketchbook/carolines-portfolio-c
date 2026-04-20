@@ -1494,19 +1494,19 @@ a.contact-btn {
         .footer__role {
             color: #9c9c9c;
             font-weight: 400;
-            font-size: 0.9rem;
+            font-size: 1rem;
             margin-bottom: 0.75rem;
         }
         .footer__codedby {
             font-weight: 400;
-            font-size: 0.9rem;
+            font-size: 1rem;
             margin-top: 0;
         }
         .footer__email {
             color: #9c9c9c;
             text-decoration: underline;
             font-weight: 400;
-            font-size: 0.9rem;
+            font-size: 1rem;
             margin-bottom: 0.75rem;
         }
         .footer__nav a {
@@ -1641,7 +1641,7 @@ a.contact-btn {
 }
 .project-nav__prev:hover .project-nav__title,
 .project-nav__next:hover .project-nav__title {
-    color: rgba(255,255,255,0.6);
+    color: #ffffff;
     transform: scale(1.06);
 }
 .project-nav__prev:hover .project-nav__label,
