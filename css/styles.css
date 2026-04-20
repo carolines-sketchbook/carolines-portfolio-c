@@ -823,7 +823,6 @@ h1 {
     overflow: hidden;
     width: 100%;
     max-width: 860px;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.3);
 }
 .resume-title {
     color: #E90017;
