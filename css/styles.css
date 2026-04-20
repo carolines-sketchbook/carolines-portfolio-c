@@ -727,7 +727,7 @@ h1 {
 .contact-panel {
     position: relative;
     min-width: 300px;  
-    border-radius: 26px;
+    border-radius: 28px;
     padding: 50px 85px;
     background: radial-gradient(circle at 120% 40%, #0f0f0f 0%, #000000 70%);
     overflow: hidden;
@@ -737,7 +737,7 @@ h1 {
     content: "";
     position: absolute;
     inset: 0;
-    border-radius: 26px;
+    border-radius: 28px;
     padding: 1px;
     background: linear-gradient(to bottom left, #ffffff, #555555);
     -webkit-mask:
