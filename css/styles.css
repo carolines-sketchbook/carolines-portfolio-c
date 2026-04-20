@@ -292,12 +292,18 @@ body {
 .intro__group{
     max-width: 1090px;
     width: 100%;
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    column-gap: 4rem;
+    align-items: start;
 }
 .intro__project__title{
     color: #E90017;
     font-size: clamp(3rem, 3vw + 1.2rem, 4.5rem);
     font-weight: 700;
     padding-bottom: 1.25rem;
+    grid-column: 1;
+    grid-row: 1 / span 2;
 }
 
 .intro__project__paragraphs{
@@ -307,6 +313,9 @@ body {
     border-top: 1px solid rgba(255,255,255,0.18);
     padding-top: 1.5rem;
     width: 100%;
+    max-width: 680px;
+    grid-column: 2;
+    grid-row: 1;
 }
 .intro__project__para1{
     color:#ebebeb;
@@ -358,6 +367,8 @@ body {
 .intro__project__meta {
     padding-top: 1.75rem;
     text-align: left;
+    grid-column: 2;
+    grid-row: 2;
 }
 .intro__project__meta__line {
     font-family: 'DM Sans', sans-serif;
@@ -988,6 +999,12 @@ a.contact-btn {
     }
     .challenge__header__group, .solution__header__group{
     padding-bottom: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .intro__group {
+        display: block;
     }
 }
 
