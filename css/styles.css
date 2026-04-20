@@ -429,10 +429,18 @@ body {
     user-select: none;
     z-index: 0;
     opacity: 0.13;
-    transform: rotate(-20deg);
     transform-origin: center top;
     -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 80%);
     mask-image: linear-gradient(to bottom, black 55%, transparent 80%);
+    animation: hand-float 7s ease-in-out infinite;
+}
+
+@keyframes hand-float {
+    0%   { transform: rotate(-20deg) translate(0px, 0px); }
+    25%  { transform: rotate(-21.5deg) translate(6px, -10px); }
+    50%  { transform: rotate(-20deg) translate(0px, -16px); }
+    75%  { transform: rotate(-18.5deg) translate(-6px, -8px); }
+    100% { transform: rotate(-20deg) translate(0px, 0px); }
 }
 
 .grid-container-project {
