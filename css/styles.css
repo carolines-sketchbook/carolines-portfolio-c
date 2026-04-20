@@ -455,6 +455,16 @@ body {
     width: 38%;
     animation: hand-float-y 7s ease-in-out infinite;
 }
+.project2-pet-wrap--dog::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 45%;
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.55));
+    pointer-events: none;
+}
 
 .project2-pet-wrap--cat {
     top: clamp(72px, calc(500px - 30vw), 195px);
