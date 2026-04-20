@@ -156,7 +156,7 @@ body {
         transform 0.2s ease,
         visibility 0.2s ease;
 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    box-shadow: none;
     z-index: 1002;
 }
 .dropdown::before {
