@@ -451,14 +451,14 @@ body {
 
 .project2-pet-wrap--dog {
     top: clamp(60px, calc(530px - 32vw), 180px);
-    right: 2%;
+    right: 6%;
     width: 38%;
     animation: hand-float-y 7s ease-in-out infinite;
 }
 
 .project2-pet-wrap--cat {
     top: clamp(72px, calc(500px - 30vw), 195px);
-    right: 2%;
+    right: -2%;
     width: 52%;
     animation: hand-float-y 9s ease-in-out infinite;
     animation-delay: -3.5s;
