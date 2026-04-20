@@ -830,7 +830,7 @@ a.contact-btn {
         }
         .grid-container-about{
         grid-template-columns: repeat(6, 1fr);
-        gap: 0.75rem;
+        gap: 1.25rem;
         margin-bottom: 40px;
         }
         .grid-container-project{
@@ -968,7 +968,7 @@ a.contact-btn {
     }
     .grid-container-about{
     grid-template-columns: repeat(6, 1fr);
-    gap: 0.75rem;
+    gap: 1.25rem;
     margin-bottom: 40px;
     }
     .grid-container-project{
