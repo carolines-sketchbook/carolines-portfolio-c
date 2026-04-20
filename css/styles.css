@@ -858,6 +858,7 @@ a.contact-btn {
         grid-row: 1 / span 2;
         color: #000;
         background-color: #000;
+        padding-left: 0;
         }
         .box-about-2{
         grid-column: 1 / span 6;
@@ -970,6 +971,7 @@ a.contact-btn {
     .box-about-1{
     grid-column: 1 / span 6;
     grid-row: 1 / span 2;
+    padding-left: 0;
     }
     .box-about-2{
     grid-column: 1 / span 6;
@@ -1121,6 +1123,7 @@ a.contact-btn {
         .box-about-1{
         grid-column: 1 / span 6;
         grid-row: 1 / span 2;
+        padding-left: 0;
         }
         .box-about-2{
         grid-column: 1 / span 6;
