@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap');
 
 /* Reset CSS */
 *{
@@ -1419,8 +1419,8 @@ a.contact-btn {
     }
     .nav__num {
         display: inline;
-        font-family: 'Space Mono', monospace;
-        font-weight: 700;
+        font-family: 'DM Mono', monospace;
+        font-weight: 500;
         margin-right: 10px;
         color: #ffffff;
     }
