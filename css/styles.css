@@ -1382,6 +1382,9 @@ a.contact-btn {
         min-width: 0;
         display: flex;
     }
+    .dropdown::before {
+        display: none;
+    }
 
     .nav__item__dropdown:hover .dropdown {
         opacity: 1;
