@@ -378,7 +378,7 @@ body {
 .grid-container-project {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    gap: 1rem;
+    gap: 1.2rem;
     margin-top: 20px;
     margin-bottom: 0;
     width: 100%;
@@ -455,7 +455,7 @@ body {
 .grid-container {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    gap: 1rem;
+    gap: 1.2rem;
     margin-top: 40px;
     margin-bottom: 3.7rem;
     width: 100%;
