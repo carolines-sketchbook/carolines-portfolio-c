@@ -423,7 +423,7 @@ body {
 .project1-hand-bg {
     position: absolute;
     top: -140px;
-    right: 260px;
+    right: 120px;
     width: 68%;
     pointer-events: none;
     user-select: none;
@@ -431,6 +431,8 @@ body {
     opacity: 0.13;
     transform: rotate(-20deg);
     transform-origin: center top;
+    -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 80%);
+    mask-image: linear-gradient(to bottom, black 55%, transparent 80%);
 }
 
 .grid-container-project {
