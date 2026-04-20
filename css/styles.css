@@ -179,9 +179,7 @@ body {
 }
 
 .nav__num {
-    color: #ffffff;
-    font-weight: 700;
-    margin-right: 8px;
+    display: none;
 }
 
 /* Dropdown links */
@@ -1413,6 +1411,13 @@ a.contact-btn {
         font-size: 15px;
         color: #ffffff;
         margin-left: 0;
+    }
+    .nav__num {
+        display: inline;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: 400;
+        margin-right: 10px;
+        color: #ffffff;
     }
 }
 /*
