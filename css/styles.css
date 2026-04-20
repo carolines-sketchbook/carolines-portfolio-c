@@ -1325,7 +1325,7 @@ a.contact-btn {
         left: 0;
         right: 0;
         background: rgb(14, 16, 20);
-        padding: 56px 16px 0.13rem;
+        padding: 56px 16px 0.75rem;
         z-index: 999;
         opacity: 0;
         visibility: hidden;
