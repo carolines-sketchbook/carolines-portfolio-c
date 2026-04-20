@@ -877,7 +877,7 @@ h1 {
     position: relative;
     min-width: 300px;  
     border-radius: 28px;
-    padding: 50px 85px;
+    padding: 36px 85px;
     background: radial-gradient(circle at 120% 40%, #0f0f0f 0%, #000000 70%);
     overflow: hidden;
     z-index: 0;
