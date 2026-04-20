@@ -1,8 +1,6 @@
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 
-const ARROW_SVG = `<svg class="box-hover-arrow" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M2 7h10M8 3l4 4-4 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>`;
+const ARROW_SVG = `<span class="box-hover-arrow"></span>`;
 
 document.addEventListener('DOMContentLoaded', () => {
     // Tap video to go fullscreen — project pages only

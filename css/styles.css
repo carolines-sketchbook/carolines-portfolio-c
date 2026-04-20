@@ -505,16 +505,20 @@ a.box::before {
     white-space: nowrap;
 }
 .box-hover-arrow {
-    width: 18px;
-    height: 18px;
-    flex-shrink: 0;
-    transform: translateX(-6px);
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: translateX(-6px) rotate(-45deg);
     opacity: 0;
+    flex-shrink: 0;
+    margin-bottom: 1px;
     transition: opacity 0.25s ease, transform 0.25s ease;
 }
 a.box:hover .box-hover-arrow {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) rotate(-45deg);
 }
 a.box:hover::before,
 a.box:hover .box-hover-label {
