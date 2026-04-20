@@ -1362,6 +1362,11 @@ a.contact-btn {
             color:#ebebeb;
             font-size: clamp(1rem, 1.2vw + .6rem, 1rem);
             line-height: 1.35;
+            border-top-color: rgba(255,255,255,0.22);
+            margin-left: -16px;
+            margin-right: -16px;
+            padding-left: 16px;
+            padding-right: 16px;
         }
         .intro__project__meta {
             padding-top: 1.25rem;
