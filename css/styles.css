@@ -164,25 +164,8 @@ body {
     font-size: 14px;
     font-weight: 700;
     color: #ffffff;
-    display: flex;
-    align-items: center;
-    gap: 0;
+    display: block;
     transition: color 0.2s ease, background 0.2s ease;
-}
-.dropdown li a::after {
-    content: '';
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 7h10M8 3l4 4-4 4' stroke='white' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    opacity: 0;
-    transform: translateX(-6px);
-    transition: opacity 0.22s ease, transform 0.22s ease;
-    flex-shrink: 0;
-    margin-left: 6px;
 }
 .dropdown li a.nav__link--current,
 .footer__nav a.nav__link--current {
@@ -196,11 +179,6 @@ body {
 /* Hover state */
 .dropdown li a:hover {
     color: #E90017;
-}
-.dropdown li a:hover::after {
-    opacity: 1;
-    transform: translateX(0);
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 7h10M8 3l4 4-4 4' stroke='%23E90017' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
 .dropdown li:not(:last-child) {
@@ -506,7 +484,40 @@ a.box::before {
     z-index: 2;
     border-radius: inherit;
 }
-a.box:hover::before {
+.box-hover-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-family: 'Syne', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 3;
+    pointer-events: none;
+    white-space: nowrap;
+}
+.box-hover-label svg {
+    width: 36px;
+    height: 36px;
+    transform-origin: center;
+}
+@keyframes arrow-pulse {
+    0%, 100% { transform: scale(1); }
+    50%       { transform: scale(1.15); }
+}
+a.box:hover .box-hover-label svg {
+    animation: arrow-pulse 1.4s ease-in-out infinite;
+}
+a.box:hover::before,
+a.box:hover .box-hover-label {
     opacity: 1;
 }
 .box img {
