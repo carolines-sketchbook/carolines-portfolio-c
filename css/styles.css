@@ -476,6 +476,7 @@ body {
 }
 
 .project2-pet-img--cat {
+    filter: hue-rotate(158deg) saturate(0.55) brightness(0.9);
     animation-duration: 8s;
     animation-delay: -5s;
 }
