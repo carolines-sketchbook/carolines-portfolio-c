@@ -816,14 +816,14 @@ h1 {
 .resume-left {
     text-align: center;
     width: 100%;
-    max-width: 700px;
+    max-width: 860px;
 }
 .resume-right {
-    background: white;
-    border-radius: 18px;
-    padding: 10px 10px;
+    border-radius: 12px;
+    overflow: hidden;
     width: 100%;
-    max-width: 700px;
+    max-width: 860px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.3);
 }
 .resume-title {
     color: #E90017;
