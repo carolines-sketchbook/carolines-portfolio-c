@@ -427,9 +427,9 @@ body {
 }
 
 @keyframes raven-float-x {
-    0%   { transform: translateX(0px); }
-    50%  { transform: translateX(8px); }
-    100% { transform: translateX(0px); }
+    0%   { transform: rotate(-10deg) translateX(0px); }
+    50%  { transform: rotate(-9deg) translateX(8px); }
+    100% { transform: rotate(-10deg) translateX(0px); }
 }
 
 .project1-hand-wrap {
