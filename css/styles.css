@@ -808,6 +808,7 @@ a.contact-btn {
 @media (max-width: 1380px) {
     .box-about-1 {
         padding-left: 0;
+        padding-right: 20%;
     }
 }
 
