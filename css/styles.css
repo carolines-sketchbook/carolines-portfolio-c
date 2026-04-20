@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap');
+
 
 /* Reset CSS */
 *{
@@ -196,6 +196,9 @@ body {
 }
 .dropdown li a.nav__link--current,
 .footer__nav a.nav__link--current {
+    color: #E90017;
+}
+.dropdown li a.nav__link--current .nav__num {
     color: #E90017;
 }
 .nav__item__dropdown.dropdown-open .dropdown {
@@ -1419,8 +1422,8 @@ a.contact-btn {
     }
     .nav__num {
         display: inline;
-        font-family: 'DM Mono', monospace;
-        font-weight: 500;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: 700;
         margin-right: 10px;
         color: #ffffff;
     }
