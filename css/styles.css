@@ -432,6 +432,17 @@ body {
     100% { transform: rotate(-10deg) translateX(0px); }
 }
 
+.project1-hands-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.13;
+    pointer-events: none;
+    z-index: 0;
+}
+
 .project1-hand-wrap {
     position: absolute;
     top: -140px;
@@ -439,13 +450,11 @@ body {
     width: 68%;
     pointer-events: none;
     user-select: none;
-    z-index: 0;
     animation: hand-float-y 6s ease-in-out infinite;
 }
 
 .project1-hand-bg {
     width: 100%;
-    opacity: 0.13;
     transform: rotate(-20deg);
     transform-origin: center top;
     -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 80%);
@@ -1065,7 +1074,7 @@ a.contact-btn {
 
 @media (max-width: 870px) {
     .project3-raven-wrap,
-    .project1-hand-wrap {
+    .project1-hands-container {
         display: none;
     }
     .grid-container {
