@@ -1262,6 +1262,7 @@ a.contact-btn {
     .intro__paragraphs__about {
         border-top: 1px solid rgba(255,255,255,0.18);
         padding-top: 1.25rem;
+        padding-bottom: 1.5rem;
         margin-top: 1rem;
         width: 100%;
     }
