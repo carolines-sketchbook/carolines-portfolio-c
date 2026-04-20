@@ -125,8 +125,8 @@ body {
 
 .nav__item__dropdown .nav__link:hover,
 .nav__item__dropdown .nav__link:focus {
-    color: #ffffff;
-    -webkit-text-stroke: initial;
+    color: #E90017;
+    -webkit-text-stroke: 0.3px #E90017;
 }
 
 .nav__link.nav__link--active {
