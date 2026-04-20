@@ -420,7 +420,7 @@ body {
     opacity: 0.07;
 }
 
-.project1-hand-bg {
+.project1-hand-wrap {
     position: absolute;
     top: -140px;
     right: 5%;
@@ -428,19 +428,29 @@ body {
     pointer-events: none;
     user-select: none;
     z-index: 0;
+    animation: hand-float-y 6s ease-in-out infinite;
+}
+
+.project1-hand-bg {
+    width: 100%;
     opacity: 0.13;
+    transform: rotate(-20deg);
     transform-origin: center top;
     -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 80%);
     mask-image: linear-gradient(to bottom, black 55%, transparent 80%);
-    animation: hand-float 7s ease-in-out infinite;
+    animation: hand-float-x 9s ease-in-out infinite;
 }
 
-@keyframes hand-float {
-    0%   { transform: rotate(-20deg) translate(0px, 0px); }
-    25%  { transform: rotate(-21.5deg) translate(6px, -10px); }
-    50%  { transform: rotate(-20deg) translate(0px, -16px); }
-    75%  { transform: rotate(-18.5deg) translate(-6px, -8px); }
-    100% { transform: rotate(-20deg) translate(0px, 0px); }
+@keyframes hand-float-y {
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-18px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes hand-float-x {
+    0%   { transform: rotate(-20deg) translateX(0px); }
+    50%  { transform: rotate(-18.5deg) translateX(8px); }
+    100% { transform: rotate(-20deg) translateX(0px); }
 }
 
 .grid-container-project {
@@ -1026,7 +1036,7 @@ a.contact-btn {
 
 @media (max-width: 870px) {
     .project3-raven-bg,
-    .project1-hand-bg {
+    .project1-hand-wrap {
         display: none;
     }
     .grid-container {
