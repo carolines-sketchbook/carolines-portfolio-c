@@ -522,8 +522,8 @@ body {
     width: 100%;
     transform: rotate(-20deg);
     transform-origin: center top;
-    -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 80%);
-    mask-image: linear-gradient(to bottom, black 55%, transparent 80%);
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 92%);
+    mask-image: linear-gradient(to bottom, black 70%, transparent 92%);
     animation: hand-float-x 9s ease-in-out infinite;
 }
 
