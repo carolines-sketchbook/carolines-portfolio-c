@@ -1924,6 +1924,12 @@ a.contact-btn {
     .project-nav__title {
         font-size: 0.95rem;
     }
+    .resume-layout-grid {
+        padding-top: 10px;
+    }
+    .contact-grid-container {
+        padding-top: 10px;
+    }
 }
 
 /* SCROLL REVEAL */
