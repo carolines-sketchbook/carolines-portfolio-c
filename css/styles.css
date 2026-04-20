@@ -112,17 +112,17 @@ body {
 
 .nav__item__dropdown {
     position: relative;
-    padding: 10px 24px;
-    margin: -10px -24px;
+    padding: 8px 16px;
+    margin: -8px -16px;
 }
 
 .nav__item__dropdown::after {
     content: '';
     position: absolute;
-    bottom: -28px;
-    left: -24px;
-    right: -24px;
-    height: 28px;
+    bottom: -20px;
+    left: -16px;
+    right: -16px;
+    height: 20px;
 }
 
 .nav__item__dropdown .nav__link:hover,
@@ -139,7 +139,7 @@ body {
 /* Dropdown container */
 .dropdown {
     position: absolute;
-    top: 155%;
+    top: calc(100% - 4px);
     left: -12px;
     background-color: rgb(21, 24, 29);
     border-radius: 6px;
