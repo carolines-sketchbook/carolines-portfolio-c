@@ -821,7 +821,6 @@ h1 {
     max-width: 860px;
 }
 .resume-right {
-    border-radius: 12px;
     overflow: hidden;
     width: 100%;
     max-width: 860px;
@@ -1309,7 +1308,7 @@ a.contact-btn {
             line-height: 1.4;
         }
         .resume-right {
-            border-radius: 12px;
+            border-radius: 0;
         }
         .nav__list{
         column-gap:2rem;
