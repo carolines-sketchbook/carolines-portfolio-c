@@ -1920,6 +1920,13 @@ a.contact-btn {
     .project-nav::before {
         background: rgba(255,255,255,0.12);
     }
+    .project-nav::after {
+        content: '';
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        height: 1px;
+        background: rgba(255,255,255,0.12);
+    }
     .project-nav__title {
         font-size: 0.95rem;
     }
