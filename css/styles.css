@@ -1446,10 +1446,13 @@ a.contact-btn {
         padding-left: 16px;
         padding-right: 16px;
     }
-    .resume-download-btn,
-    .contact-btn {
+    .resume-download-btn {
         padding: 8px 28px;
         font-size: 1rem;
+    }
+    .contact-btn {
+        font-size: 1.1rem;
+        padding: 10px 36px;
     }
     .resume-embed {
         border-radius: 12px;
