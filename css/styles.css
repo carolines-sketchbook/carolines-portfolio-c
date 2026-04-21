@@ -1915,7 +1915,7 @@ a.contact-btn {
 }
 @media (max-width: 680px) {
     .project-nav {
-        padding: 1.25rem 16px;
+        padding: 2rem 16px 1.25rem;
     }
     .project-nav::before {
         background: rgba(255,255,255,0.12);
