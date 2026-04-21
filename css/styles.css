@@ -1304,7 +1304,7 @@ a.contact-btn {
         padding-right: 16px;
     }
     .home__container {
-        margin-top: 0;
+        margin-top: 10px;
     }
         .intro__title__index{
             font-size: clamp(1rem, 4.2vw, 1.5rem);
