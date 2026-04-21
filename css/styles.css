@@ -978,6 +978,13 @@ h1 {
     background: #233a46;
     transform: scale(0.98);
 }
+.contact-btn--outline {
+    background: #000;
+}
+.contact-btn--outline:hover {
+    background: #E90017;
+    color: #fff;
+}
 a.contact-btn {
     display: inline-block;
     text-decoration: none;
