@@ -1933,10 +1933,12 @@ a.contact-btn {
         color: #888;
     }
     .resume-layout-grid {
-        padding-top: 26px;
+        margin-top: 0;
+        padding-top: 10px;
     }
     .contact-grid-container {
-        padding-top: 26px;
+        margin-top: 0;
+        padding-top: 10px;
     }
 }
 
