@@ -47,7 +47,7 @@
     <script src="nav.js"></script>
 
 <div class = "contact-grid-container">
-        <div class="contact-left">
+        <div class="contact-left" id="contact-header">
       <h1 class="contact-title">Contact Me</h1>
       <p class="contact-subtitle">
         Fill out your info and I’ll get back to you. Thanks!
@@ -77,8 +77,8 @@
         <button class="contact-btn" type="submit">Submit</button>
       </form>
       <div id="form-success" style="display:none; text-align:center; padding: 3rem 1rem;">
-        <p style="font-size:1.2rem; font-weight:600; color:#fff; margin-bottom:1.2rem;">Thanks! The form was submitted successfully.</p>
-        <a href="contact.html" style="color:#E90017; font-weight:600; text-decoration:none; font-size:1rem;">← Go back</a>
+        <p style="font-size:1.2rem; font-weight:600; color:#fff; margin-bottom:1.5rem;">Thanks! The form was submitted successfully.</p>
+        <a href="contact.html" class="contact-btn" style="display:inline-block; text-decoration:none; color:#fff;">← Go back</a>
       </div>
     </div>
   </div>
@@ -130,6 +130,7 @@
     const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
     if (res.ok) {
       form.style.display = 'none';
+      document.getElementById('contact-header').style.display = 'none';
       success.style.display = 'block';
     }
   });
