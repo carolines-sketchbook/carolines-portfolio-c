@@ -580,7 +580,7 @@ body {
     justify-content: flex-start;
     align-items: flex-start;
     text-align: left;
-    padding: 1rem 0 2rem 0;
+    padding: 1rem 0 3.2rem 0;
     background: transparent;
     border-radius: 0;
     overflow: visible;
@@ -815,7 +815,7 @@ h1 {
     align-items: center;
     gap: 1.5rem;
     padding: 0px 40px 4rem;
-    margin-top: calc(-1.5rem + 3px);
+    margin-top: clamp(0px, calc(2.5vw - 30px), 0.6rem);
 }
 .resume-left {
     text-align: center;
@@ -854,7 +854,7 @@ h1 {
     flex-direction: column;
     align-items: center;
     max-width: 800px;
-    margin: calc(-1.5rem + 3px) auto 0;
+    margin: clamp(0px, calc(2.5vw - 30px), 0.6rem) auto 0;
     padding: 0px 40px 90px;
     gap: 2rem;
     flex: 1;
@@ -934,7 +934,7 @@ h1 {
 }
 .field textarea {
     width: 100%;
-    height: 220px;
+    height: 207px;
     background: #161616;
     border: none;
     border-radius: 15px;
@@ -1406,7 +1406,7 @@ a.contact-btn {
         flex-direction: column;
         align-items: flex-start;
         text-align: left;
-        padding: 1rem 0 2.3rem 0;
+        padding: 1rem 0 2.25rem 0;
         }
         .intro__group {
         max-width: 100%;
@@ -1965,11 +1965,18 @@ a.contact-btn {
         padding-top: 10px;
     }
     .contact-panel {
-        margin-top: 10px;
+        margin-top: -0.5rem;
+        background: #000;
+        border-radius: 0;
+    }
+    .contact-panel::before {
+        display: none;
     }
     #success-body {
         font-size: clamp(1rem, 1.2vw + .6rem, 1rem) !important;
         line-height: 1.5;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
     }
     #form-success .contact-btn {
         font-size: 1rem;
