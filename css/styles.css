@@ -857,6 +857,8 @@ h1 {
     margin: calc(-1.5rem + 3px) auto 0;
     padding: 0px 40px 90px;
     gap: 2rem;
+    flex: 1;
+    width: 100%;
 }
 .contact-title {
     color: #E90017;
