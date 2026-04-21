@@ -1943,6 +1943,9 @@ a.contact-btn {
         margin-top: 0;
         padding-top: 10px;
     }
+    .contact-panel {
+        margin-top: 12px;
+    }
 }
 
 /* SCROLL REVEAL */
