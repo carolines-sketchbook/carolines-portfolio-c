@@ -1299,9 +1299,12 @@ a.contact-btn {
         margin-bottom: 2rem;
     }
     .intro__content{
-        padding-top: 0.5rem;
+        padding-top: 1rem;
         padding-left: 16px;
         padding-right: 16px;
+    }
+    .home__container {
+        margin-top: 0;
     }
         .intro__title__index{
             font-size: clamp(1rem, 4.2vw, 1.5rem);
