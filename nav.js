@@ -53,11 +53,15 @@ document.addEventListener("DOMContentLoaded", function () {
     // Footer brand accordion (mobile only)
     var footerBrand = document.querySelector('.footer__brand');
     if (footerBrand) {
+        if (window.innerWidth <= 680 && localStorage.getItem('footer-brand-open') === 'true') {
+            footerBrand.classList.add('footer__brand--open');
+        }
         var brandHeading = footerBrand.querySelector('.footer__name');
         if (brandHeading) {
             brandHeading.addEventListener('click', function() {
                 if (window.innerWidth <= 680) {
                     footerBrand.classList.toggle('footer__brand--open');
+                    localStorage.setItem('footer-brand-open', footerBrand.classList.contains('footer__brand--open'));
                 }
             });
         }
@@ -67,9 +71,14 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll('.footer__nav').forEach(function(footerNav) {
         var heading = footerNav.querySelector('.footer__heading');
         if (!heading) return;
+        var key = 'footer-nav-open-' + heading.textContent.trim();
+        if (window.innerWidth <= 680 && localStorage.getItem(key) === 'true') {
+            footerNav.classList.add('footer__nav--open');
+        }
         heading.addEventListener('click', function() {
             if (window.innerWidth <= 680) {
                 footerNav.classList.toggle('footer__nav--open');
+                localStorage.setItem(key, footerNav.classList.contains('footer__nav--open'));
             }
         });
     });
