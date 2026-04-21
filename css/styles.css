@@ -1960,6 +1960,10 @@ a.contact-btn {
         font-size: clamp(1rem, 1.2vw + .6rem, 1rem) !important;
         line-height: 1.5;
     }
+    #form-success .contact-btn {
+        font-size: 1rem;
+        padding: 9px 32px;
+    }
 }
 
 /* SCROLL REVEAL */
