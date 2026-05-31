@@ -2002,28 +2002,6 @@ a.contact-btn {
     }
 }
 
-/* LIGHTBOX */
-#lightbox-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background: rgba(0, 0, 0, 0.75);
-    align-items: center;
-    justify-content: center;
-    cursor: zoom-out;
-}
-#lightbox-overlay.lightbox--open {
-    display: flex;
-}
-#lightbox-img {
-    max-width: 90vw;
-    max-height: 88vh;
-    object-fit: contain;
-    border-radius: 8px;
-    box-shadow: 0 8px 48px rgba(0,0,0,0.6);
-}
-
 /* SCROLL REVEAL */
 .reveal {
     opacity: 0;
