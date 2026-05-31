@@ -1267,6 +1267,7 @@ a.contact-btn {
     .pair-1, .pair-2, .pair-3 { border-radius: 12px; }
     .box-hover-label { font-size: 1.1rem; max-width: 80%; white-space: normal; }
     .box-hover-arrow { width: 8px; height: 8px; border-right-width: 1.5px; border-bottom-width: 1.5px; margin-left: 4px; }
+    .footer__heading-link { pointer-events: none; cursor: default; }
     .grid-container-about{
     grid-template-columns: repeat(6, 1fr);
     gap: 1.22rem;
