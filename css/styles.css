@@ -666,16 +666,26 @@ body {
     outline: 1.5px solid rgba(233, 0, 23, 0.22);
     outline-offset: 7px;
     transition: outline-color 0.3s ease;
+    position: relative;
 }
 .project-pair.pair-active { outline-color: #E90017; }
 .project-pair .box { min-height: 0; }
+.project-pair .box-hover-label { z-index: 11; }
+.project-pair.pair-active .box-hover-label {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.07);
+}
+.project-pair.pair-active .box-hover-arrow {
+    opacity: 1;
+    transform: translateX(0) rotate(-45deg);
+}
 
 /* P1 — top-left, side by side (5:3 ratio mirrors original) */
 .pair-1 {
     grid-column: 1 / span 8;
     grid-row: 1;
     grid-template-columns: 5fr 3fr;
-    min-height: 420px;
+    min-height: 500px;
 }
 
 /* P2 — right column, stacked vertically, spans both rows */
@@ -690,7 +700,7 @@ body {
     grid-column: 1 / span 8;
     grid-row: 2;
     grid-template-columns: 3fr 5fr;
-    min-height: 420px;
+    min-height: 500px;
 }
 
 /* Pair active: dim + label on all boxes in the pair */

@@ -50,11 +50,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+    // Individual a.box labels (project pages etc — skip boxes inside project-pair)
     document.querySelectorAll('a.box').forEach(box => {
+        if (box.closest('.project-pair')) return;
         const label = document.createElement('div');
         label.className = 'box-hover-label';
         label.innerHTML = `<span>OPEN PROJECT</span>${ARROW_SVG}`;
         box.appendChild(label);
+    });
+
+    // Single centered label per project-pair wrapper
+    document.querySelectorAll('.project-pair').forEach(pair => {
+        const label = document.createElement('div');
+        label.className = 'box-hover-label';
+        label.innerHTML = `<span>OPEN PROJECT</span>${ARROW_SVG}`;
+        pair.appendChild(label);
     });
 
     // Pair hover: activate outline + overlay on all boxes in the project
