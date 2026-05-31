@@ -1257,10 +1257,11 @@ a.contact-btn {
     padding: 0 16px;
     }
     .pair-1, .pair-2, .pair-3 {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
     min-height: 0;
     }
-    .pair-1 .box, .pair-2 .box, .pair-3 .box { min-height: 220px; }
+    .pair-1 .box, .pair-2 .box, .pair-3 .box { min-height: 280px; }
     .grid-container-about{
     grid-template-columns: repeat(6, 1fr);
     gap: 1.22rem;
