@@ -578,7 +578,7 @@ body {
     width: 100%;
     position: relative;
     padding: 0 40px;
-    grid-auto-rows: auto;
+    grid-auto-rows: minmax(130px, auto);
 }
 .box.box-project-1 {
     grid-column: 1 / span 12;
@@ -603,27 +603,27 @@ body {
 .box.box-project-2 {
     grid-column: 1 / span 5;
     grid-row: 2 / span 3;
-    min-height: 720px;
+    min-height: 400px;
 }
 .box.box-project-3 {
     grid-column: 6 / span 3;
     grid-row: 2 / span 3;
-    min-height: 720px;
+    min-height: 400px;
 }
 .box.box-project-4 {
     grid-column: 9 / span 4;
     grid-row: 2 / span 6;
-    min-height: 720px;
+    min-height: 400px;
 }
 .box.box-project-5 {
     grid-column: 1 / span 3;
     grid-row: 5 / span 3;
-    min-height: 720px;
+    min-height: 400px;
 }
 .box.box-project-6 {
     grid-column: 4 / span 5;
     grid-row: 5 / span 3;
-    min-height: 720px;
+    min-height: 400px;
 }
 .box-project-7 {
     grid-column: 1 / span 6;
