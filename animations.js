@@ -57,6 +57,21 @@ document.addEventListener('DOMContentLoaded', () => {
         box.appendChild(label);
     });
 
+    // Pair hover: activate outline + overlay on all boxes in the project
+    document.querySelectorAll('.grid-container a.box[data-pair]').forEach(box => {
+        const pair = box.dataset.pair;
+        const wrapper = box.closest('.project-pair');
+        const siblings = document.querySelectorAll(`.grid-container a.box[data-pair="${pair}"]`);
+        box.addEventListener('mouseenter', () => {
+            siblings.forEach(s => s.classList.add('pair-active'));
+            if (wrapper) wrapper.classList.add('pair-active');
+        });
+        box.addEventListener('mouseleave', () => {
+            siblings.forEach(s => s.classList.remove('pair-active'));
+            if (wrapper) wrapper.classList.remove('pair-active');
+        });
+    });
+
 
 
     const els = document.querySelectorAll([
