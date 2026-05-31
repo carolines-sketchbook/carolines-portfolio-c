@@ -752,7 +752,7 @@ a.box::before {
     transition: opacity 0.3s ease, transform 0.3s ease;
     z-index: 3;
     pointer-events: none;
-    max-width: 80%;
+    white-space: nowrap;
     text-align: left;
 }
 .box-hover-arrow {
@@ -1065,7 +1065,7 @@ a.contact-btn {
     }
         .grid-container { grid-template-columns: 1fr; grid-template-rows: auto; gap: 1rem; margin-bottom: 40px; }
         .pair-1, .pair-2, .pair-3 { grid-column: 1; grid-row: auto; grid-template-rows: auto; min-height: 0; border-radius: 14px; }
-        .box-hover-label { font-size: 1.4rem; }
+        .box-hover-label { font-size: 1.4rem; max-width: 80%; white-space: normal; }
         .pair-2 { grid-template-columns: 1fr 1fr; }
         .pair-1 .box, .pair-2 .box, .pair-3 .box { min-height: 300px; }
         .grid-container-about{
@@ -1264,7 +1264,7 @@ a.contact-btn {
     }
     .pair-1 .box, .pair-2 .box, .pair-3 .box { min-height: 340px; }
     .pair-1, .pair-2, .pair-3 { border-radius: 12px; }
-    .box-hover-label { font-size: 1.1rem; }
+    .box-hover-label { font-size: 1.1rem; max-width: 80%; white-space: normal; }
     .grid-container-about{
     grid-template-columns: repeat(6, 1fr);
     gap: 1.22rem;
