@@ -750,7 +750,7 @@ a.box::before {
     font-size: 1.875rem;
     font-weight: 700;
     line-height: 1;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.02em;
     opacity: 0;
     transition: opacity 0.3s ease, transform 0.3s ease;
     z-index: 3;
