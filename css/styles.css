@@ -664,7 +664,7 @@ body {
     gap: 1.2rem;
     border-radius: 22px;
     outline: 1.5px solid transparent;
-    outline-offset: 7px;
+    outline-offset: 0;
     transition: outline-color 0.3s ease;
     position: relative;
 }
