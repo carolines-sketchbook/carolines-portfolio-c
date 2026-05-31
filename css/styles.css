@@ -736,8 +736,6 @@ a.box:hover .box-hover-label {
     width: 100%;
     height: 120%;
     object-fit: cover;
-    transform: translateY(0);
-    will-change: transform;
     top: 0;
     left: 0;
     position: absolute;
