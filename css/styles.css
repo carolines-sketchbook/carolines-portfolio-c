@@ -648,57 +648,22 @@ body {
 /* END OF PROJECT PAGE */
 
 .grid-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.2rem;
     margin-top: 40px;
     margin-bottom: 3.7rem;
     width: 100%;
     padding: 0 40px;
+    grid-auto-rows: minmax(200px, auto);
 }
 
-/* Project row — CSS grid with connecting red outline */
-.project-row {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 1.2rem;
-    border-radius: 22px;
-    outline: 1.5px solid rgba(233, 0, 23, 0.22);
-    outline-offset: 7px;
-    transition: outline-color 0.3s ease;
-}
-.project-row.pair-active {
-    outline-color: #E90017;
-}
-
-/* P1 — large left, video + storyboard stacked right */
-.row-its { grid-template-rows: 260px 200px; }
-.row-its .box-1 { grid-column: 1 / span 7; grid-row: 1 / span 2; }
-.row-its .box-2 { grid-column: 8 / span 5; grid-row: 1; }
-.row-its .box-3 { grid-column: 8 / span 5; grid-row: 2; }
-
-/* P2 — girl + signage stacked left, large desktop right */
-.row-lovet { grid-template-rows: 200px 260px; }
-.row-lovet .box-4 { grid-column: 1 / span 5; grid-row: 1; }
-.row-lovet .box-5 { grid-column: 1 / span 5; grid-row: 2; }
-.row-lovet .box-6 { grid-column: 6 / span 7; grid-row: 1 / span 2; }
-
-/* P3 — wide video top, tall mug right, wide storyboard bottom */
-.row-geletka { grid-template-rows: 260px 200px; }
-.row-geletka .box-7 { grid-column: 1 / span 7; grid-row: 1; }
-.row-geletka .box-8 { grid-column: 8 / span 5; grid-row: 1 / span 2; }
-.row-geletka .box-9 { grid-column: 1 / span 7; grid-row: 2; }
-
-/* Pair active: dim overlay + label fires on all boxes in the row */
-a.box.pair-active::before { opacity: 1; }
-a.box.pair-active .box-hover-label {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.07);
-}
-a.box.pair-active .box-hover-arrow {
-    opacity: 1;
-    transform: translateX(0) rotate(-45deg);
-}
+.box-1 { grid-column: 1 / span 5; grid-row: 1 / span 3; }
+.box-2 { grid-column: 6 / span 3; grid-row: 1 / span 3; }
+.box-3 { grid-column: 9 / span 4; grid-row: 1 / span 3; }
+.box-4 { grid-column: 1 / span 3; grid-row: 4 / span 3; }
+.box-5 { grid-column: 4 / span 5; grid-row: 4 / span 3; }
+.box-6 { grid-column: 9 / span 4; grid-row: 4 / span 3; }
 
 .box {
     background-color: #1E1E1E;
@@ -1049,14 +1014,17 @@ a.contact-btn {
     .project2-pets-container {
         display: none;
     }
-        .grid-container { gap: 1.2rem; margin-bottom: 40px; }
-        .project-row {
-            grid-template-columns: repeat(6, 1fr);
-            gap: 0.75rem;
+        .grid-container{
+        grid-template-columns: repeat(6, 1fr);
+        gap: 0.75rem;
+        margin-bottom: 40px;
         }
-        .row-its { grid-template-rows: 220px 160px; }
-        .row-lovet { grid-template-rows: 160px 220px; }
-        .row-geletka { grid-template-rows: 220px 160px; }
+        .box-1 { grid-column: 1 / span 4; grid-row: 1 / span 1; }
+        .box-2 { grid-column: 5 / span 2; grid-row: 1 / span 1; }
+        .box-3 { grid-column: 1 / span 3; grid-row: 2 / span 1; }
+        .box-4 { grid-column: 4 / span 3; grid-row: 2 / span 1; }
+        .box-5 { grid-column: 1 / span 4; grid-row: 3 / span 1; }
+        .box-6 { grid-column: 5 / span 2; grid-row: 3 / span 1; }
         .grid-container-about{
         grid-template-columns: repeat(6, 1fr);
         gap: 1.25rem;
@@ -1168,23 +1136,6 @@ a.contact-btn {
         margin-top: 20px;
     margin-bottom: 40px;
     }
-    .project-row {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto !important;
-    }
-    .row-its .box-1, .row-lovet .box-4, .row-lovet .box-5,
-    .row-geletka .box-7, .row-geletka .box-9 {
-        grid-column: 1 / span 1;
-        grid-row: auto;
-    }
-    .row-its .box-2, .row-its .box-3, .row-lovet .box-6,
-    .row-geletka .box-8 {
-        grid-column: 2 / span 1;
-        grid-row: auto;
-    }
-    .row-its .box-1, .row-lovet .box-6, .row-geletka .box-8 { min-height: 300px; }
-    .row-its .box-2, .row-its .box-3, .row-lovet .box-4, .row-lovet .box-5,
-    .row-geletka .box-7, .row-geletka .box-9 { min-height: 200px; }
     .grid-container-about{
     grid-template-columns: repeat(6, 1fr);
     gap: 1.25rem;
