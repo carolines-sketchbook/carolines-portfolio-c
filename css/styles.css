@@ -578,7 +578,7 @@ body {
     width: 100%;
     position: relative;
     padding: 0 40px;
-    grid-auto-rows: 140px;
+    grid-auto-rows: 160px;
 }
 .box.box-project-1 {
     grid-column: 1 / span 12;
