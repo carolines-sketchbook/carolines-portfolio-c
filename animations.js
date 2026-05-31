@@ -98,23 +98,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.footer-divider, .project-nav').forEach(el => dividerIo.observe(el));
-
-    // Shimmer skeleton: stop animation once each box's image loads
-    document.querySelectorAll('.box').forEach(box => {
-        const img = box.querySelector('img.parallax-img');
-        const video = box.querySelector('video.parallax-img');
-
-        // Text boxes and video boxes — no shimmer needed
-        if (!img) {
-            box.classList.add('img-loaded');
-            return;
-        }
-
-        if (img.complete && img.naturalHeight > 0) {
-            box.classList.add('img-loaded');
-        } else {
-            img.addEventListener('load', () => box.classList.add('img-loaded'));
-            img.addEventListener('error', () => box.classList.add('img-loaded'));
-        }
-    });
 });
