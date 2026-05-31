@@ -1656,12 +1656,13 @@ a.contact-btn {
         letter-spacing: 0.08em;
         margin-bottom: 1rem;
     }
-    .footer__heading-link {
-        color: inherit;
+    .footer__nav a.footer__heading-link,
+    .footer__nav a.footer__heading-link.nav__link--current {
+        color: #fff;
         text-decoration: none;
         transition: color 0.2s ease;
     }
-    .footer__heading-link:hover {
+    .footer__nav a.footer__heading-link:hover {
         color: #E90017;
     }
     .footer__nav ul {
