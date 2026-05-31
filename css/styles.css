@@ -663,7 +663,7 @@ body {
     display: grid;
     gap: 1.2rem;
     border-radius: 22px;
-    outline: 1.5px solid rgba(233, 0, 23, 0.22);
+    outline: 1.5px solid transparent;
     outline-offset: 7px;
     transition: outline-color 0.3s ease;
     position: relative;
