@@ -57,6 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
         box.appendChild(label);
     });
 
+    // Pair hover: when hovering one home-grid box, highlight both in the pair
+    const pairBoxes = document.querySelectorAll('.grid-container a.box[data-pair]');
+    pairBoxes.forEach(box => {
+        const pair = box.dataset.pair;
+        const siblings = document.querySelectorAll(`.grid-container a.box[data-pair="${pair}"]`);
+        box.addEventListener('mouseenter', () => siblings.forEach(s => s.classList.add('pair-hovered')));
+        box.addEventListener('mouseleave', () => siblings.forEach(s => s.classList.remove('pair-hovered')));
+    });
+
     const els = document.querySelectorAll([
         '.intro__content',
         '.box',

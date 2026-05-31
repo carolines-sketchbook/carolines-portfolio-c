@@ -683,10 +683,14 @@ body {
     grid-row: 4 / span 3;
 }
 
-/* Subtle red outline groups paired boxes visually */
-.box-1, .box-2 { box-shadow: 0 0 0 1.5px rgba(233, 0, 23, 0.28); }
-.box-3, .box-4 { box-shadow: 0 0 0 1.5px rgba(233, 0, 23, 0.28); }
-.box-5, .box-6 { box-shadow: 0 0 0 1.5px rgba(233, 0, 23, 0.28); }
+/* Red outline on home grid boxes — intensifies on pair hover */
+.grid-container a.box {
+    box-shadow: 0 0 0 1.5px rgba(233, 0, 23, 0.22);
+    transition: box-shadow 0.3s ease, all 0.4s ease;
+}
+.grid-container a.box.pair-hovered {
+    box-shadow: 0 0 0 2.5px #E90017;
+}
 
 .box {
     background-color: #1E1E1E;
