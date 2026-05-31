@@ -57,6 +57,21 @@ document.addEventListener('DOMContentLoaded', () => {
         box.appendChild(label);
     });
 
+    // Pair hover: activate row outline + overlay/label on all boxes in the row
+    document.querySelectorAll('.grid-container a.box[data-pair]').forEach(box => {
+        const pair = box.dataset.pair;
+        const row = box.closest('.project-row');
+        const siblings = document.querySelectorAll(`.grid-container a.box[data-pair="${pair}"]`);
+        box.addEventListener('mouseenter', () => {
+            siblings.forEach(s => s.classList.add('pair-active'));
+            if (row) row.classList.add('pair-active');
+        });
+        box.addEventListener('mouseleave', () => {
+            siblings.forEach(s => s.classList.remove('pair-active'));
+            if (row) row.classList.remove('pair-active');
+        });
+    });
+
 
     const els = document.querySelectorAll([
         '.intro__content',
