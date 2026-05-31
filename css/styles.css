@@ -1262,7 +1262,7 @@ a.contact-btn {
     grid-template-rows: auto;
     min-height: 0;
     }
-    .pair-1 .box, .pair-2 .box, .pair-3 .box { min-height: 280px; }
+    .pair-1 .box, .pair-2 .box, .pair-3 .box { min-height: 340px; }
     .box-hover-label { font-size: 1.1rem; }
     .grid-container-about{
     grid-template-columns: repeat(6, 1fr);
