@@ -749,6 +749,7 @@ a.box::before {
     font-family: 'Syne', sans-serif;
     font-size: 1.875rem;
     font-weight: 700;
+    line-height: normal;
     letter-spacing: 0.18em;
     opacity: 0;
     transition: opacity 0.3s ease, transform 0.3s ease;
