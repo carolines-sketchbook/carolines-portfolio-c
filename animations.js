@@ -50,11 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    document.querySelectorAll('.project-group').forEach(group => {
+    document.querySelectorAll('a.box').forEach(box => {
         const label = document.createElement('div');
         label.className = 'box-hover-label';
         label.innerHTML = `<span>OPEN PROJECT</span>${ARROW_SVG}`;
-        group.appendChild(label);
+        box.appendChild(label);
     });
 
     const els = document.querySelectorAll([
