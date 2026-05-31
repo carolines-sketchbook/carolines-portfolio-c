@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (box.closest('.project-pair')) return;
         const label = document.createElement('div');
         label.className = 'box-hover-label';
-        label.innerHTML = `<span>OPEN PROJECT</span>${ARROW_SVG}`;
+        label.innerHTML = `OPEN PROJECT${ARROW_SVG}`;
         box.appendChild(label);
     });
 
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.project-pair').forEach(pair => {
         const label = document.createElement('div');
         label.className = 'box-hover-label';
-        label.innerHTML = `<span>OPEN PROJECT</span>${ARROW_SVG}`;
+        label.innerHTML = `OPEN PROJECT${ARROW_SVG}`;
         pair.appendChild(label);
     });
 

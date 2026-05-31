@@ -741,11 +741,7 @@ a.box::before {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1);
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 5px;
+    display: block;
     color: #fff;
     font-family: 'Syne', sans-serif;
     font-size: 1.875rem;
@@ -767,8 +763,9 @@ a.box::before {
     border-bottom: 2.5px solid #fff;
     transform: translateX(-8px) rotate(-45deg);
     opacity: 0;
-    flex-shrink: 0;
-    margin-bottom: 2px;
+    vertical-align: middle;
+    margin-left: 6px;
+    margin-bottom: 3px;
     transition: opacity 0.25s ease, transform 0.25s ease;
 }
 a.box:hover .box-hover-arrow {
