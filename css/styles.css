@@ -648,48 +648,22 @@ body {
 /* END OF PROJECT PAGE */
 
 .grid-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1.4rem;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.2rem;
     margin-top: 40px;
     margin-bottom: 3.7rem;
     width: 100%;
     padding: 0 40px;
+    grid-auto-rows: minmax(200px, auto);
 }
 
-.project-pair {
-    display: flex;
-    flex-direction: row;
-    gap: 1.2rem;
-    border-radius: 22px;
-    outline: 1.5px solid rgba(233, 0, 23, 0.22);
-    outline-offset: 7px;
-    transition: outline-color 0.3s ease;
-}
-.project-pair.pair-active {
-    outline-color: #E90017;
-}
-
-/* Box flex proportions — mirrors original column ratios */
-.box-1 { flex: 5; min-height: 430px; }
-.box-2 { flex: 3; min-height: 430px; }
-.box-3 { flex: 5; min-height: 430px; }
-.box-4 { flex: 4; min-height: 430px; }
-.box-5 { flex: 5; min-height: 430px; }
-.box-6 { flex: 4; min-height: 430px; }
-
-/* Pair active: dim overlay + label fires on both boxes in the pair */
-a.box.pair-active::before {
-    opacity: 1;
-}
-a.box.pair-active .box-hover-label {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.07);
-}
-a.box.pair-active .box-hover-arrow {
-    opacity: 1;
-    transform: translateX(0) rotate(-45deg);
-}
+.box-1 { grid-column: 1 / span 5; grid-row: 1 / span 3; }
+.box-2 { grid-column: 6 / span 3; grid-row: 1 / span 3; }
+.box-3 { grid-column: 9 / span 4; grid-row: 1 / span 3; }
+.box-4 { grid-column: 1 / span 3; grid-row: 4 / span 3; }
+.box-5 { grid-column: 4 / span 5; grid-row: 4 / span 3; }
+.box-6 { grid-column: 9 / span 4; grid-row: 4 / span 3; }
 
 .box {
     background-color: #1E1E1E;
@@ -1041,11 +1015,16 @@ a.contact-btn {
         display: none;
     }
         .grid-container{
-        gap: 0.9rem;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 0.75rem;
         margin-bottom: 40px;
         }
-        .project-pair { gap: 0.75rem; }
-        .box-1, .box-2, .box-3, .box-4, .box-5, .box-6 { min-height: 320px; }
+        .box-1 { grid-column: 1 / span 4; grid-row: 1 / span 1; }
+        .box-2 { grid-column: 5 / span 2; grid-row: 1 / span 1; }
+        .box-3 { grid-column: 1 / span 3; grid-row: 2 / span 1; }
+        .box-4 { grid-column: 4 / span 3; grid-row: 2 / span 1; }
+        .box-5 { grid-column: 1 / span 4; grid-row: 3 / span 1; }
+        .box-6 { grid-column: 5 / span 2; grid-row: 3 / span 1; }
         .grid-container-about{
         grid-template-columns: repeat(6, 1fr);
         gap: 1.25rem;
@@ -1153,12 +1132,11 @@ a.contact-btn {
 
 @media (max-width: 870px) {
     .grid-container {
-    gap: 0.9rem;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.75rem;
         margin-top: 20px;
     margin-bottom: 40px;
     }
-    .project-pair { flex-direction: column; gap: 0.75rem; }
-    .box-1, .box-2, .box-3, .box-4, .box-5, .box-6 { min-height: 280px; flex: unset; }
     .grid-container-about{
     grid-template-columns: repeat(6, 1fr);
     gap: 1.25rem;
