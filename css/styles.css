@@ -704,7 +704,7 @@ body {
     min-height: 340px;
 }
 .group-box-secondary {
-    grid-column: 2 / span 1;
+    grid-column: 1 / span 2;
     min-height: 190px;
 }
 
@@ -1062,9 +1062,6 @@ a.contact-btn {
         gap: 1.2rem;
         margin-bottom: 40px;
         }
-        .project-group {
-        grid-template-columns: 1fr 1fr;
-        }
         .group-box-primary { min-height: 280px; }
         .group-box-secondary { min-height: 160px; }
         .grid-container-about{
@@ -1178,9 +1175,6 @@ a.contact-btn {
     gap: 1.2rem;
         margin-top: 20px;
     margin-bottom: 40px;
-    }
-    .project-group {
-    grid-template-columns: 1fr 1fr;
     }
     .group-box-primary { min-height: 260px; }
     .group-box-secondary { min-height: 150px; }
