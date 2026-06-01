@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     overlay.innerHTML = `
         <button id="lightbox-close" aria-label="Close">&times;</button>
         <img id="lightbox-img" alt="" style="display:none">
-        <video id="lightbox-video" controls playsinline style="display:none"></video>
+        <video id="lightbox-video" controls playsinline loop style="display:none"></video>
     `;
     document.body.appendChild(overlay);
 
