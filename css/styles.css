@@ -2042,6 +2042,29 @@ a.contact-btn {
     animation: none;
 }
 
+/* LIGHTBOX */
+#lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.88);
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+}
+#lightbox.lightbox--open {
+    display: flex;
+}
+#lightbox-img {
+    max-width: 92vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 16px 64px rgba(0, 0, 0, 0.7);
+    cursor: zoom-out;
+}
+
 /* SCROLL REVEAL */
 .reveal {
     opacity: 0;
