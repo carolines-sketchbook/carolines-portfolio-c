@@ -44,20 +44,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const isDesktop = () => window.innerWidth > 680;
 
-    // Images
+    // Images — desktop only
     grid.querySelectorAll('img.parallax-img').forEach(img => {
-        img.addEventListener('click', () => { if (isDesktop()) openImg(img.src, img.alt); });
-        if (isDesktop()) img.style.cursor = 'zoom-in';
+        if (isDesktop()) {
+            img.style.cursor = 'zoom-in';
+            img.addEventListener('click', () => openImg(img.src, img.alt));
+        }
     });
 
-    // Videos
+    // Videos — all screen sizes
     grid.querySelectorAll('video.parallax-img').forEach(video => {
-        video.addEventListener('click', () => {
-            if (!isDesktop()) return;
+        video.style.cursor = 'pointer';
+        const handler = () => {
             const src = video.querySelector('source')?.src || video.src;
             openVideo(src);
-        });
-        if (isDesktop()) video.style.cursor = 'zoom-in';
+        };
+        video.addEventListener('click', handler);
+        video.addEventListener('touchend', (e) => { e.preventDefault(); handler(); });
     });
 
     overlay.addEventListener('click', close);
