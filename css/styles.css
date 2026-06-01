@@ -2056,6 +2056,23 @@ a.contact-btn {
 #lightbox.lightbox--open {
     display: flex;
 }
+#lightbox-close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2.2rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 10001;
+    opacity: 0.8;
+    padding: 4px 8px;
+    transition: opacity 0.2s ease;
+}
+#lightbox-close:hover { opacity: 1; }
+
 #lightbox-img,
 #lightbox-video {
     max-width: 92vw;

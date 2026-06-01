@@ -6,10 +6,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const overlay = document.createElement('div');
     overlay.id = 'lightbox';
     overlay.innerHTML = `
+        <button id="lightbox-close" aria-label="Close">&times;</button>
         <img id="lightbox-img" alt="" style="display:none">
         <video id="lightbox-video" controls playsinline style="display:none"></video>
     `;
     document.body.appendChild(overlay);
+
+    document.getElementById('lightbox-close').addEventListener('click', (e) => {
+        e.stopPropagation();
+        close();
+    });
 
     const lbImg   = document.getElementById('lightbox-img');
     const lbVideo = document.getElementById('lightbox-video');
