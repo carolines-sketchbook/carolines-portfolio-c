@@ -99,5 +99,12 @@
 
     </footer>
 <script src="animations.js"></script>
+<script>
+  document.querySelector('.resume-download-btn').addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    window.open(this.href, '_blank');
+  });
+</script>
 </body>
 </html>
