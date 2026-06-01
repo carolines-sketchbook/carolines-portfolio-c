@@ -58,21 +58,38 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Videos — all screen sizes
-    // Attach to parent .box so mobile touch isn't swallowed by the video element
+    // Videos — lightbox on desktop, native fullscreen on mobile
     grid.querySelectorAll('video.parallax-img').forEach(video => {
-        const box = video.closest('.box');
-        const handler = () => {
-            const src = video.querySelector('source')?.src || video.src;
-            openVideo(src);
+        video.style.cursor = 'pointer';
+
+        const resumeLoop = () => {
+            video.setAttribute('playsinline', '');
+            video.muted = true;
+            video.play().catch(() => {});
         };
-        if (box) {
-            box.style.cursor = 'pointer';
-            box.addEventListener('click', handler);
-            box.addEventListener('touchend', (e) => { e.preventDefault(); handler(); });
-        } else {
-            video.addEventListener('click', handler);
-        }
+
+        video.addEventListener('webkitendfullscreen', resumeLoop);
+        document.addEventListener('fullscreenchange', () => {
+            if (!document.fullscreenElement) resumeLoop();
+        });
+
+        const handler = () => {
+            if (isDesktop()) {
+                const src = video.querySelector('source')?.src || video.src;
+                openVideo(src);
+            } else {
+                // Native fullscreen on mobile
+                if (video.webkitEnterFullscreen) {
+                    video.removeAttribute('playsinline');
+                    video.webkitEnterFullscreen();
+                } else if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                }
+            }
+        };
+
+        video.addEventListener('click', handler);
+        video.addEventListener('touchend', (e) => { e.preventDefault(); handler(); });
     });
 
     // Clicking media itself shouldn't close — only the dark background
