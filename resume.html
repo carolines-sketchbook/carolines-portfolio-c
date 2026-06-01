@@ -99,5 +99,22 @@
 
     </footer>
 <script src="animations.js"></script>
+<script>
+  document.querySelector('.resume-download-btn').addEventListener('click', function(e) {
+    const url = this.href;
+    const filename = this.getAttribute('download');
+    e.preventDefault();
+    fetch(url)
+      .then(res => res.blob())
+      .then(blob => {
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = filename;
+        a.click();
+        URL.revokeObjectURL(a.href);
+      })
+      .catch(() => window.open(url, '_blank'));
+  });
+</script>
 </body>
 </html>
