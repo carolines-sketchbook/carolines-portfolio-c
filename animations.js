@@ -67,50 +67,62 @@ document.addEventListener('DOMContentLoaded', () => {
         pair.appendChild(label);
     });
 
-    // Mobile tap-to-reveal for project pairs (≤680px)
-    // First tap shows overlay; second tap navigates
     const isMobilePair = () => window.innerWidth <= 680;
 
-    document.querySelectorAll('.grid-container a.box[data-pair]').forEach(box => {
-        box.addEventListener('click', function(e) {
-            if (!isMobilePair()) return;
-            const pair = box.dataset.pair;
-            const wrapper = box.closest('.project-pair');
-            if (!box.classList.contains('pair-active')) {
-                e.preventDefault();
-                // Dismiss any other active pair
-                document.querySelectorAll('.grid-container a.box.pair-active, .grid-container .project-pair.pair-active')
-                    .forEach(el => el.classList.remove('pair-active'));
-                // Activate this pair
-                document.querySelectorAll(`.grid-container a.box[data-pair="${pair}"]`)
-                    .forEach(s => s.classList.add('pair-active'));
-                if (wrapper) wrapper.classList.add('pair-active');
-            }
-            // Already active → allow navigation
-        });
-    });
+    // Track which pair was deliberately tapped (separate from hover state)
+    let tappedPair = null;
 
-    // Dismiss when tapping outside a project pair
-    document.addEventListener('click', function(e) {
-        if (isMobilePair() && !e.target.closest('.project-pair')) {
-            document.querySelectorAll('.grid-container a.box.pair-active, .grid-container .project-pair.pair-active')
-                .forEach(el => el.classList.remove('pair-active'));
-        }
-    });
+    const activatePair = (pair, wrapper) => {
+        document.querySelectorAll('.grid-container a.box.pair-active, .grid-container .project-pair.pair-active')
+            .forEach(el => el.classList.remove('pair-active'));
+        document.querySelectorAll(`.grid-container a.box[data-pair="${pair}"]`)
+            .forEach(s => s.classList.add('pair-active'));
+        if (wrapper) wrapper.classList.add('pair-active');
+    };
 
-    // Pair hover: activate outline + overlay on all boxes in the project
+    const dismissAll = () => {
+        document.querySelectorAll('.grid-container a.box.pair-active, .grid-container .project-pair.pair-active')
+            .forEach(el => el.classList.remove('pair-active'));
+        tappedPair = null;
+    };
+
+    // Pair hover: desktop only — skip on mobile to avoid fighting tap logic
     document.querySelectorAll('.grid-container a.box[data-pair]').forEach(box => {
         const pair = box.dataset.pair;
         const wrapper = box.closest('.project-pair');
         const siblings = document.querySelectorAll(`.grid-container a.box[data-pair="${pair}"]`);
         box.addEventListener('mouseenter', () => {
+            if (isMobilePair()) return;
             siblings.forEach(s => s.classList.add('pair-active'));
             if (wrapper) wrapper.classList.add('pair-active');
         });
         box.addEventListener('mouseleave', () => {
+            if (isMobilePair()) return;
             siblings.forEach(s => s.classList.remove('pair-active'));
             if (wrapper) wrapper.classList.remove('pair-active');
         });
+    });
+
+    // Mobile tap-to-reveal: first tap shows overlay, second tap navigates
+    document.querySelectorAll('.grid-container a.box[data-pair]').forEach(box => {
+        box.addEventListener('click', function(e) {
+            if (!isMobilePair()) return;
+            const pair = box.dataset.pair;
+            const wrapper = box.closest('.project-pair');
+            if (tappedPair !== pair) {
+                e.preventDefault();
+                tappedPair = pair;
+                activatePair(pair, wrapper);
+            }
+            // tappedPair === pair → second tap, navigate normally
+        });
+    });
+
+    // Dismiss overlay when tapping outside any project pair
+    document.addEventListener('click', function(e) {
+        if (isMobilePair() && !e.target.closest('.project-pair') && tappedPair) {
+            dismissAll();
+        }
     });
 
 
