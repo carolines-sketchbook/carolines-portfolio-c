@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
     grid.querySelectorAll('img.parallax-img').forEach(img => {
         if (isDesktop()) {
             img.style.cursor = 'zoom-in';
-            img.addEventListener('click', () => openImg(img.src, img.alt));
+            img.addEventListener('click', () => openImg(img.dataset.lightboxSrc || img.src, img.alt));
         }
     });
 
