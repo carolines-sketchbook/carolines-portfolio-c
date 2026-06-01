@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const resumeLoop = () => {
             video.setAttribute('playsinline', '');
+            video.removeAttribute('controls');
             video.muted = true;
             video.play().catch(() => {});
         };
@@ -77,14 +78,14 @@ document.addEventListener('DOMContentLoaded', function () {
             if (isDesktop()) {
                 const src = video.querySelector('source')?.src || video.src;
                 openVideo(src);
-            } else {
-                // Native fullscreen on mobile
-                if (video.webkitEnterFullscreen) {
-                    video.removeAttribute('playsinline');
-                    video.webkitEnterFullscreen();
-                } else if (video.requestFullscreen) {
-                    video.requestFullscreen();
-                }
+            } else if (video.webkitEnterFullscreen) {
+                // iOS Safari native fullscreen
+                video.removeAttribute('playsinline');
+                video.webkitEnterFullscreen();
+            } else if (video.requestFullscreen) {
+                // Android — add controls so user can pause/exit
+                video.setAttribute('controls', '');
+                video.requestFullscreen();
             }
         };
 
