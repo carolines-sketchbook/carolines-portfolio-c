@@ -125,6 +125,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Clear overlay when returning via back button (bfcache restore)
+    window.addEventListener('pageshow', function(e) {
+        if (e.persisted) dismissAll();
+    });
+
 
 
     const els = document.querySelectorAll([
