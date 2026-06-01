@@ -2059,7 +2059,7 @@ a.contact-btn {
 #lightbox-close {
     position: absolute;
     top: 16px;
-    left: 20px;
+    right: 20px;
     background: rgba(0,0,0,0.5);
     border: none;
     color: #fff;
