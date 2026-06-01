@@ -55,8 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Videos — replace fullscreen behaviour with lightbox
     grid.querySelectorAll('video.parallax-img').forEach(video => {
         video.style.cursor = 'zoom-in';
-        const handler = (e) => {
-            e.stopImmediatePropagation();
+        const handler = () => {
             const src = video.querySelector('source')?.src || video.src;
             openVideo(src);
         };

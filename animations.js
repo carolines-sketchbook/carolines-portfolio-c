@@ -3,50 +3,7 @@ if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 const ARROW_SVG = `<span class="box-hover-arrow"></span>`;
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Tap video to go fullscreen — project pages only
-    if (document.querySelector('.grid-container-project')) {
-        document.querySelectorAll('.box video').forEach(video => {
-            video.style.cursor = 'pointer';
-
-            const resumeLoop = () => {
-                video.setAttribute('playsinline', '');
-                video.muted = true;
-                video.play().catch(() => {});
-            };
-
-            // iOS Safari fullscreen exit
-            video.addEventListener('webkitendfullscreen', resumeLoop);
-
-            // Standard fullscreen exit
-            document.addEventListener('fullscreenchange', () => {
-                if (!document.fullscreenElement) resumeLoop();
-            });
-            document.addEventListener('webkitfullscreenchange', () => {
-                if (!document.webkitFullscreenElement) resumeLoop();
-            });
-
-            video.addEventListener('click', () => {
-                if (document.fullscreenElement || document.webkitFullscreenElement) return;
-
-                const enter = () => {
-                    if (video.webkitEnterFullscreen) {
-                        video.removeAttribute('playsinline');
-                        video.webkitEnterFullscreen();
-                    } else if (video.requestFullscreen) {
-                        video.requestFullscreen();
-                    } else if (video.webkitRequestFullscreen) {
-                        video.webkitRequestFullscreen();
-                    }
-                };
-
-                if (video.paused) {
-                    video.play().then(enter).catch(enter);
-                } else {
-                    enter();
-                }
-            });
-        });
-    }
+    // Videos on project pages are handled by lightbox.js
 
 
 
