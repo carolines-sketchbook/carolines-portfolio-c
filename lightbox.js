@@ -75,6 +75,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // Clicking media itself shouldn't close — only the dark background
+    lbImg.addEventListener('click', e => e.stopPropagation());
+    lbVideo.addEventListener('click', e => e.stopPropagation());
+
     overlay.addEventListener('click', close);
     document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 });

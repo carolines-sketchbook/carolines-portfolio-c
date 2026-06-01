@@ -2059,16 +2059,17 @@ a.contact-btn {
 #lightbox-close {
     position: absolute;
     top: 16px;
-    right: 20px;
-    background: none;
+    left: 20px;
+    background: rgba(0,0,0,0.5);
     border: none;
     color: #fff;
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     line-height: 1;
     cursor: pointer;
     z-index: 10001;
-    opacity: 0.8;
-    padding: 4px 8px;
+    opacity: 0.9;
+    padding: 4px 12px 6px;
+    border-radius: 999px;
     transition: opacity 0.2s ease;
 }
 #lightbox-close:hover { opacity: 1; }
