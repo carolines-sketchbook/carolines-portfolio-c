@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Images — desktop only
     grid.querySelectorAll('img.parallax-img').forEach(img => {
         if (isDesktop()) {
-            img.style.cursor = 'zoom-in';
+            img.style.cursor = 'pointer';
             img.addEventListener('click', () => openImg(img.dataset.lightboxSrc || img.src, img.alt));
         }
     });
