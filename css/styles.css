@@ -1549,6 +1549,7 @@ a.contact-btn {
         z-index: 999;
         opacity: 0;
         visibility: hidden;
+        pointer-events: none;
         transform: translateY(-6px);
         transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
     }
@@ -1556,6 +1557,7 @@ a.contact-btn {
     .nav.nav--open {
         opacity: 1;
         visibility: visible;
+        pointer-events: auto;
         transform: translateY(0);
     }
 
