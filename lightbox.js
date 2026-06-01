@@ -1,32 +1,69 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const imgs = document.querySelectorAll('.grid-container-project img.parallax-img');
-    if (!imgs.length) return;
+    const grid = document.querySelector('.grid-container-project');
+    if (!grid) return;
 
     // Build overlay
     const overlay = document.createElement('div');
     overlay.id = 'lightbox';
-    overlay.innerHTML = '<img id="lightbox-img" alt="">';
+    overlay.innerHTML = `
+        <img id="lightbox-img" alt="" style="display:none">
+        <video id="lightbox-video" controls playsinline style="display:none"></video>
+    `;
     document.body.appendChild(overlay);
 
-    const lbImg = document.getElementById('lightbox-img');
+    const lbImg   = document.getElementById('lightbox-img');
+    const lbVideo = document.getElementById('lightbox-video');
 
-    const open = (src, alt) => {
+    const openImg = (src, alt) => {
         lbImg.src = src;
         lbImg.alt = alt;
+        lbImg.style.display   = '';
+        lbVideo.style.display = 'none';
+        lbVideo.pause();
         overlay.classList.add('lightbox--open');
         document.body.style.overflow = 'hidden';
+    };
+
+    const openVideo = (src) => {
+        lbVideo.src           = src;
+        lbVideo.style.display = '';
+        lbImg.style.display   = 'none';
+        overlay.classList.add('lightbox--open');
+        document.body.style.overflow = 'hidden';
+        lbVideo.play().catch(() => {});
     };
 
     const close = () => {
         overlay.classList.remove('lightbox--open');
         document.body.style.overflow = '';
+        lbVideo.pause();
+        lbVideo.src = '';
+        lbImg.src   = '';
     };
 
-    imgs.forEach(img => {
+    const addTap = (el, fn) => {
+        el.addEventListener('click', fn);
+        el.addEventListener('touchend', (e) => { e.preventDefault(); fn(e); });
+    };
+
+    // Images
+    grid.querySelectorAll('img.parallax-img').forEach(img => {
         img.style.cursor = 'zoom-in';
-        img.addEventListener('click', () => open(img.src, img.alt));
+        addTap(img, () => openImg(img.src, img.alt));
     });
 
-    overlay.addEventListener('click', close);
+    // Videos — replace fullscreen behaviour with lightbox
+    grid.querySelectorAll('video.parallax-img').forEach(video => {
+        video.style.cursor = 'zoom-in';
+        const handler = (e) => {
+            e.stopImmediatePropagation();
+            const src = video.querySelector('source')?.src || video.src;
+            openVideo(src);
+        };
+        video.addEventListener('click', handler);
+        video.addEventListener('touchend', (e) => { e.preventDefault(); handler(e); });
+    });
+
+    addTap(overlay, close);
     document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 });
