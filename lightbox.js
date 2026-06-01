@@ -41,28 +41,24 @@ document.addEventListener('DOMContentLoaded', function () {
         lbImg.src   = '';
     };
 
-    const addTap = (el, fn) => {
-        el.addEventListener('click', fn);
-        el.addEventListener('touchend', (e) => { e.preventDefault(); fn(e); });
-    };
+    const isDesktop = () => window.innerWidth > 680;
 
     // Images
     grid.querySelectorAll('img.parallax-img').forEach(img => {
-        img.style.cursor = 'zoom-in';
-        addTap(img, () => openImg(img.src, img.alt));
+        img.addEventListener('click', () => { if (isDesktop()) openImg(img.src, img.alt); });
+        if (isDesktop()) img.style.cursor = 'zoom-in';
     });
 
-    // Videos — replace fullscreen behaviour with lightbox
+    // Videos
     grid.querySelectorAll('video.parallax-img').forEach(video => {
-        video.style.cursor = 'zoom-in';
-        const handler = () => {
+        video.addEventListener('click', () => {
+            if (!isDesktop()) return;
             const src = video.querySelector('source')?.src || video.src;
             openVideo(src);
-        };
-        video.addEventListener('click', handler);
-        video.addEventListener('touchend', (e) => { e.preventDefault(); handler(e); });
+        });
+        if (isDesktop()) video.style.cursor = 'zoom-in';
     });
 
-    addTap(overlay, close);
+    overlay.addEventListener('click', close);
     document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 });
