@@ -2051,7 +2051,7 @@ a.contact-btn {
     background: rgba(0, 0, 0, 0.88);
     align-items: center;
     justify-content: center;
-    cursor: zoom-out;
+    cursor: default;
 }
 #lightbox.lightbox--open {
     display: flex;
@@ -2080,7 +2080,7 @@ a.contact-btn {
     object-fit: contain;
     border-radius: 10px;
     box-shadow: 0 16px 64px rgba(0, 0, 0, 0.7);
-    cursor: zoom-out;
+    cursor: default;
 }
 
 /* SCROLL REVEAL */
