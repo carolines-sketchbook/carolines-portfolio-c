@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
         lbVideo.src           = src;
         lbVideo.style.display = '';
         lbImg.style.display   = 'none';
+        lbVideo.muted = true;
         overlay.classList.add('lightbox--open');
         document.body.style.overflow = 'hidden';
         lbVideo.play().catch(() => {});
