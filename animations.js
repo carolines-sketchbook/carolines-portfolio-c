@@ -25,6 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const isMobilePair = () => window.innerWidth <= 680;
+    // Touch detection — hover logic uses this so desktop always gets hover regardless of window size
+    const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
     // Track which pair was deliberately tapped (separate from hover state)
     let tappedPair = null;
@@ -49,12 +51,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const wrapper = box.closest('.project-pair');
         const siblings = document.querySelectorAll(`.grid-container a.box[data-pair="${pair}"]`);
         box.addEventListener('mouseenter', () => {
-            if (isMobilePair()) return;
+            if (isTouch) return;
             siblings.forEach(s => s.classList.add('pair-active'));
             if (wrapper) wrapper.classList.add('pair-active');
         });
         box.addEventListener('mouseleave', () => {
-            if (isMobilePair()) return;
+            if (isTouch) return;
             siblings.forEach(s => s.classList.remove('pair-active'));
             if (wrapper) wrapper.classList.remove('pair-active');
         });
