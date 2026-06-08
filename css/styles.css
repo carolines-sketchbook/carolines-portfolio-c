@@ -671,11 +671,6 @@ body {
 .project-pair.pair-active { box-shadow: 0 0 0 2px #E90017; }
 .project-pair .box { min-height: 0; }
 .project-pair .box-hover-label { z-index: 11; }
-
-/* When pairs stack vertically, keep label in the first box area */
-@media (max-width: 1100px) {
-    .project-pair .box-hover-label { top: 25%; }
-}
 .project-pair.pair-active .box-hover-label {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1.07);
