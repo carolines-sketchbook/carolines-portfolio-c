@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile tap-to-reveal: first tap shows overlay, second tap navigates
     document.querySelectorAll('.grid-container a.box[data-pair]').forEach(box => {
         box.addEventListener('click', function(e) {
-            if (!isMobilePair()) return;
+            if (hasHover) return; // desktop with mouse — let click navigate normally
             const pair = box.dataset.pair;
             const wrapper = box.closest('.project-pair');
             if (tappedPair !== pair) {
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Dismiss overlay when tapping outside any project pair
     document.addEventListener('click', function(e) {
-        if (isMobilePair() && !e.target.closest('.project-pair') && tappedPair) {
+        if (!hasHover && !e.target.closest('.project-pair') && tappedPair) {
             dismissAll();
         }
     });
