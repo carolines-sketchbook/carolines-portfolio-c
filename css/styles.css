@@ -703,19 +703,17 @@ body {
     min-height: 500px;
 }
 
-/* P4 — left half of row 3, side by side */
+/* P4 — left half of row 3, single box */
 .pair-4 {
     grid-column: 1 / span 6;
     grid-row: 3;
-    grid-template-columns: 5fr 3fr;
     min-height: 500px;
 }
 
-/* P5 — right half of row 3, side by side */
+/* P5 — right half of row 3, single box */
 .pair-5 {
     grid-column: 7 / span 6;
     grid-row: 3;
-    grid-template-columns: 3fr 5fr;
     min-height: 500px;
 }
 
