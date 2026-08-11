@@ -650,7 +650,7 @@ body {
 .grid-container {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: auto auto;
+    grid-template-rows: auto auto auto;
     gap: 1.2rem;
     margin-top: 40px;
     margin-bottom: 3.7rem;
@@ -699,6 +699,22 @@ body {
 .pair-3 {
     grid-column: 1 / span 8;
     grid-row: 2;
+    grid-template-columns: 3fr 5fr;
+    min-height: 500px;
+}
+
+/* P4 — left half of row 3, side by side */
+.pair-4 {
+    grid-column: 1 / span 6;
+    grid-row: 3;
+    grid-template-columns: 5fr 3fr;
+    min-height: 500px;
+}
+
+/* P5 — right half of row 3, side by side */
+.pair-5 {
+    grid-column: 7 / span 6;
+    grid-row: 3;
     grid-template-columns: 3fr 5fr;
     min-height: 500px;
 }
@@ -1064,11 +1080,11 @@ a.contact-btn {
         display: none;
     }
         .grid-container { grid-template-columns: 1fr; grid-template-rows: auto; gap: 1rem; margin-bottom: 40px; }
-        .pair-1, .pair-2, .pair-3 { grid-column: 1; grid-row: auto; grid-template-rows: auto; min-height: 0; border-radius: 14px; }
+        .pair-1, .pair-2, .pair-3, .pair-4, .pair-5 { grid-column: 1; grid-row: auto; grid-template-rows: auto; min-height: 0; border-radius: 14px; }
         .box-hover-label { font-size: 1.4rem; max-width: 80%; white-space: normal; }
         .box-hover-arrow { width: 10px; height: 10px; border-right-width: 2px; border-bottom-width: 2px; margin-left: 5px; }
         .pair-2 { grid-template-columns: 1fr 1fr; }
-        .pair-1 .box, .pair-2 .box, .pair-3 .box { min-height: 300px; }
+        .pair-1 .box, .pair-2 .box, .pair-3 .box, .pair-4 .box, .pair-5 .box { min-height: 300px; }
         .grid-container-about{
         grid-template-columns: repeat(6, 1fr);
         gap: 1.25rem;
@@ -1201,7 +1217,7 @@ a.contact-btn {
         min-height: 420px;
         border-radius: 12px;
     }
-    .pair-1, .pair-2, .pair-3 { border-radius: 12px; }
+    .pair-1, .pair-2, .pair-3, .pair-4, .pair-5 { border-radius: 12px; }
     .header__content{
     padding: 0 24px;
     }
@@ -1258,13 +1274,13 @@ a.contact-btn {
     margin-bottom: 40px;
     padding: 0 16px;
     }
-    .pair-1, .pair-2, .pair-3 {
+    .pair-1, .pair-2, .pair-3, .pair-4, .pair-5 {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     min-height: 0;
     }
-    .pair-1 .box, .pair-2 .box, .pair-3 .box { min-height: 340px; }
-    .pair-1, .pair-2, .pair-3 { border-radius: 12px; }
+    .pair-1 .box, .pair-2 .box, .pair-3 .box, .pair-4 .box, .pair-5 .box { min-height: 340px; }
+    .pair-1, .pair-2, .pair-3, .pair-4, .pair-5 { border-radius: 12px; }
     .box-hover-label { font-size: 1.1rem; max-width: 80%; white-space: normal; }
     .box-hover-arrow { width: 8px; height: 8px; border-right-width: 1.5px; border-bottom-width: 1.5px; margin-left: 4px; }
     .footer__heading-link { pointer-events: none; cursor: default; }
