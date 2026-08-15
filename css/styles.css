@@ -2058,23 +2058,6 @@ a.contact-btn {
     animation: none;
 }
 
-/* Iridescent glass corner treatment — applied directly on image boxes inside project pairs */
-.project-pair .box::after {
-    background:
-        radial-gradient(ellipse 70% 70% at 0% 0%,   rgba(255, 80, 20,  0.55) 0%, transparent 55%),
-        radial-gradient(ellipse 70% 70% at 100% 0%,  rgba(60,  20, 255, 0.45) 0%, transparent 55%),
-        radial-gradient(ellipse 70% 70% at 100% 100%, rgba(0,  210, 160, 0.4)  0%, transparent 55%),
-        radial-gradient(ellipse 70% 70% at 0%   100%, rgba(210, 0,  130, 0.4)  0%, transparent 55%);
-    animation: none;
-    transform: none;
-    mix-blend-mode: screen;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-.project-pair.pair-active .box::after {
-    opacity: 1;
-}
-
 /* LIGHTBOX */
 #lightbox {
     display: none;
