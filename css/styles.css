@@ -941,8 +941,9 @@ h1 {
     font-weight: 700;
 }
 .contact-subtitle {
+    font-family: 'DM Sans', sans-serif;
     color:#ebebeb;
-    font-size: clamp(1.25rem, 1.1vw + 1rem, 1.45rem);
+    font-size: clamp(1rem, 0.8vw + 0.85rem, 1.2rem);
 }
 .contact-left {
     width: 100%;
@@ -986,11 +987,12 @@ h1 {
     margin-bottom: 2.5rem;
 }
 .field label {
-    font-size: 0.9rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
     color: #fff;
     margin-bottom: 0.4rem;
     display: block;
-    font-weight: 600;
+    font-weight: 400;
 }
 .field {
   width: 100%;

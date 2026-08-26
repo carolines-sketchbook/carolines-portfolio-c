@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swain | 404</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .four04-wrap {
+            min-height: calc(100vh - 60px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center;
+            padding: 18vh 40px 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .four04-number {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(5.5rem, 14vw, 13rem);
+            font-weight: 800;
+            line-height: 1;
+            color: #E90017;
+            letter-spacing: -0.04em;
+            user-select: none;
+        }
+        .four04-heading {
+            font-family: 'DM Sans', sans-serif;
+            font-size: clamp(1.25rem, 1.1vw + 1rem, 1.45rem);
+            font-weight: 400;
+            color: #fff;
+            margin-top: 1rem;
+        }
+        .four04-body {
+            font-family: 'DM Sans', sans-serif;
+            font-size: clamp(1rem, 1.2vw + 0.5rem, 1.1rem);
+            color: rgba(255,255,255,0.55);
+            margin: 0.75rem auto 0;
+            max-width: 36ch;
+            line-height: 1.6;
+            text-align: center;
+        }
+        .four04-actions {
+            display: flex;
+            gap: 16px;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .four04-btn-primary {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            background: #E90017;
+            color: #fff;
+            border: 2px solid #E90017;
+            padding: 11px 42px;
+            border-radius: 999px;
+            text-decoration: none;
+            cursor: pointer;
+            will-change: transform;
+            transition: transform 0.25s ease;
+        }
+        .four04-btn-primary:hover {
+            background: #000;
+            color: #fff;
+            transform: scale(1.07);
+        }
+        .four04-btn-primary:active {
+            background: #233a46;
+            transform: scale(0.97);
+        }
+        .four04-btn-secondary {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            background: transparent;
+            color: rgba(255,255,255,0.6);
+            border: 2px solid rgba(255,255,255,0.2);
+            padding: 10px 36px;
+            border-radius: 999px;
+            text-decoration: none;
+            cursor: pointer;
+            will-change: transform;
+            transition: transform 0.25s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+        .four04-btn-secondary:hover {
+            color: #fff;
+            border-color: rgba(255,255,255,0.5);
+            transform: scale(1.07);
+        }
+        .four04-btn-secondary:active {
+            transform: scale(0.97);
+        }
+        .four04-noise {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-size: 200px 200px;
+        }
+        .four04-content {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="logo logo-blend-wrap">
+        <span class="logo__image">Caroline Swain</span>
+    </a>
+
+    <header class="header">
+        <div class="header__content">
+            <button class="nav__hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item nav__item__dropdown">
+                        <a href="index.html" class="nav__link">WORK</a>
+                        <ul class="dropdown">
+                            <li><a href="project1.html"><span class="nav__num">01</span>IT'S THAT SIMPLE</a></li>
+                            <li><a href="project2.html"><span class="nav__num">02</span>LOVET: VET CARE</a></li>
+                            <li><a href="project3.html"><span class="nav__num">03</span>GELETKA+</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav__item">
+                        <a href="about.html" class="nav__link">ABOUT</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="resume.html" class="nav__link">RESUME</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="contact.html" class="nav__link">CONTACT</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <script src="nav.js"></script>
+
+    <div class="four04-noise"></div>
+
+    <div class="four04-wrap">
+        <div class="four04-content">
+            <p class="four04-number">404</p>
+            <h1 class="four04-heading">Page not found.</h1>
+            <p class="four04-body">Looks like this page took a wrong turn. Head back and find what you were looking for.</p>
+            <div class="four04-actions">
+                <a href="index.html" class="four04-btn-primary">Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="animations.js"></script>
+</body>
+</html>
